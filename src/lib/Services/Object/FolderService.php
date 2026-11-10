@@ -87,6 +87,21 @@ class FolderService extends AbstractModelService {
     }
 
     /**
+     * Find the cloned folder that the given share produced for the given source
+     * folder. Returns null when the clone has not been created yet.
+     *
+     * @param string $shareId
+     * @param string $sourceFolder
+     *
+     * @return null|Folder|ModelInterface
+     * @throws DoesNotExistException
+     * @throws MultipleObjectsReturnedException
+     */
+    public function findCloneByShareAndSource(string $shareId, string $sourceFolder): ?Folder {
+        return $this->mapper->findCloneByShareAndSource($shareId, $sourceFolder);
+    }
+
+    /**
      * @return Folder|ModelInterface
      */
     public function getBaseFolder(): Folder {

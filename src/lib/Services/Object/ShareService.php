@@ -134,7 +134,67 @@ class ShareService extends AbstractService {
      * @throws Exception
      */
     public function findNew(): array {
-        return $this->mapper->findAllByField('target_password', null, IQueryBuilder::PARAM_NULL);
+        // Only classic password shares: a new password share has no target yet
+        // and always has a source password. Folder-share roots are picked up by
+        // findNewFolderShares() instead (they have a source folder but no source
+        // password), so they must not be processed by the password-share flow.
+        return $this->mapper->findAllByFields(
+            ['target_password', null, IQueryBuilder::PARAM_NULL],
+            ['source_password', null, IQueryBuilder::PARAM_NULL, 'neq']
+        );
+    }
+
+    /**
+     * Folder-share roots that have not been materialized yet (no target folder).
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findNewFolderShares(): array {
+        return $this->mapper->findAllByFields(
+            ['source_folder', null, IQueryBuilder::PARAM_NULL, 'neq'],
+            ['source_password', null, IQueryBuilder::PARAM_NULL],
+            ['target_folder', null, IQueryBuilder::PARAM_NULL]
+        );
+    }
+
+    /**
+     * All shares (root and children) that belong to a shared source folder.
+     *
+     * @param string $folderUuid
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllBySourceFolder(string $folderUuid): array {
+        return $this->mapper->findAllByField('source_folder', $folderUuid);
+    }
+
+    /**
+     * All shares where the given user is the receiver.
+     *
+     * @param string $receiverId
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllByReceiver(string $receiverId): array {
+        return $this->mapper->findAllByField('receiver', $receiverId);
+    }
+
+    /**
+     * All folder-share roots (both pending and materialized). A root references a
+     * source folder and has no source password; its children carry a source
+     * password plus this same source folder.
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllFolderShareRoots(): array {
+        return $this->mapper->findAllByFields(
+            ['source_folder', null, IQueryBuilder::PARAM_NULL, 'neq'],
+            ['source_password', null, IQueryBuilder::PARAM_NULL]
+        );
     }
 
     /**
@@ -175,6 +235,50 @@ class ShareService extends AbstractService {
         bool $shareable = true
     ): Share {
         $model = $this->createModel($passwordId, $receiverId, $type, $editable, $expires, $shareable);
+        $this->fireEvent('instantiated', $model);
+
+        return $model;
+    }
+
+    /**
+     * Create the root share of a folder share. Unlike a password share the root
+     * references a source folder instead of a source password. The actual cloning
+     * of the folder tree (folders and passwords) happens in the SynchronizeShares
+     * cron.
+     *
+     * @param string   $folderId   uuid of the shared source folder
+     * @param string   $receiverId user who receives the folder share
+     * @param string   $type       'user' or 'group'
+     * @param bool     $editable   whether the receiver may edit the clones
+     * @param int|null $expires    optional expiry timestamp
+     * @param bool     $shareable  whether the receiver may re-share the clones
+     *
+     * @return Share|ModelInterface
+     */
+    public function createFolderShare(
+        string $folderId,
+        string $receiverId,
+        string $type,
+        bool $editable,
+        ?int $expires = null,
+        bool $shareable = true
+    ): Share {
+        $model = new Share();
+        $model->setDeleted(false);
+        $model->setUserId($this->userId);
+        $model->setUuid($this->uuidHelper->generateUuid());
+        $model->setCreated(time());
+        $model->setUpdated(time());
+
+        $model->setSourceFolder($folderId);
+        $model->setSourceUpdated(true);
+        $model->setReceiver($receiverId);
+        $model->setShareable($shareable);
+        $model->setEditable($editable);
+        $model->setExpires($expires);
+        $model->setType($type);
+        $model->setClient($this->environment->getClient());
+
         $this->fireEvent('instantiated', $model);
 
         return $model;

@@ -12,10 +12,14 @@ namespace OCA\Passwords\Db;
  *
  * @method string getType()
  * @method void setType(string $type)
- * @method string getSourcePassword()
- * @method void setSourcePassword(string $sourcePassword)
+ * @method string|null getSourcePassword()
+ * @method void setSourcePassword(string|null $sourcePassword)
  * @method string getTargetPassword()
  * @method void setTargetPassword(string $targetPassword)
+ * @method string|null getSourceFolder()
+ * @method void setSourceFolder(string|null $sourceFolder)
+ * @method string|null getTargetFolder()
+ * @method void setTargetFolder(string|null $targetFolder)
  * @method string getReceiver()
  * @method void setReceiver(string $receiver)
  * @method bool getEditable()
@@ -68,14 +72,24 @@ class Share extends AbstractEntity implements EntityInterface {
     protected ?int $expires;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $sourcePassword;
+    protected ?string $sourcePassword;
 
     /**
      * @var string|null
      */
     protected ?string $targetPassword;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $sourceFolder;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $targetFolder;
 
     /**
      * @var bool
@@ -96,6 +110,8 @@ class Share extends AbstractEntity implements EntityInterface {
         $this->addType('receiver', 'string');
         $this->addType('sourcePassword', 'string');
         $this->addType('targetPassword', 'string');
+        $this->addType('sourceFolder', 'string');
+        $this->addType('targetFolder', 'string');
 
         $this->addType('expires', 'integer');
 
@@ -119,6 +135,37 @@ class Share extends AbstractEntity implements EntityInterface {
      */
     public function isShareable(): bool {
         return $this->getShareable() === true;
+    }
+
+    /**
+     * A root folder share represents the act of sharing a whole folder.
+     * It has a source folder but no source password; the concrete password
+     * clones are represented by child shares (see isFolderChildShare()).
+     *
+     * @return bool
+     */
+    public function isFolderShareRoot(): bool {
+        return $this->getSourceFolder() !== null && $this->getSourcePassword() === null;
+    }
+
+    /**
+     * A child share belongs to a folder share: it clones one concrete password
+     * (sourcePassword) of the shared folder tree (sourceFolder points to the
+     * shared root folder). The target folder is set once the clone exists.
+     *
+     * @return bool
+     */
+    public function isFolderChildShare(): bool {
+        return $this->getSourceFolder() !== null && $this->getSourcePassword() !== null;
+    }
+
+    /**
+     * Any share that is part of folder sharing (root or child).
+     *
+     * @return bool
+     */
+    public function isFolderShare(): bool {
+        return $this->getSourceFolder() !== null;
     }
 
     /**

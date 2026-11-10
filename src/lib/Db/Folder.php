@@ -12,6 +12,10 @@ namespace OCA\Passwords\Db;
  *
  * @method bool getSuspended()
  * @method void setSuspended(bool $suspended)
+ * @method string|null getShareId()
+ * @method void setShareId(string|null $shareId)
+ * @method string|null getSourceFolder()
+ * @method void setSourceFolder(string|null $sourceFolder)
  *
  * @package OCA\Passwords\Db
  */
@@ -23,10 +27,26 @@ class Folder extends AbstractModel {
     protected bool $suspended;
 
     /**
-     * Password constructor.
+     * Uuid of the share that produced this folder clone (null for non-clones).
+     *
+     * @var string|null
+     */
+    protected ?string $shareId;
+
+    /**
+     * Uuid of the source folder this clone was copied from (null for non-clones).
+     *
+     * @var string|null
+     */
+    protected ?string $sourceFolder;
+
+    /**
+     * Folder constructor.
      */
     public function __construct() {
         $this->addType('suspended', 'boolean');
+        $this->addType('shareId', 'string');
+        $this->addType('sourceFolder', 'string');
 
         parent::__construct();
     }

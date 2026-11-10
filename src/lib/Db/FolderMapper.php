@@ -7,6 +7,9 @@
 
 namespace OCA\Passwords\Db;
 
+use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Db\MultipleObjectsReturnedException;
+
 /**
  * Class FolderMapper
  *
@@ -29,6 +32,28 @@ class FolderMapper extends AbstractMapper {
         );
 
         return $this->findEntities($sql);
+    }
+
+    /**
+     * Find the cloned folder that the given share produced for the given source
+     * folder. Used to make folder-share tree cloning idempotent.
+     *
+     * @param string $shareId
+     * @param string $sourceFolder
+     *
+     * @return null|Folder
+     * @throws DoesNotExistException
+     * @throws MultipleObjectsReturnedException
+     */
+    public function findCloneByShareAndSource(string $shareId, string $sourceFolder): ?Folder {
+        $sql = $this->getStatement();
+
+        $sql->andWhere(
+            $sql->expr()->eq('share_id', $sql->createNamedParameter($shareId)),
+            $sql->expr()->eq('source_folder', $sql->createNamedParameter($sourceFolder))
+        );
+
+        return $this->findEntity($sql);
     }
 
 }
