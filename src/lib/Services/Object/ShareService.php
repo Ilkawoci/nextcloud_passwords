@@ -198,6 +198,25 @@ class ShareService extends AbstractService {
     }
 
     /**
+     * The child share of a folder share for a single source password inside the
+     * given shared source folder. Returns null when no such child share exists.
+     *
+     * @param string $sourceFolder   uuid of the shared source folder (folder-share root)
+     * @param string $sourcePassword uuid of the source password
+     *
+     * @return Share|null
+     * @throws Exception
+     */
+    public function findFolderChildShare(string $sourceFolder, string $sourcePassword): ?Share {
+        $shares = $this->mapper->findAllByFields(
+            ['source_folder', $sourceFolder],
+            ['source_password', $sourcePassword]
+        );
+
+        return count($shares) ? $shares[0] : null;
+    }
+
+    /**
      * @return Share[]
      * @throws Exception
      */
@@ -272,6 +291,60 @@ class ShareService extends AbstractService {
 
         $model->setSourceFolder($folderId);
         $model->setSourceUpdated(true);
+        $model->setReceiver($receiverId);
+        $model->setShareable($shareable);
+        $model->setEditable($editable);
+        $model->setExpires($expires);
+        $model->setType($type);
+        $model->setClient($this->environment->getClient());
+
+        $this->fireEvent('instantiated', $model);
+
+        return $model;
+    }
+
+    /**
+     * Create a child share of a folder share for a single password inside the
+     * shared folder tree. A child share links a source password to its cloned
+     * target password and carries the same source folder as its root. It inherits
+     * the receiver, type, editable and shareable flags from the folder-share root
+     * so the existing password-share sync machinery treats it like any other share.
+     *
+     * @param string   $sourceFolder   uuid of the shared source folder (folder-share root)
+     * @param string   $sourcePassword uuid of the source password
+     * @param string   $targetPassword uuid of the cloned (target) password
+     * @param string   $receiverId     user who receives the share
+     * @param string   $type           'user' or 'group'
+     * @param bool     $editable       whether the receiver may edit the clone
+     * @param int|null $expires        optional expiry timestamp
+     * @param bool     $shareable      whether the receiver may re-share the clone
+     *
+     * @return Share|ModelInterface
+     */
+    public function createFolderChildShare(
+        string $sourceFolder,
+        string $sourcePassword,
+        string $targetPassword,
+        string $receiverId,
+        string $type,
+        bool $editable,
+        ?int $expires = null,
+        bool $shareable = true
+    ): Share {
+        $model = new Share();
+        $model->setDeleted(false);
+        $model->setUserId($this->userId);
+        $model->setUuid($this->uuidHelper->generateUuid());
+        $model->setCreated(time());
+        $model->setUpdated(time());
+
+        $model->setSourceFolder($sourceFolder);
+        $model->setSourcePassword($sourcePassword);
+        $model->setTargetPassword($targetPassword);
+        // The clone is created from the current source state, so both sides are
+        // already in sync at creation time.
+        $model->setSourceUpdated(false);
+        $model->setTargetUpdated(false);
         $model->setReceiver($receiverId);
         $model->setShareable($shareable);
         $model->setEditable($editable);

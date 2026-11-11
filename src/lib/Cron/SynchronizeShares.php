@@ -21,6 +21,7 @@ use OCA\Passwords\Services\LoggingService;
 use OCA\Passwords\Services\MailService;
 use OCA\Passwords\Services\NotificationService;
 use OCA\Passwords\Services\Object\FolderService;
+use OCA\Passwords\Services\Object\FolderRevisionService;
 use OCA\Passwords\Services\Object\PasswordRevisionService;
 use OCA\Passwords\Services\Object\PasswordService;
 use OCA\Passwords\Services\Object\ShareService;
@@ -54,6 +55,8 @@ class SynchronizeShares extends AbstractTimedJob {
      * @param PasswordService         $passwordService
      * @param NotificationService     $notificationService
      * @param PasswordRevisionService $passwordRevisionService
+     * @param FolderService           $folderService
+     * @param FolderRevisionService   $folderRevisionService
      */
     public function __construct(
         ITimeFactory                      $time,
@@ -64,7 +67,9 @@ class SynchronizeShares extends AbstractTimedJob {
         EnvironmentService                $environment,
         protected PasswordService         $passwordService,
         protected NotificationService     $notificationService,
-        protected PasswordRevisionService $passwordRevisionService
+        protected PasswordRevisionService $passwordRevisionService,
+        protected FolderService           $folderService,
+        protected FolderRevisionService   $folderRevisionService
     ) {
         parent::__construct($time, $logger, $config, $environment);
     }
@@ -81,6 +86,7 @@ class SynchronizeShares extends AbstractTimedJob {
         $this->deleteOrphanedTargetPasswords();
         $this->deleteExpiredShares();
         $this->createNewShares();
+        $this->syncFolderShares();
         $this->removeSharedAttribute();
         $this->updatePasswords();
         $this->notifyUsers();
@@ -459,5 +465,380 @@ class SynchronizeShares extends AbstractTimedJob {
 
         return $this->environment->getRunType() === EnvironmentService::TYPE_CRON &&
                intval($this->config->getAppValue(self::EXECUTION_TIMESTAMP, 0)) < strtotime('-2 hours');
+    }
+
+    /**
+     * Synchronize all folder shares. For every folder-share root this ensures the
+     * cloned target tree (folders and passwords) mirrors the current source tree:
+     * missing clones are created, orphaned clones are removed. Content changes are
+     * then kept in sync by the regular password-share update flow, because every
+     * cloned password is backed by a child share.
+     *
+     * @throws Exception
+     */
+    protected function syncFolderShares(): void {
+        $shares = $this->shareService->findAllFolderShareRoots();
+        $total  = 0;
+
+        foreach($shares as $share) {
+            try {
+                $this->syncFolderShare($share);
+                $total++;
+            } catch(\Throwable $e) {
+                $this->logger->logException(
+                    $e,
+                    [],
+                    "Could not synchronize folder share {$share->getUuid()} for receiver {$share->getReceiver()}: {$e->getMessage()}"
+                );
+            }
+        }
+
+        $this->logger->debugOrInfo(['Synchronized %s folder share(s)', $total], $total);
+    }
+
+    /**
+     * Reconcile the cloned target tree of a single folder-share root against the
+     * current source tree.
+     *
+     * @param Share $share
+     *
+     * @throws Exception
+     */
+    protected function syncFolderShare(Share $share): void {
+        $shareId        = $share->getUuid();
+        $sourceFolderId = $share->getSourceFolder();
+        $receiverId     = $share->getReceiver();
+
+        try {
+            /** @var Folder $sourceRoot */
+            $sourceRoot = $this->folderService->findByUuid($sourceFolderId);
+        } catch(DoesNotExistException $e) {
+            $this->logger->info("Folder share {$shareId}: source folder {$sourceFolderId} no longer exists, removing clones");
+            $this->deleteFolderShareRoot($share);
+
+            return;
+        }
+
+        // Ensure the target root clone exists.
+        /** @var Folder|null $targetRoot */
+        $targetRoot = $this->folderService->findCloneByShareAndSource($shareId, $sourceFolderId);
+        if($targetRoot === null) {
+            $targetRoot = $this->cloneFolder($sourceRoot, FolderService::BASE_FOLDER_UUID, $receiverId, $shareId, $sourceFolderId);
+
+            $share->setTargetFolder($targetRoot->getUuid());
+            $share->setSourceUpdated(false);
+            $this->shareService->save($share);
+        }
+
+        // Reconcile the subtree: create missing clones, drop orphaned ones.
+        $this->syncFolderNode($sourceRoot, $targetRoot, $share);
+        $this->deleteStaleFolderClones($share, $sourceRoot);
+    }
+
+    /**
+     * Recursively reconcile a folder node: ensure every source subfolder has a
+     * clone in the target, and every source password has a cloned, shared
+     * counterpart inside the target folder.
+     *
+     * @param Folder $sourceFolder
+     * @param Folder $targetFolder
+     * @param Share  $rootShare
+     *
+     * @throws Exception
+     */
+    protected function syncFolderNode(Folder $sourceFolder, Folder $targetFolder, Share $rootShare): void {
+        // Subfolders first (depth first) so the target parent always exists.
+        foreach($this->folderService->findByParent($sourceFolder->getUuid()) as $sourceSubFolder) {
+            /** @var Folder $sourceSubFolder */
+            $targetSubFolder = $this->folderService->findCloneByShareAndSource($rootShare->getUuid(), $sourceSubFolder->getUuid());
+            if($targetSubFolder === null) {
+                $targetSubFolder = $this->cloneFolder($sourceSubFolder, $targetFolder->getUuid(), $rootShare->getReceiver(), $rootShare->getUuid(), $sourceSubFolder->getUuid());
+            }
+            $this->syncFolderNode($sourceSubFolder, $targetSubFolder, $rootShare);
+        }
+
+        // Passwords directly inside this folder.
+        foreach($this->passwordService->findByFolder($sourceFolder->getUuid()) as $sourcePassword) {
+            /** @var Password $sourcePassword */
+            $this->syncSharedPassword($sourcePassword, $targetFolder, $rootShare);
+        }
+    }
+
+    /**
+     * Ensure a single source password inside a shared folder has a cloned, shared
+     * counterpart in the target folder. Creates the clone and the child share when
+     * missing and re-creates the clone when it was deleted.
+     *
+     * @param Password $sourcePassword
+     * @param Folder   $targetFolder
+     * @param Share    $rootShare
+     *
+     * @throws Exception
+     */
+    protected function syncSharedPassword(Password $sourcePassword, Folder $targetFolder, Share $rootShare): void {
+        $sourceFolderId   = $rootShare->getSourceFolder();
+        $sourcePasswordId = $sourcePassword->getUuid();
+
+        /** @var Share|null $childShare */
+        $childShare = $this->shareService->findFolderChildShare($sourceFolderId, $sourcePasswordId);
+
+        /** @var Password|null $targetPassword */
+        $targetPassword = null;
+        if($childShare !== null && $childShare->getTargetPassword() !== null) {
+            try {
+                $targetPassword = $this->passwordService->findByUuid($childShare->getTargetPassword());
+            } catch(DoesNotExistException $e) {
+                $targetPassword = null;
+            }
+        }
+
+        if($targetPassword === null) {
+            $targetPassword = $this->cloneSharedPassword($sourcePassword, $targetFolder, $rootShare);
+            if($targetPassword === null) return;
+        }
+
+        if($childShare === null) {
+            $childShare = $this->shareService->createFolderChildShare(
+                $sourceFolderId,
+                $sourcePasswordId,
+                $targetPassword->getUuid(),
+                $rootShare->getReceiver(),
+                $rootShare->getType(),
+                $rootShare->isEditable(),
+                $rootShare->getExpires(),
+                $rootShare->isShareable()
+            );
+        } else {
+            $childShare->setTargetPassword($targetPassword->getUuid());
+        }
+
+        $childShare->setSourceUpdated(false);
+        $childShare->setTargetUpdated(false);
+        $this->shareService->save($childShare);
+
+        // The cloned password must be able to resolve its backing share.
+        if($targetPassword->getShareId() !== $childShare->getUuid()) {
+            $targetPassword->setShareId($childShare->getUuid());
+            $this->passwordService->save($targetPassword);
+        }
+
+        // Mark the source password as shared so it is shown as shared in the UI.
+        if(!$sourcePassword->hasShares()) {
+            $sourcePassword->setHasShares(true);
+            $this->passwordService->save($sourcePassword);
+        }
+    }
+
+    /**
+     * Clone a source password into the given target folder, owned by the receiver.
+     * Returns null when the source password cannot be shared (CSE-encrypted,
+     * hidden, or its current revision is gone).
+     *
+     * @param Password $sourcePassword
+     * @param Folder   $targetFolder
+     * @param Share    $rootShare
+     *
+     * @return Password|null
+     * @throws Exception
+     */
+    protected function cloneSharedPassword(Password $sourcePassword, Folder $targetFolder, Share $rootShare): ?Password {
+        $receiverId = $rootShare->getReceiver();
+
+        try {
+            /** @var PasswordRevision $sourceRevision */
+            $sourceRevision = $this->passwordRevisionService->findCurrentRevisionByModel($sourcePassword->getUuid(), true);
+        } catch(DoesNotExistException $e) {
+            $this->logger->debug("Folder share: source password {$sourcePassword->getUuid()} has no revision, skipping");
+
+            return null;
+        }
+
+        if($sourceRevision->getCseType() !== EncryptionService::CSE_ENCRYPTION_NONE) {
+            $this->logger->debug("Folder share: source password {$sourcePassword->getUuid()} is CSE-encrypted and cannot be shared, skipping");
+
+            return null;
+        }
+        if($sourceRevision->isHidden()) {
+            $this->logger->debug("Folder share: source password {$sourcePassword->getUuid()} is hidden, skipping");
+
+            return null;
+        }
+
+        /** @var Password $targetPassword */
+        $targetPassword = $this->passwordService->create();
+        $targetPassword->setUserId($receiverId);
+        $targetPassword->setEditable($rootShare->isEditable());
+
+        $revision = $this->passwordRevisionService->create(
+            $targetPassword->getUuid(),
+            $sourceRevision->getPassword(),
+            $sourceRevision->getUsername(),
+            '',
+            $sourceRevision->getCseType(),
+            $sourceRevision->getHash(),
+            $sourceRevision->getLabel(),
+            $sourceRevision->getUrl(),
+            $sourceRevision->getNotes(),
+            $sourceRevision->getCustomFields(),
+            $targetFolder->getUuid(),
+            time(),
+            false,
+            false,
+            false
+        );
+        $revision->setUserId($receiverId);
+
+        $this->passwordRevisionService->save($revision);
+        $this->passwordService->setRevision($targetPassword, $revision);
+
+        return $targetPassword;
+    }
+
+    /**
+     * Clone a source folder into the given target parent folder. The clone is owned
+     * by the receiver and carries back-references (shareId + sourceFolder) so it can
+     * be resolved idempotently on later runs.
+     *
+     * @param Folder $sourceFolder
+     * @param string $targetParent
+     * @param string $receiverId
+     * @param string $shareId
+     * @param string $sourceFolderId
+     *
+     * @return Folder
+     * @throws Exception
+     */
+    protected function cloneFolder(Folder $sourceFolder, string $targetParent, string $receiverId, string $shareId, string $sourceFolderId): Folder {
+        /** @var FolderRevision $sourceRevision */
+        $sourceRevision = $this->folderRevisionService->findCurrentRevisionByModel($sourceFolder->getUuid());
+
+        /** @var Folder $model */
+        $model = $this->folderService->create();
+        $model->setUserId($receiverId);
+        $model->setShareId($shareId);
+        $model->setSourceFolder($sourceFolderId);
+
+        $revision = $this->folderRevisionService->create(
+            $model->getUuid(),
+            $sourceRevision->getLabel(),
+            $targetParent,
+            $sourceRevision->getCseKey() ?? '',
+            $sourceRevision->getCseType(),
+            time(),
+            $sourceRevision->isHidden(),
+            false,
+            $sourceRevision->isFavorite()
+        );
+        $revision->setUserId($receiverId);
+
+        $this->folderRevisionService->save($revision);
+        $this->folderService->setRevision($model, $revision);
+
+        return $model;
+    }
+
+    /**
+     * Remove cloned target folders whose source folder no longer exists in the
+     * shared source tree (subfolder removed by the owner). Deleting a clone also
+     * cascade-deletes its subfolders and passwords; the child shares that point
+     * into the subtree are removed as well.
+     *
+     * @param Share  $share
+     * @param Folder $sourceRoot
+     *
+     * @throws Exception
+     */
+    protected function deleteStaleFolderClones(Share $share, Folder $sourceRoot): void {
+        $shareId = $share->getUuid();
+
+        $validSourceFolders = $this->collectFolderUuids($sourceRoot);
+        $clones             = $this->folderService->findAllByShareId($shareId);
+
+        foreach($clones as $clone) {
+            /** @var Folder $clone */
+            if($clone->getSourceFolder() === null) continue;
+            if(in_array($clone->getSourceFolder(), $validSourceFolders)) continue;
+
+            $this->logger->debug("Folder share {$shareId}: removing stale clone {$clone->getUuid()} (source {$clone->getSourceFolder()} gone)");
+            $this->deleteSharedFolderSubtree($clone, $share->getSourceFolder());
+        }
+    }
+
+    /**
+     * Collect the uuid of a folder and all of its descendants.
+     *
+     * @param Folder $folder
+     *
+     * @return string[]
+     * @throws Exception
+     */
+    protected function collectFolderUuids(Folder $folder): array {
+        $uuids = [$folder->getUuid()];
+        $queue = [$folder->getUuid()];
+
+        while(count($queue) > 0) {
+            $current = array_pop($queue);
+            foreach($this->folderService->findByParent($current) as $child) {
+                /** @var Folder $child */
+                $uuids[] = $child->getUuid();
+                $queue[] = $child->getUuid();
+            }
+        }
+
+        return $uuids;
+    }
+
+    /**
+     * Tear down a single folder-share root: remove the whole cloned tree together
+     * with its child shares. Used when the shared source folder is deleted.
+     *
+     * @param Share $share
+     *
+     * @throws Exception
+     */
+    protected function deleteFolderShareRoot(Share $share): void {
+        if($share->getTargetFolder() !== null) {
+            try {
+                /** @var Folder $targetRoot */
+                $targetRoot = $this->folderService->findByUuid($share->getTargetFolder());
+                $this->deleteSharedFolderSubtree($targetRoot, $share->getSourceFolder());
+            } catch(DoesNotExistException $e) {
+                // Target root already gone; nothing to remove.
+            }
+        }
+
+        $this->shareService->delete($share);
+    }
+
+    /**
+     * Delete a cloned target folder together with its subfolders, passwords and the
+     * child shares that point into the subtree.
+     *
+     * @param Folder $targetFolder
+     * @param string $rootSourceFolderId uuid of the shared source folder (folder-share root)
+     *
+     * @throws Exception
+     */
+    protected function deleteSharedFolderSubtree(Folder $targetFolder, string $rootSourceFolderId): void {
+        $folderUuids = $this->collectFolderUuids($targetFolder);
+
+        $passwordUuids = [];
+        foreach($folderUuids as $folderUuid) {
+            foreach($this->passwordService->findByFolder($folderUuid) as $password) {
+                /** @var Password $password */
+                $passwordUuids[] = $password->getUuid();
+            }
+        }
+
+        foreach($this->shareService->findAllBySourceFolder($rootSourceFolderId) as $childShare) {
+            /** @var Share $childShare */
+            if($childShare->getSourcePassword() === null) continue;
+            if($childShare->getTargetPassword() === null) continue;
+            if(in_array($childShare->getTargetPassword(), $passwordUuids)) {
+                $this->shareService->delete($childShare);
+            }
+        }
+
+        $this->folderService->delete($targetFolder);
     }
 }

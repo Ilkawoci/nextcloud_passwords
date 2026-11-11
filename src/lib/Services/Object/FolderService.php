@@ -102,6 +102,20 @@ class FolderService extends AbstractModelService {
     }
 
     /**
+     * All folder clones produced by a given share (root clone plus every cloned
+     * subfolder). Used by the share-synchronization cron to reconcile the cloned
+     * tree against the current source tree.
+     *
+     * @param string $shareId
+     *
+     * @return Folder[]
+     * @throws Exception
+     */
+    public function findAllByShareId(string $shareId): array {
+        return $this->mapper->findAllByField('share_id', $shareId);
+    }
+
+    /**
      * @return Folder|ModelInterface
      */
     public function getBaseFolder(): Folder {

@@ -12,6 +12,7 @@
 namespace OCA\Passwords\Controller\Api;
 
 use Exception;
+use OCA\Passwords\Db\Folder;
 use OCA\Passwords\Db\Share;
 use OCA\Passwords\Exception\ApiException;
 use OCA\Passwords\Helper\ApiObjects\AbstractObjectHelper;
@@ -20,6 +21,7 @@ use OCA\Passwords\Helper\Settings\ShareSettingsHelper;
 use OCA\Passwords\Helper\Sharing\CreatePasswordShareHelper;
 use OCA\Passwords\Helper\Sharing\RecipientSearchHelper;
 use OCA\Passwords\Helper\Sharing\UpdatePasswordShareHelper;
+use OCA\Passwords\Services\Object\FolderService;
 use OCA\Passwords\Services\Object\ShareService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -54,6 +56,7 @@ class ShareApiController extends AbstractApiController {
      * @param RecipientSearchHelper     $shareUserList
      * @param CreatePasswordShareHelper $createPasswordShare
      * @param UpdatePasswordShareHelper $updatePasswordShareHelper
+     * @param FolderService             $folderService
      */
     public function __construct(
         protected ?string                   $userId,
@@ -63,7 +66,8 @@ class ShareApiController extends AbstractApiController {
         protected ShareSettingsHelper       $shareSettings,
         protected RecipientSearchHelper     $shareUserList,
         protected CreatePasswordShareHelper $createPasswordShare,
-        protected UpdatePasswordShareHelper $updatePasswordShareHelper
+        protected UpdatePasswordShareHelper $updatePasswordShareHelper,
+        protected FolderService             $folderService
     ) {
         parent::__construct($request);
     }
@@ -139,7 +143,8 @@ class ShareApiController extends AbstractApiController {
     }
 
     /**
-     * @param string      $password
+     * @param string|null $password
+     * @param string|null $folder
      * @param string|null $recipient
      * @param string      $type
      * @param int|null    $expires
@@ -149,6 +154,7 @@ class ShareApiController extends AbstractApiController {
      *
      * @return JSONResponse
      * @throws ApiException
+     * @throws Exception
      * @throws DoesNotExistException
      * @throws MultipleObjectsReturnedException
      */
@@ -156,7 +162,8 @@ class ShareApiController extends AbstractApiController {
     #[NoCSRFRequired]
     #[NoAdminRequired]
     public function create(
-        string  $password,
+        ?string $password = null,
+        ?string $folder = null,
         ?string $recipient = null,
         string  $type = 'user',
         ?int    $expires = null,
@@ -165,6 +172,10 @@ class ShareApiController extends AbstractApiController {
         ?string $receiver = null,
     ): JSONResponse {
         $this->checkAccessPermissions();
+
+        if($folder === null && empty($password)) {
+            throw new ApiException('Invalid share target: provide a password or folder', Http::STATUS_BAD_REQUEST);
+        }
 
         /**
          * Map deprecated $receiver property
@@ -175,17 +186,67 @@ class ShareApiController extends AbstractApiController {
             throw new ApiException('Invalid recipient uid', Http::STATUS_BAD_REQUEST);
         }
 
-        $user  = $this->shareUserList->mapRecipientToUser($recipient);
-        $share = $this->createPasswordShare->createPasswordShare(
-            $password,
-            $user->getUID(),
-            $type,
-            $expires,
-            $editable,
-            $shareable
-        );
+        $user = $this->shareUserList->mapRecipientToUser($recipient);
+
+        if($folder !== null) {
+            $share = $this->createFolderShare($folder, $user->getUID(), $type, $expires, $editable, $shareable);
+        } else {
+            $share = $this->createPasswordShare->createPasswordShare(
+                $password,
+                $user->getUID(),
+                $type,
+                $expires,
+                $editable,
+                $shareable
+            );
+        }
 
         return $this->createJsonResponse(['id' => $share->getUuid()], Http::STATUS_CREATED);
+    }
+
+    /**
+     * Validate and create the root share of a folder share. The shared folder must
+     * be owned by the current user and must not already be shared with the
+     * receiver. The cloned folder tree (folders and passwords) is built by the
+     * SynchronizeShares cron.
+     *
+     * @param string   $folder
+     * @param string   $receiver
+     * @param string   $type
+     * @param int|null $expires
+     * @param bool     $editable
+     * @param bool     $shareable
+     *
+     * @return Share
+     * @throws ApiException
+     * @throws Exception
+     * @throws DoesNotExistException
+     * @throws MultipleObjectsReturnedException
+     */
+    protected function createFolderShare(string $folder, string $receiver, string $type, ?int $expires, bool $editable, bool $shareable): Share {
+        if($type !== 'user') throw new ApiException('Invalid share type', Http::STATUS_BAD_REQUEST);
+        if(empty($expires)) $expires = null;
+        if($expires !== null && $expires < time()) {
+            throw new ApiException('Invalid expiration date', Http::STATUS_BAD_REQUEST);
+        }
+
+        /** @var Folder $sourceFolder */
+        $sourceFolder = $this->folderService->findByUuid($folder);
+        if($sourceFolder->getUserId() !== $this->userId) {
+            throw new ApiException('Access denied', Http::STATUS_FORBIDDEN);
+        }
+
+        foreach($this->modelService->findAllBySourceFolder($folder) as $existing) {
+            if($existing->getSourcePassword() === null && $existing->getReceiver() === $receiver) {
+                throw new ApiException('Folder already shared with user', Http::STATUS_BAD_REQUEST);
+            }
+        }
+
+        /** @var Share $share */
+        $share = $this->modelService->createFolderShare($folder, $receiver, $type, $editable, $expires, $shareable);
+        $this->modelService->save($share);
+
+        return $share;
     }
 
     /**
