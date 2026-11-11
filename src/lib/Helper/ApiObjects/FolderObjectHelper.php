@@ -19,6 +19,7 @@ use OCA\Passwords\Services\EncryptionService;
 use OCA\Passwords\Services\Object\FolderRevisionService;
 use OCA\Passwords\Services\Object\FolderService;
 use OCA\Passwords\Services\Object\PasswordService;
+use OCA\Passwords\Services\Object\ShareService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use Psr\Container\ContainerInterface;
@@ -37,6 +38,7 @@ class FolderObjectHelper extends AbstractObjectHelper {
     const string LEVEL_PASSWORDS     = 'passwords';
     const string LEVEL_PASSWORD_IDS  = 'password-ids';
     const string LEVEL_PASSWORD_TAGS = 'password-tags';
+    const string LEVEL_SHARES        = 'shares';
 
     /**
      * @var PasswordObjectHelper
@@ -44,11 +46,17 @@ class FolderObjectHelper extends AbstractObjectHelper {
     protected PasswordObjectHelper $passwordObjectHelper;
 
     /**
+     * @var ShareObjectHelper
+     */
+    protected ShareObjectHelper $shareObjectHelper;
+
+    /**
      * FolderObjectHelper constructor.
      *
      * @param ContainerInterface    $container
      * @param FolderService         $folderService
      * @param PasswordService       $passwordService
+     * @param ShareService          $shareService
      * @param EncryptionService     $encryptionService
      * @param FolderRevisionService $folderRevisionService
      */
@@ -56,6 +64,7 @@ class FolderObjectHelper extends AbstractObjectHelper {
         ContainerInterface        $container,
         protected FolderService   $folderService,
         protected PasswordService $passwordService,
+        protected ShareService    $shareService,
         EncryptionService         $encryptionService,
         FolderRevisionService     $folderRevisionService
     ) {
@@ -106,6 +115,9 @@ class FolderObjectHelper extends AbstractObjectHelper {
         } else if(in_array(self::LEVEL_PASSWORD_IDS, $detailLevel)) {
             $object = $this->getPasswords($revision, $object, false, false);
         }
+        if(in_array(self::LEVEL_SHARES, $detailLevel)) {
+            $object = $this->getShares($folder, $object);
+        }
 
         return $object;
     }
@@ -133,6 +145,7 @@ class FolderObjectHelper extends AbstractObjectHelper {
             'hidden'   => $revision->isHidden(),
             'trashed'  => $revision->isTrashed(),
             'favorite' => $revision->isFavorite(),
+            'share'    => $folder->getShareId(),
             'client'   => $revision->getClient()
         ];
     }
@@ -271,5 +284,46 @@ class FolderObjectHelper extends AbstractObjectHelper {
         }
 
         return $this->passwordObjectHelper;
+    }
+
+    /**
+     * @param Folder $folder
+     * @param array  $object
+     *
+     * @return array
+     * @throws Exception
+     * @throws DoesNotExistException
+     * @throws MultipleObjectsReturnedException
+     */
+    protected function getShares(Folder $folder, array $object): array {
+        $objectHelper = $this->getShareObjectHelper();
+
+        $object['shares'] = [];
+        $shares           = $this->shareService->findAllBySourceFolder($folder->getUuid());
+        foreach($shares as $share) {
+            $object['shares'][] = $objectHelper->getApiObject($share);
+        }
+
+        usort($object['shares'], function ($a, $b) {
+            return $a['receiver'] > $b['receiver'] ? 1:-1;
+        });
+
+        if(isset($object['share']) && $object['share']) {
+            $share           = $this->shareService->findByUuid($object['share']);
+            $object['share'] = $objectHelper->getApiObject($share);
+        }
+
+        return $object;
+    }
+
+    /**
+     * @return ShareObjectHelper
+     */
+    protected function getShareObjectHelper(): ShareObjectHelper {
+        if(!isset($this->shareObjectHelper)) {
+            $this->shareObjectHelper = $this->container->get(ShareObjectHelper::class);
+        }
+
+        return $this->shareObjectHelper;
     }
 }
