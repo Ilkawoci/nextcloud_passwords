@@ -51,7 +51,7 @@ class Version20261110 extends SimpleMigrationStep {
 
         if($table->hasColumn('source_password')) {
             $output->info('Making source_password column of table passwords_share nullable');
-            $table->setNotnull('source_password', false);
+            $table->getColumn('source_password')->setNotnull(false);
         }
 
         if(!$table->hasColumn('source_folder')) {
