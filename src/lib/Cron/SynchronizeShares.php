@@ -12,10 +12,12 @@
 namespace OCA\Passwords\Cron;
 
 use Exception;
+use OCA\Passwords\Db\Folder;
 use OCA\Passwords\Db\Password;
 use OCA\Passwords\Db\PasswordRevision;
 use OCA\Passwords\Db\Share;
 use OCA\Passwords\Services\ConfigurationService;
+use OCA\Passwords\Services\EncryptionService;
 use OCA\Passwords\Services\EnvironmentService;
 use OCA\Passwords\Services\LoggingService;
 use OCA\Passwords\Services\MailService;
@@ -599,6 +601,7 @@ class SynchronizeShares extends AbstractTimedJob {
 
         if($childShare === null) {
             $childShare = $this->shareService->createFolderChildShare(
+                $rootShare->getUserId(),
                 $sourceFolderId,
                 $sourcePasswordId,
                 $targetPassword->getUuid(),
@@ -710,7 +713,7 @@ class SynchronizeShares extends AbstractTimedJob {
      */
     protected function cloneFolder(Folder $sourceFolder, string $targetParent, string $receiverId, string $shareId, string $sourceFolderId): Folder {
         /** @var FolderRevision $sourceRevision */
-        $sourceRevision = $this->folderRevisionService->findCurrentRevisionByModel($sourceFolder->getUuid());
+        $sourceRevision = $this->folderRevisionService->findCurrentRevisionByModel($sourceFolder->getUuid(), true);
 
         /** @var Folder $model */
         $model = $this->folderService->create();
@@ -822,21 +825,32 @@ class SynchronizeShares extends AbstractTimedJob {
     protected function deleteSharedFolderSubtree(Folder $targetFolder, string $rootSourceFolderId): void {
         $folderUuids = $this->collectFolderUuids($targetFolder);
 
-        $passwordUuids = [];
+        // Collect the cloned (target) passwords inside the subtree, keyed by uuid.
+        $targetPasswords = [];
         foreach($folderUuids as $folderUuid) {
             foreach($this->passwordService->findByFolder($folderUuid) as $password) {
                 /** @var Password $password */
-                $passwordUuids[] = $password->getUuid();
+                $targetPasswords[$password->getUuid()] = $password;
             }
         }
 
+        // Remove the child shares that point into this subtree.
         foreach($this->shareService->findAllBySourceFolder($rootSourceFolderId) as $childShare) {
             /** @var Share $childShare */
             if($childShare->getSourcePassword() === null) continue;
             if($childShare->getTargetPassword() === null) continue;
-            if(in_array($childShare->getTargetPassword(), $passwordUuids)) {
+            if(isset($targetPasswords[$childShare->getTargetPassword()])) {
                 $this->shareService->delete($childShare);
             }
+        }
+
+        // Delete the cloned passwords explicitly. In an interactive request the
+        // folder-deletion cascade would remove them, but in a background job that
+        // cascade may not run, so we clear the clones ourselves to keep the
+        // receiver's tree consistent with the source.
+        foreach($targetPasswords as $targetPassword) {
+            /** @var Password $targetPassword */
+            $this->passwordService->delete($targetPassword);
         }
 
         $this->folderService->delete($targetFolder);

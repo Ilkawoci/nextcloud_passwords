@@ -53,7 +53,11 @@ class FolderMapper extends AbstractMapper {
             $sql->expr()->eq('source_folder', $sql->createNamedParameter($sourceFolder))
         );
 
-        return $this->findEntity($sql);
+        // findEntity() throws DoesNotExistException on an empty result, but a
+        // missing clone is the normal (not-yet-materialized) state — return null.
+        $clones = $this->findEntities($sql);
+
+        return count($clones) ? $clones[0] : null;
     }
 
 }

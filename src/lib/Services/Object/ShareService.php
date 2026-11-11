@@ -310,6 +310,7 @@ class ShareService extends AbstractService {
      * the receiver, type, editable and shareable flags from the folder-share root
      * so the existing password-share sync machinery treats it like any other share.
      *
+     * @param string   $sharerId       owner of the share (the folder-share root's user)
      * @param string   $sourceFolder   uuid of the shared source folder (folder-share root)
      * @param string   $sourcePassword uuid of the source password
      * @param string   $targetPassword uuid of the cloned (target) password
@@ -322,6 +323,7 @@ class ShareService extends AbstractService {
      * @return Share|ModelInterface
      */
     public function createFolderChildShare(
+        string $sharerId,
         string $sourceFolder,
         string $sourcePassword,
         string $targetPassword,
@@ -333,7 +335,7 @@ class ShareService extends AbstractService {
     ): Share {
         $model = new Share();
         $model->setDeleted(false);
-        $model->setUserId($this->userId);
+        $model->setUserId($sharerId);
         $model->setUuid($this->uuidHelper->generateUuid());
         $model->setCreated(time());
         $model->setUpdated(time());
