@@ -140,6 +140,10 @@
 
         props: {
             password: Object,
+            folder  : {
+                type   : Object,
+                default: null
+            },
             share   : Object
         },
 
@@ -152,6 +156,9 @@
         },
 
         computed: {
+            item() {
+                return (this.folder !== null && this.folder !== undefined) ? this.folder:this.password;
+            },
             subMenuName() {
                 if(!this.share.editable && !this.share.shareable) {
                     return LocalisationService.translate('SharePermissionCanView');
@@ -163,8 +170,8 @@
                 return LocalisationService.translate('SharePermissionCustom');
             },
             canEdit() {
-                if(this.password?.share?.editable !== undefined) {
-                    return this.password?.share.editable;
+                if(this.item?.share?.editable !== undefined) {
+                    return this.item?.share.editable;
                 }
                 return true;
             },

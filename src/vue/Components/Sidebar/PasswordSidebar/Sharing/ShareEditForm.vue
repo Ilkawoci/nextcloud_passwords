@@ -67,6 +67,10 @@
         },
         props     : {
             password     : Object,
+            folder       : {
+                type   : Object,
+                default: null
+            },
             share        : {
                 type   : Object,
                 default: () => {
@@ -85,15 +89,18 @@
             };
         },
         computed: {
+            item() {
+                return (this.folder !== null && this.folder !== undefined) ? this.folder:this.password;
+            },
             isReadyForConfigure() {
                 return this.recipients.length > 0 || this.share !== null;
             },
             canEdit() {
-                return this.password.share === null || this.password.share.editable;
+                return this.item.share === null || this.item.share.editable;
             },
             defaultExpires() {
-                if(this.password.share !== null && typeof this.password.share !== 'string') {
-                    return this.password.share.expires;
+                if(this.item.share !== null && typeof this.item.share !== 'string') {
+                    return this.item.share.expires;
                 }
 
                 return null;
@@ -135,12 +142,12 @@
             async createAction() {
                 this.options.recipients = this.recipients;
 
+                let items = (this.folder !== null && this.folder !== undefined)
+                    ? {folders: [this.folder], passwords: [], tags: []}
+                    : {folders: [], passwords: [this.password], tags: []};
+
                 const action = new ShareBatchAction(
-                    {
-                        folders  : [],
-                        passwords: [this.password],
-                        tags     : []
-                    },
+                    items,
                     this.options
                 );
 

@@ -3,12 +3,12 @@
         <nc-note-card type="warning" :text="t('End-to-End encryption will be disabled for this password if you share it.')" v-if="hasCse && canBeShared"/>
         <nc-note-card type="info" class="shareby-info" v-if="isSharedWithUser">
             <template #icon>
-                <nc-avatar disable-menu :size="32" :user="password.share.owner.id" :display-name="password.share.owner.name"/>
+                <nc-avatar disable-menu :size="32" :user="item.share.owner.id" :display-name="item.share.owner.name"/>
             </template>
             <span>
-                <translate say="{name} has shared this password with you." :variables="password.share.owner"/>
-                <translate :say="password.share.editable ? 'ShareInfoEditable':'ShareInfoNotEditable'"/>
-                <translate :say="password.share.shareable ? 'ShareInfoShareable':'ShareInfoNotShareable'"/>
+                <translate :say="isFolder ? '{name} has shared this folder with you.' : '{name} has shared this password with you.'" :variables="item.share.owner"/>
+                <translate :say="item.share.editable ? 'ShareInfoEditable':'ShareInfoNotEditable'"/>
+                <translate :say="item.share.shareable ? 'ShareInfoShareable':'ShareInfoNotShareable'"/>
                 <translate say="It will expire {date}." :variables="expirationDate" v-if="hasExpirationDate"/>
             </span>
         </nc-note-card>
@@ -16,6 +16,7 @@
         <share-edit-form
                 :share="activeShare"
                 :password="password"
+                :folder="folder"
                 :default-preset="editingPreset"
                 v-on:configuring="showShares = !$event"
                 v-on:revoke="deleteShareEvent"
@@ -28,6 +29,7 @@
             <share-list-item
                     :share="share"
                     :password="password"
+                    :folder="folder"
                     v-on:delete="deleteShareEvent"
                     v-on:edit="setActiveShare"
                     :data-share-id="share.id"
@@ -80,11 +82,16 @@
         props: {
             password: {
                 type: Object
+            },
+            folder: {
+                type   : Object,
+                default: null
             }
         },
 
         data() {
-            let shares = this.password.hasOwnProperty('shares') ? UtilityService.objectToArray(this.password.shares):[];
+            let item   = (this.folder !== null && this.folder !== undefined) ? this.folder:this.password;
+            let shares = item.hasOwnProperty('shares') ? UtilityService.objectToArray(item.shares):[];
 
             return {
                 shares,
@@ -102,17 +109,27 @@
         created() {
             this.reloadShares(false);
             this.startPolling();
-            subscribe('passwords:password:updated', this.processPasswordUpdate);
+            subscribe(this.updateEvent, this.processItemUpdate);
         },
 
         beforeDestroy() {
             this.stopPolling();
-            unsubscribe('passwords:password:updated', this.processPasswordUpdate);
+            unsubscribe(this.updateEvent, this.processItemUpdate);
         },
 
         computed: {
+            item() {
+                return (this.folder !== null && this.folder !== undefined) ? this.folder:this.password;
+            },
+            isFolder() {
+                return this.folder !== null && this.folder !== undefined;
+            },
+            updateEvent() {
+                return this.isFolder ? 'passwords:folder:updated':'passwords:password:updated';
+            },
             hasCse() {
-                return this.password.cseType !== 'none' && !this.password.shared;
+                if(this.isFolder) return false;
+                return this.item.cseType !== 'none' && !this.item.shared;
             },
             hasShares() {
                 return this.canBeShared && this.showShares && !this.loading && this.shares.length > 0;
@@ -124,19 +141,19 @@
                 return this.canBeShared && this.showShares && this.loading;
             },
             canBeShared() {
-                return this.password.hasOwnProperty('share') &&
+                return this.item.hasOwnProperty('share') &&
                        (
-                           this.password.share === null ||
+                           this.item.share === null ||
                            (
-                               typeof this.password.share !== 'string' &&
-                               this.password.share.hasOwnProperty('shareable') &&
-                               this.password.share.shareable
+                               typeof this.item.share !== 'string' &&
+                               this.item.share.hasOwnProperty('shareable') &&
+                               this.item.share.shareable
                            )
                        );
             },
             hasExpirationDate() {
-                if(this.password.share !== null && typeof this.password.share !== 'string') {
-                    return this.password.share.expires !== null;
+                if(this.item.share !== null && typeof this.item.share !== 'string') {
+                    return this.item.share.expires !== null;
                 }
 
                 return false;
@@ -144,15 +161,15 @@
             expirationDate() {
                 if(this.hasExpirationDate) {
                     return {
-                        'date'    : LocalisationService.formatDate(this.password.share.expires),
-                        'dateTime': LocalisationService.formatDateTime(this.password.share.expires)
+                        'date'    : LocalisationService.formatDate(this.item.share.expires),
+                        'dateTime': LocalisationService.formatDateTime(this.item.share.expires)
                     };
                 }
 
                 return {'date': '', 'dateTime': ''};
             },
             isSharedWithUser() {
-                return this.password.share && this.password.share.owner;
+                return this.item.share && this.item.share.owner;
             }
         },
 
@@ -176,7 +193,11 @@
             reloadShares(withLoading = true) {
                 if(withLoading) this.loading = true;
 
-                API.showPassword(this.password.id, 'shares')
+                let promise = this.isFolder
+                    ? API.showFolder(this.item.id, 'shares')
+                    : API.showPassword(this.item.id, 'shares');
+
+                promise
                    .then((d) => {
                        this.shares = UtilityService.objectToArray(d.shares);
                        this.loading = false;
@@ -226,15 +247,15 @@
 
                 return this.cronPromise;
             },
-            processPasswordUpdate(password) {
-                if(password.id === this.password.id) {
+            processItemUpdate(item) {
+                if(item.id === this.item.id) {
                     if(BatchActionManager.isProcessingItems) {
-                        subscribeOnce('passwords:batch-action:completed', () => {this.processPasswordUpdate(password);});
+                        subscribeOnce('passwords:batch-action:completed', () => {this.processItemUpdate(item);});
                         return;
                     }
 
-                    if(this.password.hasOwnProperty('shares')) {
-                        this.shares = UtilityService.objectToArray(this.password.shares);
+                    if(this.item.hasOwnProperty('shares')) {
+                        this.shares = UtilityService.objectToArray(this.item.shares);
                     } else {
                         this.refreshShares();
                     }
@@ -243,7 +264,7 @@
         },
 
         watch: {
-            password(value) {
+            item(value) {
                 this.shares = value.hasOwnProperty('shares') ? UtilityService.objectToArray(value.shares):[];
                 this.reloadShares(this.shares.length === 0);
                 this.$forceUpdate();

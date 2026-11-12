@@ -1,3 +1,6 @@
+# Local e2e test environment (localhost docker stack, contains local paths + test credentials)
+/nc-e2e/
+
 # IntelliJ project files
 .idea
 

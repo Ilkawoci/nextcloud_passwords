@@ -14,6 +14,7 @@ import {spawnDialog} from '@nextcloud/vue/functions/dialog';
 import MessageService from "@js/Services/MessageService";
 import LoggingService from "@js/Services/LoggingService";
 import CreateShareAction from "@js/Actions/Share/CreateShareAction";
+import CreateFolderShareAction from "@js/Actions/Share/CreateFolderShareAction";
 import CreateShareError from "@js/Actions/Share/CreateShareError";
 import DeleteShareAction from "@js/Actions/Share/DeleteShareAction";
 import API from "@js/Helper/api";
@@ -24,15 +25,15 @@ export default class ShareBatchAction extends BatchAction {
 
 
     get count() {
-        return this._items.passwords.length;
+        return this._items.passwords.length + this._items.folders.length;
     }
 
     hasItem(item) {
-        return this._items.passwords.indexOf(item) !== -1;
+        return this._items.passwords.indexOf(item) !== -1 || this._items.folders.indexOf(item) !== -1;
     }
 
     async run() {
-        if(this._items.passwords.length < 1) {
+        if(this._items.passwords.length + this._items.folders.length < 1) {
             return;
         }
 
@@ -68,7 +69,7 @@ export default class ShareBatchAction extends BatchAction {
         return new Promise(async (resolve) => {
             try {
                 const BatchShareDialog     = await import(/* webpackChunkName: "BatchShareDialog" */ '@vue/Dialog/BatchActions/BatchShareDialog.vue'),
-                      passwordsOnlyWarning = this._items.folders.length > 0 || this._items.tags.length > 0,
+                      passwordsOnlyWarning = this._items.tags.length > 0,
                       cseDisableWarning =  this._items.passwords.some(password => password.cseType !== 'none');
 
                 spawnDialog(
@@ -106,6 +107,17 @@ export default class ShareBatchAction extends BatchAction {
                     );
                 }
 
+            }
+
+            /**
+             * Folder shares only support user recipients (no groups).
+             */
+            for(let folder of this._items.folders) {
+                if(recipient.isNoUser) continue;
+
+                promises.push(
+                    this.#createFolderShare(folder, recipient, options, messages)
+                );
             }
         }
 
@@ -145,6 +157,24 @@ export default class ShareBatchAction extends BatchAction {
 
         } catch(e) {
             LoggingService.error(e);
+        }
+    }
+
+    async #createFolderShare(folder, receiver, options, messages) {
+        try {
+            let action = new CreateFolderShareAction(
+                folder,
+                receiver,
+                options
+            );
+
+            await action.run();
+        } catch(e) {
+            if(e instanceof CreateShareError) {
+                messages.push(e.message);
+            } else {
+                LoggingService.error(e);
+            }
         }
     }
 
