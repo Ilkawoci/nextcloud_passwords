@@ -35,6 +35,12 @@
                 </template>
                 {{ t('Rename') }}
             </nc-action-button>
+            <nc-action-button @click="$emit('details-action', 'share')" data-pw-action="share" close-after-click v-if="hasSharing">
+                <template #icon>
+                    <account-plus-outline-icon :size="20"/>
+                </template>
+                {{ t('Share') }}
+            </nc-action-button>
             <nc-action-button @click="actions.move()" data-pw-action="move" close-after-click>
                 <template #icon>
                     <folder-move-icon :size="20"/>
@@ -59,10 +65,12 @@
     import StarIcon from "@icon/Star";
     import TrashCanOutlineIcon from "@icon/TrashCanOutline";
     import StarOutlineIcon from "@icon/StarOutline";
+    import AccountPlusOutlineIcon from "@icon/AccountPlusOutline.vue";
     import NcActions from '@nc/NcActions.js';
     import NcActionButton from '@nc/NcActionButton.js';
     import NcActionSeparator from '@nc/NcActionSeparator.js';
     import FolderActions from "@js/Actions/Folder/FolderActions";
+    import SettingsService from "@js/Services/SettingsService";
     import {emit, subscribe, unsubscribe} from "@js/Helper/event-bus";
 
     export default {
@@ -72,6 +80,7 @@
             PencilIcon,
             FolderMoveIcon,
             TrashCanOutlineIcon,
+            AccountPlusOutlineIcon,
             NcActions,
             NcActionButton,
             NcActionSeparator
@@ -98,6 +107,9 @@
         computed: {
             hasCustomAction() {
                 return this.$slots.hasOwnProperty('custom-action');
+            },
+            hasSharing() {
+                return SettingsService.get('server.sharing.enabled');
             },
             getBoundariesElement() {
                 return document.querySelector('.app-content .item-list');

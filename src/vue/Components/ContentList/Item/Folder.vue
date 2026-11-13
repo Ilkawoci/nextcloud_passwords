@@ -24,7 +24,7 @@
         </div>
         <slot name="middle"/>
         <slot name="actions">
-            <folder-item-action-menu :actions="actions" :folder="folder" v-model="contextMenu">
+            <folder-item-action-menu :actions="actions" :folder="folder" v-model="contextMenu" v-on:details-action="detailsAction">
                 <template v-if="hasCustomAction" #custom-action>
                     <slot name="custom-action"/>
                 </template>
@@ -40,10 +40,13 @@
 <script>
     import DragManager from '@js/Manager/DragManager';
     import SearchManager from "@js/Manager/SearchManager";
+    import FolderSidebar from "@js/Models/Sidebar/FolderSidebar";
+    import Application from "@js/Init/Application";
     import FolderItemBatchToggle from "@vc/ContentList/Item/FolderItem/FolderItemBatchToggle.vue";
     import FolderItemFavicon from "@vc/ContentList/Item/FolderItem/FolderItemFavicon.vue";
     import FolderActions from "@js/Actions/Folder/FolderActions";
     import LoggingService from "@js/Services/LoggingService";
+    import {subscribe, unsubscribe} from "@js/Helper/event-bus";
     import NcDateTime from "@nextcloud/vue/components/NcDateTime";
     import ContentItemMenuLoadingIcon from "@vc/ContentList/Item/ContentItem/ContentItemMenuLoadingIcon.vue";
 
@@ -67,9 +70,10 @@
 
         data() {
             return {
-                isSelected : false,
-                contextMenu: null,
-                actions    : new FolderActions(this.folder)
+                detailsActive: false,
+                isSelected   : false,
+                contextMenu  : null,
+                actions      : new FolderActions(this.folder)
             };
         },
 
@@ -77,6 +81,7 @@
             className() {
                 let classNames = 'row folder';
 
+                if(this.detailsActive) classNames += ' details-open';
                 if(this.isSelected) classNames += ' selected';
                 if(SearchManager.status.active) {
                     classNames += SearchManager.status.ids.indexOf(this.folder.id) !== -1 ? ' search-visible':' search-hidden';
@@ -93,6 +98,26 @@
             openAction($event) {
                 if($event.target.closest('.checkbox-radio-switch') !== null) return;
                 this.$router.push({name: 'Folders', params: {folder: this.folder.id}});
+            },
+            detailsAction(section = null) {
+                this.detailsActive = true;
+                Application.sidebar = new FolderSidebar(this.folder, section);
+
+                let updateListener = (sidebar) => {
+                    if(sidebar.item.id !== this.folder.id) {
+                        closeListener();
+                    }
+                };
+                let closeListener = () => {
+                    unsubscribe('passwords:sidebar:opened', updateListener);
+                    unsubscribe('passwords:sidebar:updated', updateListener);
+                    unsubscribe('passwords:sidebar:closed', closeListener);
+                    this.detailsActive = false;
+                };
+
+                subscribe('passwords:sidebar:opened', updateListener);
+                subscribe('passwords:sidebar:updated', updateListener);
+                subscribe('passwords:sidebar:closed', closeListener);
             },
             dragStartAction($e) {
                 DragManager

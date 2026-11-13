@@ -17,6 +17,7 @@
         </nc-app-content>
 
         <password-sidebar v-if="sidebar && sidebar.type === 'password'" :sidebar="sidebar" />
+        <folder-sidebar v-else-if="sidebar && sidebar.type === 'folder'" :sidebar="sidebar" />
 
         <div id="app-popup">
             <div></div>
@@ -54,6 +55,7 @@
             }),
             'session-timeout' : () => import(/* webpackChunkName: "SessionTimeout" */ '@vc/SessionTimeout'),
             'password-sidebar': () => import(/* webpackChunkName: "PasswordSidebar" */ '@vc/Sidebar/PasswordSidebar'),
+            'folder-sidebar'  : () => import(/* webpackChunkName: "FolderSidebar" */ '@vc/Sidebar/FolderSidebar'),
             'star-chaser'     : () => import(/* webpackChunkName: "StarChaser" */ '@vue/Components/StarChaser')
         },
 
