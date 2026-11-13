@@ -193,8 +193,10 @@
             reloadShares(withLoading = true) {
                 if(withLoading) this.loading = true;
 
+                // Folders must include the model: a bare 'shares' response lacks
+                // parent/cseType and crashes the client's _processFolder() recursion.
                 let promise = this.isFolder
-                    ? API.showFolder(this.item.id, 'shares')
+                    ? API.showFolder(this.item.id, 'model+shares')
                     : API.showPassword(this.item.id, 'shares');
 
                 promise
