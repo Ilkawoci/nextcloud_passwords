@@ -35,6 +35,12 @@
                 </template>
                 {{ t('Rename') }}
             </nc-action-button>
+            <nc-action-button @click="$emit('details-action', null)" data-pw-action="details" close-after-click>
+                <template #icon>
+                    <information-outline-icon :size="20"/>
+                </template>
+                {{ t('Details') }}
+            </nc-action-button>
             <nc-action-button @click="$emit('details-action', 'share')" data-pw-action="share" close-after-click v-if="hasSharing">
                 <template #icon>
                     <account-plus-outline-icon :size="20"/>
@@ -66,6 +72,7 @@
     import TrashCanOutlineIcon from "@icon/TrashCanOutline";
     import StarOutlineIcon from "@icon/StarOutline";
     import AccountPlusOutlineIcon from "@icon/AccountPlusOutline.vue";
+    import InformationOutlineIcon from "@icon/InformationOutline";
     import NcActions from '@nc/NcActions.js';
     import NcActionButton from '@nc/NcActionButton.js';
     import NcActionSeparator from '@nc/NcActionSeparator.js';
@@ -81,6 +88,7 @@
             FolderMoveIcon,
             TrashCanOutlineIcon,
             AccountPlusOutlineIcon,
+            InformationOutlineIcon,
             NcActions,
             NcActionButton,
             NcActionSeparator

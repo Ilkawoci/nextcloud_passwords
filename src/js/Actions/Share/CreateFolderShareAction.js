@@ -100,8 +100,10 @@ export default class CreateFolderShareAction {
             name: this.#user.displayName
         };
         share.receiver = {id: this.#recipient.id, name: this.#recipient.displayName};
+        share.created = new Date();
+        share.updated = new Date();
 
-        this.#folder.shares[share.id] = await API._processShare(share);
+        this.#folder.shares[share.id] = share;
     }
 
     #getExpiryDate() {

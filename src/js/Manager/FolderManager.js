@@ -214,7 +214,7 @@ class FolderManager {
             if(folder.revision === revision.id) reject(folder);
 
             if(!confirm) {
-                API.restorePassword(folder.id, revision.id)
+                API.restoreFolder(folder.id, revision.id)
                    .then((d) => {
                        folder = UtilityService.mergeObject(folder, revision);
                        folder.id = d.id;

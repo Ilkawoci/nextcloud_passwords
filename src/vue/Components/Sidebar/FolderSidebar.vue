@@ -41,11 +41,17 @@
             </nc-button>
         </template>
 
+        <nc-app-sidebar-tab icon="icon-info" :name="t('Details')" id="details-tab">
+            <folder-details :folder="folder"/>
+        </nc-app-sidebar-tab>
         <nc-app-sidebar-tab :name="t('Share')" id="share-tab" v-if="hasSharing">
             <share :folder="folder"/>
             <template #icon>
                 <share-variant-icon />
             </template>
+        </nc-app-sidebar-tab>
+        <nc-app-sidebar-tab icon="icon-history" :name="t('Revisions')" id="revisions-tab" v-if="folder.revisions">
+            <folder-revisions :folder="folder"/>
         </nc-app-sidebar-tab>
     </nc-app-sidebar>
 </template>
@@ -67,6 +73,8 @@
     import FolderMoveIcon from '@icon/FolderMove';
     import LocalisationService from "@js/Services/LocalisationService";
     import Share from '@vc/Sidebar/PasswordSidebar/Tabs/Share';
+    import FolderDetails from '@vc/Sidebar/FolderSidebar/Tabs/Details';
+    import FolderRevisions from '@vc/Sidebar/FolderSidebar/Tabs/Revisions';
     import LoggingService from "@js/Services/LoggingService";
     import ShareVariantIcon from "@icon/ShareVariant.vue";
     import FolderActions from "@js/Actions/Folder/FolderActions";
@@ -80,6 +88,8 @@
             PencilIcon,
             ShareVariantIcon,
             Share,
+            FolderDetails,
+            FolderRevisions,
             NcAppSidebar,
             NcActionButton,
             NcAppSidebarTab,
@@ -123,7 +133,7 @@
 
         methods: {
             async loadFolder() {
-                this.folder = await API.showFolder(this.sidebar.item.id, 'model+shares');
+                this.folder = await API.showFolder(this.sidebar.item.id, 'model+parent+shares+revisions');
                 this.actions = new FolderActions(this.folder);
                 emit('passwords:sidebar:updated', this.sidebar);
             },
