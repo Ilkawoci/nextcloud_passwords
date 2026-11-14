@@ -146,7 +146,7 @@ class RecipientSearchHelper {
 
             foreach($users as $uid => $name) {
                 if($uid === $this->environment->getUserId()) continue;
-                if(!$autocomplete && ($uid !== $query && $name !== $query)) continue;
+                if(!$autocomplete && (strcasecmp($uid, $query) !== 0 && strcasecmp((string)$name, $query) !== 0)) continue;
 
                 $partners[ $uid ] = [
                     'id'      => $uid,
@@ -181,7 +181,9 @@ class RecipientSearchHelper {
         $recipients = [];
         foreach($matchingUsers as $user) {
             if(!$user->isEnabled() || $user->getUID() === $this->environment->getUserId()) continue;
-            if(!$autocomplete && ($user->getUID() !== $query && $user->getDisplayName() !== $query && $user->getEMailAddress() !== $query)) continue;
+            // exact matches are case-insensitive so "Alice" finds the uid "alice"
+            $email = (string)$user->getEMailAddress();
+            if(!$autocomplete && (strcasecmp($user->getUID(), $query) !== 0 && strcasecmp($user->getDisplayName(), $query) !== 0 && strcasecmp($email, $query) !== 0)) continue;
 
             $recipients[ $user->getUID() ] = [
                 'id'      => $user->getUID(),
@@ -217,7 +219,7 @@ class RecipientSearchHelper {
         $recipients = [];
         foreach($matchingGroups as $group) {
             if(!in_array($group->getGID(), $userGroups)) continue;
-            if(!$autocomplete && $group->getGID() !== $query && $group->getDisplayName() !== $query) continue;
+            if(!$autocomplete && (strcasecmp($group->getGID(), $query) !== 0 && strcasecmp($group->getDisplayName(), $query) !== 0)) continue;
 
             $recipients[] = [
                 'id'      => $group->getGID(),
