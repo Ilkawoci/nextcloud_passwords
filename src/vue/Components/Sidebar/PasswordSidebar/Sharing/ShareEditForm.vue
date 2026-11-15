@@ -67,6 +67,10 @@
         },
         props     : {
             password     : Object,
+            folder       : {
+                type   : Object,
+                default: null
+            },
             share        : {
                 type   : Object,
                 default: () => {
@@ -88,12 +92,23 @@
             isReadyForConfigure() {
                 return this.recipients.length > 0 || this.share !== null;
             },
+            target() {
+                return this.folder || this.password;
+            },
             canEdit() {
-                return this.password.share === null || this.password.share.editable;
+                let share = this.target.share;
+
+                if(share === null || share === undefined) {
+                    return true;
+                }
+
+                return share.editable === true;
             },
             defaultExpires() {
-                if(this.password.share !== null && typeof this.password.share !== 'string') {
-                    return this.password.share.expires;
+                let share = this.target.share;
+
+                if(share && typeof share !== 'string') {
+                    return share.expires;
                 }
 
                 return null;
@@ -133,6 +148,12 @@
                 this.resetForm();
             },
             async createAction() {
+                if(this.folder) {
+                    await this.createFolderShares();
+
+                    return;
+                }
+
                 this.options.recipients = this.recipients;
 
                 const action = new ShareBatchAction(
@@ -145,6 +166,25 @@
                 );
 
                 await action.run().catch(LoggingService.catch);
+            },
+            async createFolderShares() {
+                for(let recipient of this.recipients) {
+                    let expires = this.options.expires instanceof Date
+                        ? Math.floor(this.options.expires.getTime() / 1000):this.options.expires;
+
+                    await API.createShare(
+                        {
+                            folder   : this.folder.id,
+                            recipient: recipient.id,
+                            type     : recipient.isNoUser ? 'group':'user',
+                            expires  : expires ?? null,
+                            editable : !!this.options.editable,
+                            shareable: !!this.options.shareable
+                        }
+                    ).catch(LoggingService.catch);
+                }
+
+                ToastService.success('Folder shared with the selected users');
             },
             async updateAction() {
                 let share = UtilityService.cloneObject(this.share);

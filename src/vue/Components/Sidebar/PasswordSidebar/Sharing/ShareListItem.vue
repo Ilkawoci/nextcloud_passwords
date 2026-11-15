@@ -140,6 +140,10 @@
 
         props: {
             password: Object,
+            folder  : {
+                type   : Object,
+                default: null
+            },
             share   : Object
         },
 
@@ -163,6 +167,9 @@
                 return LocalisationService.translate('SharePermissionCustom');
             },
             canEdit() {
+                if(this.folder) {
+                    return true;
+                }
                 if(this.password?.share?.editable !== undefined) {
                     return this.password?.share.editable;
                 }

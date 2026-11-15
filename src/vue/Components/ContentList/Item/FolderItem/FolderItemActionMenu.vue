@@ -41,6 +41,18 @@
                 </template>
                 {{ t('Move') }}
             </nc-action-button>
+            <nc-action-button @click="actions.details()" data-pw-action="details" close-after-click>
+                <template #icon>
+                    <information-outline-icon :size="20"/>
+                </template>
+                {{ t('Details') }}
+            </nc-action-button>
+            <nc-action-button @click="actions.share()" data-pw-action="share" close-after-click>
+                <template #icon>
+                    <share-variant-icon :size="20"/>
+                </template>
+                {{ t('Share') }}
+            </nc-action-button>
             <nc-action-separator/>
             <slot name="restore-action" />
             <nc-action-button @click="deleteFolder" data-pw-action="delete" close-after-click>
@@ -55,6 +67,8 @@
 
 <script>
     import FolderMoveIcon from "@icon/FolderMove";
+    import InformationOutlineIcon from "@icon/InformationOutline";
+    import ShareVariantIcon from "@icon/ShareVariant";
     import PencilIcon from "@icon/Pencil";
     import StarIcon from "@icon/Star";
     import TrashCanOutlineIcon from "@icon/TrashCanOutline";
@@ -71,6 +85,8 @@
             StarIcon,
             PencilIcon,
             FolderMoveIcon,
+            InformationOutlineIcon,
+            ShareVariantIcon,
             TrashCanOutlineIcon,
             NcActions,
             NcActionButton,

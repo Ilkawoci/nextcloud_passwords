@@ -242,6 +242,16 @@
         .wide {
             width : 100%;
         }
+
+        div[class*="ncFormBox__row"],
+        div[class*="ncFormBox_row"] {
+            flex-wrap : wrap;
+            gap       : .25rem;
+
+            div[class*="radioGroupButton"] {
+                flex : 1 1 auto;
+            }
+        }
     }
 
 

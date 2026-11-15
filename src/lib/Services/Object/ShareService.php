@@ -81,6 +81,55 @@ class ShareService extends AbstractService {
     }
 
     /**
+     * Find all shares that were created for a folder
+     *
+     * @param string $folderUuid
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findBySourceFolder(string $folderUuid): array {
+        return $this->mapper->findAllBySourceFolder($folderUuid);
+    }
+
+    /**
+     * Find all shares that belong to a shared folder tree
+     *
+     * @param string $shareUuid
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findByParentShare(string $shareUuid): array {
+        return $this->mapper->findAllByParentShare($shareUuid);
+    }
+
+    /**
+     * Find the share for a folder and receiver
+     *
+     * @param string $folderUuid
+     * @param string $receiverId
+     *
+     * @return Share|null
+     * @throws Exception
+     */
+    public function findBySourceFolderAndReceiver(string $folderUuid, string $receiverId): ?Share {
+        return $this->mapper->findOneBySourceFolderAndReceiver($folderUuid, $receiverId);
+    }
+
+    /**
+     * Find all shares received by a user
+     *
+     * @param string $userId
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findByReceiver(string $userId): array {
+        return $this->mapper->findAllByReceiverId($userId);
+    }
+
+    /**
      * @param string $passwordUuid
      *
      * @return Share|EntityInterface|null
@@ -134,7 +183,7 @@ class ShareService extends AbstractService {
      * @throws Exception
      */
     public function findNew(): array {
-        return $this->mapper->findAllByField('target_password', null, IQueryBuilder::PARAM_NULL);
+        return $this->mapper->findAllPending();
     }
 
     /**
@@ -172,9 +221,56 @@ class ShareService extends AbstractService {
         string $type,
         bool $editable,
         ?int $expires = null,
-        bool $shareable = true
+        bool $shareable = true,
+        ?string $shareUserId = null
     ): Share {
-        $model = $this->createModel($passwordId, $receiverId, $type, $editable, $expires, $shareable);
+        $model = $this->createModel($passwordId, $receiverId, $type, $editable, $expires, $shareable, $shareUserId);
+        $this->fireEvent('instantiated', $model);
+
+        return $model;
+    }
+
+    /**
+     * Create a share for a folder
+     *
+     * @param string      $folderId
+     * @param string      $receiverId
+     * @param string      $type
+     * @param bool        $editable
+     * @param int|null    $expires
+     * @param bool        $shareable
+     * @param string|null $parentShare
+     *
+     * @return Share
+     */
+    public function createFolderShare(
+        string  $folderId,
+        string  $receiverId,
+        string  $type,
+        bool    $editable,
+        ?int    $expires = null,
+        bool    $shareable = true,
+        ?string $parentShare = null,
+        ?string $shareUserId = null
+    ): Share {
+        $model = new Share();
+        $model->setDeleted(false);
+        $model->setUserId($shareUserId ?? $this->userId);
+        $model->setUuid($this->uuidHelper->generateUuid());
+        $model->setCreated(time());
+        $model->setUpdated(time());
+
+        $model->setSourceType(Share::ENTITY_FOLDER);
+        $model->setSourceFolder($folderId);
+        $model->setParentShare($parentShare);
+        $model->setSourceUpdated(true);
+        $model->setReceiver($receiverId);
+        $model->setShareable($shareable);
+        $model->setEditable($editable);
+        $model->setExpires($expires);
+        $model->setType($type);
+        $model->setClient($this->environment->getClient());
+
         $this->fireEvent('instantiated', $model);
 
         return $model;
@@ -196,12 +292,13 @@ class ShareService extends AbstractService {
         string $type,
         bool $editable,
         ?int $expires,
-        bool $shareable
+        bool $shareable,
+        ?string $shareUserId = null
     ): Share {
 
         $model = new Share();
         $model->setDeleted(false);
-        $model->setUserId($this->userId);
+        $model->setUserId($shareUserId ?? $this->userId);
         $model->setUuid($this->uuidHelper->generateUuid());
         $model->setCreated(time());
         $model->setUpdated(time());

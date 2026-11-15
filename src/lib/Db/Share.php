@@ -12,10 +12,18 @@ namespace OCA\Passwords\Db;
  *
  * @method string getType()
  * @method void setType(string $type)
+ * @method string getSourceType()
+ * @method void setSourceType(string $sourceType)
  * @method string getSourcePassword()
- * @method void setSourcePassword(string $sourcePassword)
+ * @method void setSourcePassword(?string $sourcePassword)
  * @method string getTargetPassword()
- * @method void setTargetPassword(string $targetPassword)
+ * @method void setTargetPassword(?string $targetPassword)
+ * @method string|null getSourceFolder()
+ * @method void setSourceFolder(?string $sourceFolder)
+ * @method string|null getTargetFolder()
+ * @method void setTargetFolder(?string $targetFolder)
+ * @method string|null getParentShare()
+ * @method void setParentShare(?string $parentShare)
  * @method string getReceiver()
  * @method void setReceiver(string $receiver)
  * @method bool getEditable()
@@ -37,10 +45,33 @@ class Share extends AbstractEntity implements EntityInterface {
     const string TYPE_GROUP = 'group';
     const string TYPE_LINK  = 'link';
 
+    const string ENTITY_PASSWORD = 'password';
+    const string ENTITY_FOLDER   = 'folder';
+
     /**
      * @var string
      */
     protected string $type;
+
+    /**
+     * @var string
+     */
+    protected string $sourceType = self::ENTITY_PASSWORD;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $sourceFolder;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $targetFolder;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $parentShare;
 
     /**
      * @var string
@@ -68,9 +99,9 @@ class Share extends AbstractEntity implements EntityInterface {
     protected ?int $expires;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $sourcePassword;
+    protected ?string $sourcePassword;
 
     /**
      * @var string|null
@@ -92,6 +123,10 @@ class Share extends AbstractEntity implements EntityInterface {
      */
     public function __construct() {
         $this->addType('type', 'string');
+        $this->addType('sourceType', 'string');
+        $this->addType('sourceFolder', 'string');
+        $this->addType('targetFolder', 'string');
+        $this->addType('parentShare', 'string');
         $this->addType('client', 'string');
         $this->addType('receiver', 'string');
         $this->addType('sourcePassword', 'string');
@@ -149,5 +184,32 @@ class Share extends AbstractEntity implements EntityInterface {
     public function setTargetUpdated(bool $targetUpdated): void {
         $this->targetUpdated = $targetUpdated === true;
         $this->markFieldUpdated('targetUpdated');
+    }
+
+    /**
+     * Whether this share references a folder instead of a password
+     *
+     * @return bool
+     */
+    public function isFolderShare(): bool {
+        return $this->getSourceType() === self::ENTITY_FOLDER;
+    }
+
+    /**
+     * Whether this share references a password
+     *
+     * @return bool
+     */
+    public function isPasswordShare(): bool {
+        return $this->getSourceType() !== self::ENTITY_FOLDER;
+    }
+
+    /**
+     * Whether this share is part of a shared folder tree
+     *
+     * @return bool
+     */
+    public function isChildShare(): bool {
+        return $this->getParentShare() !== null;
     }
 }

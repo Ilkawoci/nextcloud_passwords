@@ -17,8 +17,11 @@ use OCA\Passwords\Exception\ApiException;
 use OCA\Passwords\Helper\ApiObjects\AbstractObjectHelper;
 use OCA\Passwords\Helper\ApiObjects\ShareObjectHelper;
 use OCA\Passwords\Helper\Settings\ShareSettingsHelper;
+use OCA\Passwords\Helper\Sharing\CreateFolderShareHelper;
 use OCA\Passwords\Helper\Sharing\CreatePasswordShareHelper;
+use OCA\Passwords\Helper\Sharing\FolderShareMaterializer;
 use OCA\Passwords\Helper\Sharing\RecipientSearchHelper;
+use OCA\Passwords\Helper\Sharing\UpdateFolderShareHelper;
 use OCA\Passwords\Helper\Sharing\UpdatePasswordShareHelper;
 use OCA\Passwords\Services\Object\ShareService;
 use OCP\AppFramework\Db\DoesNotExistException;
@@ -63,7 +66,10 @@ class ShareApiController extends AbstractApiController {
         protected ShareSettingsHelper       $shareSettings,
         protected RecipientSearchHelper     $shareUserList,
         protected CreatePasswordShareHelper $createPasswordShare,
-        protected UpdatePasswordShareHelper $updatePasswordShareHelper
+        protected UpdatePasswordShareHelper $updatePasswordShareHelper,
+        protected CreateFolderShareHelper     $createFolderShare,
+        protected UpdateFolderShareHelper     $updateFolderShare,
+        protected FolderShareMaterializer     $folderShareMaterializer
     ) {
         parent::__construct($request);
     }
@@ -156,13 +162,14 @@ class ShareApiController extends AbstractApiController {
     #[NoCSRFRequired]
     #[NoAdminRequired]
     public function create(
-        string  $password,
+        ?string $password = null,
         ?string $recipient = null,
         string  $type = 'user',
         ?int    $expires = null,
         bool    $editable = false,
         bool    $shareable = false,
         ?string $receiver = null,
+        ?string $folder = null,
     ): JSONResponse {
         $this->checkAccessPermissions();
 
@@ -175,15 +182,34 @@ class ShareApiController extends AbstractApiController {
             throw new ApiException('Invalid recipient uid', Http::STATUS_BAD_REQUEST);
         }
 
-        $user  = $this->shareUserList->mapRecipientToUser($recipient);
-        $share = $this->createPasswordShare->createPasswordShare(
-            $password,
-            $user->getUID(),
-            $type,
-            $expires,
-            $editable,
-            $shareable
-        );
+        if($password === null && $folder === null) {
+            throw new ApiException('Either password or folder must be provided', Http::STATUS_BAD_REQUEST);
+        }
+        if($password !== null && $folder !== null) {
+            throw new ApiException('Only one of password or folder may be provided', Http::STATUS_BAD_REQUEST);
+        }
+
+        $user = $this->shareUserList->mapRecipientToUser($recipient);
+
+        if($folder !== null) {
+            $share = $this->createFolderShare->createFolderShare(
+                $folder,
+                $user->getUID(),
+                $type,
+                $expires,
+                $editable,
+                $shareable
+            );
+        } else {
+            $share = $this->createPasswordShare->createPasswordShare(
+                $password,
+                $user->getUID(),
+                $type,
+                $expires,
+                $editable,
+                $shareable
+            );
+        }
 
         return $this->createJsonResponse(['id' => $share->getUuid()], Http::STATUS_CREATED);
     }
@@ -215,7 +241,11 @@ class ShareApiController extends AbstractApiController {
             throw new ApiException('Access denied', Http::STATUS_FORBIDDEN);
         }
 
-        $share = $this->updatePasswordShareHelper->updatePasswordShare($share, $expires, $editable, $shareable);
+        if($share->isFolderShare()) {
+            $share = $this->updateFolderShare->updateFolderShare($share, $expires, $editable, $shareable);
+        } else {
+            $share = $this->updatePasswordShareHelper->updatePasswordShare($share, $expires, $editable, $shareable);
+        }
 
         return $this->createJsonResponse(['id' => $share->getUuid()]);
     }
@@ -236,6 +266,10 @@ class ShareApiController extends AbstractApiController {
         $model = $this->modelService->findByUuid($id);
         if($model->getUserId() !== $this->userId) {
             throw new ApiException('Access denied', Http::STATUS_FORBIDDEN);
+        }
+
+        if($model->isFolderShare()) {
+            $this->folderShareMaterializer->deleteMaterializedTree($model);
         }
 
         $this->modelService->delete($model);

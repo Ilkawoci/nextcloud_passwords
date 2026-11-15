@@ -11,6 +11,8 @@
 import Events from "@js/Classes/Events";
 import FolderManager from "@js/Manager/FolderManager";
 import LoggingService from "@js/Services/LoggingService";
+import Application from "@js/Init/Application";
+import FolderSidebar from "@js/Models/Sidebar/FolderSidebar";
 
 export default class FolderActions {
     #folder;
@@ -56,5 +58,13 @@ export default class FolderActions {
 
     rename() {
         return FolderManager.renameFolder(this.#folder);
+    }
+
+    details(tab = 'details') {
+        Application.sidebar = new FolderSidebar(this.#folder, tab);
+    }
+
+    share() {
+        this.details('share');
     }
 }

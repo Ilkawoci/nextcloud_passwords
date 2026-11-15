@@ -23,6 +23,7 @@ use OCA\Passwords\Services\NotificationService;
 use OCA\Passwords\Services\Object\FolderService;
 use OCA\Passwords\Services\Object\PasswordRevisionService;
 use OCA\Passwords\Services\Object\PasswordService;
+use OCA\Passwords\Helper\Sharing\FolderShareMaterializer;
 use OCA\Passwords\Services\Object\ShareService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -64,7 +65,9 @@ class SynchronizeShares extends AbstractTimedJob {
         EnvironmentService                $environment,
         protected PasswordService         $passwordService,
         protected NotificationService     $notificationService,
-        protected PasswordRevisionService $passwordRevisionService
+        protected PasswordRevisionService $passwordRevisionService,
+        protected FolderService           $folderService,
+        protected FolderShareMaterializer $folderShareMaterializer
     ) {
         parent::__construct($time, $logger, $config, $environment);
     }
@@ -138,6 +141,16 @@ class SynchronizeShares extends AbstractTimedJob {
             $total  += $count;
 
             foreach($shares as $share) {
+                if($share->isFolderShare()) {
+                    try {
+                        $this->folderShareMaterializer->deleteMaterializedTree($share);
+                    } catch(\Throwable $e) {
+                        $this->logger->logException($e, [], "Could not remove shared folder tree for share {$share->getUuid()}: {$e->getMessage()}");
+                    }
+                    $this->shareService->delete($share);
+                    continue;
+                }
+
                 try {
                     $password = $this->passwordService->findByUuid($share->getTargetPassword());
                     $this->passwordService->delete($password);
@@ -158,6 +171,12 @@ class SynchronizeShares extends AbstractTimedJob {
 
         foreach($shares as $share) {
             try {
+                if($share->isFolderShare()) {
+                    if($this->shareLineageHasLoop($share)) continue;
+                    $this->folderShareMaterializer->materialize($share);
+                    $this->logger->debugOrInfo(['Materialized folder share %s', $share->getUuid()], 1);
+                    continue;
+                }
                 if($this->shareLineageHasLoop($share)) continue;
                 $receiverId = $share->getReceiver();
                 $userId     = $share->getUserId();
@@ -191,7 +210,7 @@ class SynchronizeShares extends AbstractTimedJob {
                     $sourceRevision->getUrl(),
                     $sourceRevision->getNotes(),
                     $sourceRevision->getCustomFields(),
-                    FolderService::BASE_FOLDER_UUID,
+                    $share->getTargetFolder() ?? FolderService::BASE_FOLDER_UUID,
                     time(),
                     false,
                     false,
@@ -230,6 +249,10 @@ class SynchronizeShares extends AbstractTimedJob {
      * @throws Exception
      */
     protected function shareLineageHasLoop(Share $share): bool {
+        if($share->isFolderShare()) {
+            return $this->folderLineageHasLoop($share);
+        }
+
         $sourceUuid = $share->getSourcePassword();
         while(1) {
             try {
@@ -258,6 +281,40 @@ class SynchronizeShares extends AbstractTimedJob {
                 return false;
             }
         }
+    }
+
+    /**
+     * Check if a folder is shared back to its owner
+     *
+     * @param Share $share
+     *
+     * @return bool
+     */
+    protected function folderLineageHasLoop(Share $share): bool {
+        try {
+            $folder = $this->folderService->findByUuid($share->getSourceFolder());
+        } catch(DoesNotExistException $e) {
+            return false;
+        }
+
+        if($folder->getUserId() !== $share->getReceiver()) {
+            return false;
+        }
+
+        try {
+            $this->folderShareMaterializer->deleteMaterializedTree($share);
+        } catch(\Throwable $e) {
+            $this->logger->logException($e, [], "Could not remove looped folder share {$share->getUuid()}");
+        }
+        $this->shareService->delete($share);
+
+        $userId = $share->getUserId();
+        if(!isset($this->notifications['loop'][ $userId ])) {
+            $this->notifications['loop'][ $userId ] = 0;
+        }
+        $this->notifications['loop'][ $userId ]++;
+
+        return true;
     }
 
     /**
@@ -313,6 +370,12 @@ class SynchronizeShares extends AbstractTimedJob {
 
             foreach($shares as $share) {
                 try {
+                    if($share->isFolderShare()) {
+                        $share->setSourceUpdated(false);
+                        $this->shareService->save($share);
+                        $count--;
+                        continue;
+                    }
                     $revision = $this->createNewPasswordRevision($share->getSourcePassword(), $share->getTargetPassword());
 
                     /** @var Password $password */
@@ -381,6 +444,12 @@ class SynchronizeShares extends AbstractTimedJob {
 
             foreach($shares as $share) {
                 try {
+                    if($share->isFolderShare()) {
+                        $share->setTargetUpdated(false);
+                        $this->shareService->save($share);
+                        $count--;
+                        continue;
+                    }
                     if($share->isEditable()) {
                         $revision = $this->createNewPasswordRevision($share->getTargetPassword(), $share->getSourcePassword());
 

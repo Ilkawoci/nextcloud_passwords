@@ -8,6 +8,8 @@
 namespace OCA\Passwords\Db;
 
 use Exception;
+use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\DB\QueryBuilder\IQueryBuilder;
 
 /**
@@ -37,6 +39,99 @@ class ShareMapper extends AbstractMapper {
     }
 
     /**
+     * @param string $folderUuid
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllBySourceFolder(string $folderUuid): array {
+        /** @var Share[] $shares */
+        $shares = $this->findAllByField('source_folder', $folderUuid);
+
+        return $shares;
+    }
+
+    /**
+     * @param string $shareUuid
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllByParentShare(string $shareUuid): array {
+        /** @var Share[] $shares */
+        $shares = $this->findAllByField('parent_share', $shareUuid);
+
+        return $shares;
+    }
+
+    /**
+     * @param string $folderUuid
+     * @param string $receiver
+     *
+     * @return Share|null
+     * @throws Exception
+     */
+    public function findOneBySourceFolderAndReceiver(string $folderUuid, string $receiver): ?Share {
+        try {
+            /** @var Share $share */
+            $share = $this->findOneByFields(
+                ['source_folder', $folderUuid],
+                ['receiver', $receiver]
+            );
+        } catch(DoesNotExistException|MultipleObjectsReturnedException $e) {
+            return null;
+        }
+
+        return $share;
+    }
+
+    /**
+     * @param string $userId
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllByReceiverId(string $userId): array {
+        /** @var Share[] $shares */
+        $shares = $this->findAllByField('receiver', $userId);
+
+        return $shares;
+    }
+
+    /**
+     * Find all shares that still need to be materialized
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllPending(): array {
+        $qb = $this->db->getQueryBuilder();
+
+        $qb->select('*')
+           ->from(static::TABLE_NAME)
+           ->where(
+               $qb->expr()->eq('deleted', $qb->createNamedParameter(false, IQueryBuilder::PARAM_BOOL))
+           )
+           ->andWhere(
+               $qb->expr()->orX(
+                   $qb->expr()->andX(
+                       $qb->expr()->eq('source_type', $qb->createNamedParameter(Share::ENTITY_PASSWORD)),
+                       $qb->expr()->isNull('target_password')
+                   ),
+                   $qb->expr()->andX(
+                       $qb->expr()->eq('source_type', $qb->createNamedParameter(Share::ENTITY_FOLDER)),
+                       $qb->expr()->isNull('target_folder')
+                   )
+               )
+           );
+
+        /** @var Share[] $shares */
+        $shares = $this->findEntities($qb);
+
+        return $shares;
+    }
+
+    /**
      * @return IQueryBuilder
      */
     protected function getStatement(): IQueryBuilder {
@@ -54,7 +149,10 @@ class ShareMapper extends AbstractMapper {
                     $qb->expr()->eq('user_id', $qb->createNamedParameter($this->userId)),
                     $qb->expr()->andX(
                         $qb->expr()->eq('receiver', $qb->createNamedParameter($this->userId)),
-                        $qb->expr()->isNotNull('target_password')
+                        $qb->expr()->orX(
+                            $qb->expr()->isNotNull('target_password'),
+                            $qb->expr()->isNotNull('target_folder')
+                        )
                     )
                 )
             );
