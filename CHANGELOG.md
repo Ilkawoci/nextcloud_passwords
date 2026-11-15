@@ -1,4 +1,8 @@
 ## [Unreleased]
+### Added
+- Folders can be shared with other users, including all subfolders and passwords
+- Folder details sidebar with sharing tab
+- Changes inside a shared folder (new, moved, deleted items) are synced to the receiver
 ## 2026.11.0 - Feature release
 ### Added
 - NC 30 & 31 patches for LSR release

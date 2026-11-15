@@ -22,3 +22,5 @@ rector-shells.php
 /cypress/screenshots/
 /vendor/
 /.phpunit.cache/
+# Release artifacts
+/dist/
