@@ -337,8 +337,8 @@ Implementierung muss von einer Person mit Schreibrecht auf `src/` erfolgen.
 
 - Löschen/Verschieben wird propagiert: `FolderShareMaterializer::pruneTree()` läuft nach dem Sync und entfernt Kopien, deren Quelle gelöscht wurde, nicht mehr im Baum liegt oder in einen anderen Ordner verschoben wurde (dann Neuanlage im richtigen Zielordner im nächsten Lauf). Verifiziert: Passwort in den Papierkorb (Kopie weg), Passwort innerhalb des Baums verschoben (Kopie am neuen Ort), Unterordner gelöscht (Teilbaum beim Empfänger weg).
 
-**Bewusst offen**
+- Cypress-Spec `cypress/e2e/folder-sharing.cy.js`: legt per API einen Ordner an, teilt ihn über das Kontextmenü, prüft Freigabeliste, Details-Tab und den Freigabe-Tab und widerruft die Freigabe wieder. Läuft gegen die Dev-Instanz grün (3/3, Firefox).
 
-- Keine Cypress-E2E-Tests; die UI wurde manuell durchgeklickt.
+**Bewusst offen**
 - `pruneTree()` läuft pro Cron-Lauf über den gesamten Baum (ein Walk pro Root-Freigabe). Bei sehr großen Bäumen wäre ein inkrementeller Marker sinnvoll.
 - Löschungen werden als Löschung propagiert; Bearbeitungen des Empfängers an einer Kopie laufen weiterhin über die bestehende Revisions-Synchronisation.
