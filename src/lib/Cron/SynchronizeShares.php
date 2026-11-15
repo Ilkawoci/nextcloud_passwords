@@ -175,8 +175,9 @@ class SynchronizeShares extends AbstractTimedJob {
         foreach($shares as $share) {
             try {
                 $this->folderShareMaterializer->syncNewChildren($share);
+                $this->folderShareMaterializer->pruneTree($share);
             } catch(\Throwable $e) {
-                $this->logger->logException($e, [], "Could not sync new children of folder share {$share->getUuid()}: {$e->getMessage()}");
+                $this->logger->logException($e, [], "Could not sync children of folder share {$share->getUuid()}: {$e->getMessage()}");
             }
         }
     }

@@ -335,7 +335,10 @@ Implementierung muss von einer Person mit Schreibrecht auf `src/` erfolgen.
 - Unit-Tests: `tests/phpunit/Db/ShareTest.php` und `tests/phpunit/Helper/Sharing/FolderShareMaterializerTest.php` (8 Tests, Suite gesamt 302 grün).
 - `ShareOptionsPreset` in `src/l10n/de_DE.js` und `en_GB.js` ergänzt.
 
+- Löschen/Verschieben wird propagiert: `FolderShareMaterializer::pruneTree()` läuft nach dem Sync und entfernt Kopien, deren Quelle gelöscht wurde, nicht mehr im Baum liegt oder in einen anderen Ordner verschoben wurde (dann Neuanlage im richtigen Zielordner im nächsten Lauf). Verifiziert: Passwort in den Papierkorb (Kopie weg), Passwort innerhalb des Baums verschoben (Kopie am neuen Ort), Unterordner gelöscht (Teilbaum beim Empfänger weg).
+
 **Bewusst offen**
 
-- Löschungen und Verschiebungen innerhalb eines geteilten Baums werden nicht an den Empfänger propagiert (nur Neuanlagen). Ein bidirektionaler Abgleich wäre der nächste Ausbauschritt.
 - Keine Cypress-E2E-Tests; die UI wurde manuell durchgeklickt.
+- `pruneTree()` läuft pro Cron-Lauf über den gesamten Baum (ein Walk pro Root-Freigabe). Bei sehr großen Bäumen wäre ein inkrementeller Marker sinnvoll.
+- Löschungen werden als Löschung propagiert; Bearbeitungen des Empfängers an einer Kopie laufen weiterhin über die bestehende Revisions-Synchronisation.

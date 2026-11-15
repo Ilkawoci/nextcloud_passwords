@@ -336,6 +336,119 @@ class FolderShareMaterializer {
     }
 
     /**
+     * Remove copies of elements that were deleted or moved out of a shared tree
+     *
+     * @param Share $rootShare
+     *
+     * @throws Exception
+     */
+    public function pruneTree(Share $rootShare): void {
+        if(!$rootShare->isFolderShare()) return;
+        if($rootShare->getTargetFolder() === null) return;
+
+        $folderTargets  = [];
+        $childShares    = $this->shareService->findByParentShare($rootShare->getUuid());
+        $validFolders   = [];
+        $validPasswords = [];
+
+        $folderTargets[ $rootShare->getSourceFolder() ] = $rootShare->getTargetFolder();
+
+        foreach($childShares as $childShare) {
+            if($childShare->isFolderShare()) {
+                $folderTargets[ $childShare->getSourceFolder() ] = $childShare->getTargetFolder();
+            }
+        }
+
+        $queue = [$rootShare->getSourceFolder()];
+        while(!empty($queue)) {
+            $folderUuid = array_shift($queue);
+
+            try {
+                $folderRevision = $this->folderRevisionService->findCurrentRevisionByModel($folderUuid, false);
+            } catch(DoesNotExistException $e) {
+                continue;
+            }
+            if($folderRevision->isTrashed()) continue;
+
+            $validFolders[$folderUuid] = true;
+
+            foreach($this->folderService->findByParent($folderUuid) as $childFolder) {
+                $queue[] = $childFolder->getUuid();
+            }
+
+            foreach($this->passwordService->findByFolder($folderUuid) as $password) {
+                if($password->getShareId() !== null) continue;
+
+                try {
+                    $passwordRevision = $this->passwordRevisionService->findCurrentRevisionByModel($password->getUuid(), false);
+                } catch(DoesNotExistException $e) {
+                    continue;
+                }
+                if($passwordRevision->isTrashed() || $passwordRevision->isHidden()) continue;
+
+                $validPasswords[ $password->getUuid() ] = $folderUuid;
+            }
+        }
+
+        foreach($childShares as $childShare) {
+            try {
+                if($childShare->isFolderShare()) {
+                    $sourceUuid = $childShare->getSourceFolder();
+                    if(isset($validFolders[$sourceUuid])) continue;
+
+                    $this->deleteMaterializedTree($childShare);
+                } else {
+                    $sourceUuid = $childShare->getSourcePassword();
+                    if(!isset($validPasswords[$sourceUuid])) {
+                        $this->deleteTargetPassword($childShare->getTargetPassword());
+                    } else if($this->targetFolderChanged($childShare, $validPasswords[$sourceUuid], $folderTargets)) {
+                        $this->deleteTargetPassword($childShare->getTargetPassword());
+                    } else {
+                        continue;
+                    }
+                }
+            } catch(DoesNotExistException $e) {
+                // target already gone
+            }
+
+            $this->shareService->delete($childShare);
+        }
+    }
+
+    /**
+     * Check if a shared password moved to another folder inside the tree
+     *
+     * @param Share  $childShare
+     * @param string $sourceFolder
+     * @param array  $folderTargets
+     *
+     * @return bool
+     */
+    protected function targetFolderChanged(Share $childShare, string $sourceFolder, array $folderTargets): bool {
+        $expected = $folderTargets[$sourceFolder] ?? null;
+
+        return $expected !== null && $childShare->getTargetFolder() !== $expected;
+    }
+
+    /**
+     * Delete the copy of a password in the receivers account
+     *
+     * @param string|null $passwordUuid
+     *
+     * @throws Exception
+     */
+    protected function deleteTargetPassword(?string $passwordUuid): void {
+        if($passwordUuid === null) return;
+
+        try {
+            $password = $this->passwordService->findByUuid($passwordUuid);
+            $this->passwordService->delete($password);
+        } catch(DoesNotExistException $e) {
+            // already gone
+        }
+    }
+
+    /**
      * Delete all copies that belong to a folder share
      *
      * @param Share $rootShare
