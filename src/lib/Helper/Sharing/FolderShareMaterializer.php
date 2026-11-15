@@ -44,6 +44,20 @@ class FolderShareMaterializer {
     protected array $visited = [];
 
     /**
+     * Existing child shares of the current tree, indexed by source folder uuid
+     *
+     * @var array<string,Share>
+     */
+    protected array $existingFolders = [];
+
+    /**
+     * Source password uuids that are already part of the current tree
+     *
+     * @var array<string,bool>
+     */
+    protected array $existingPasswords = [];
+
+    /**
      * FolderShareMaterializer constructor.
      *
      * @param ShareService            $shareService
@@ -70,8 +84,13 @@ class FolderShareMaterializer {
      *
      * @throws Exception
      */
-    public function materialize(Share $rootShare): void {
+    public function materialize(Share $rootShare, bool $reuseExisting = false): void {
         if(!$rootShare->isFolderShare()) return;
+
+        if(!$reuseExisting) {
+            $this->existingFolders   = [];
+            $this->existingPasswords = [];
+        }
 
         $this->visited = [];
         $receiver      = $rootShare->getReceiver();
@@ -82,6 +101,7 @@ class FolderShareMaterializer {
             'share'    => $rootShare,
             'depth'    => 0,
             'isRoot'   => true,
+            'target'   => $reuseExisting ? $rootShare->getTargetFolder():null,
         ]];
 
         while(!empty($queue)) {
@@ -103,11 +123,16 @@ class FolderShareMaterializer {
             if(isset($this->visited[ $sourceFolder->getUuid() ])) continue;
             $this->visited[ $sourceFolder->getUuid() ] = true;
 
-            $targetFolder = $this->createTargetFolder($sourceFolder, $sourceRevision, $item['parent'], $receiver, $folderShare);
+            $targetUuid = $this->resolveTargetFolder($item['target']);
 
-            $folderShare->setTargetFolder($targetFolder->getUuid());
-            $folderShare->setSourceUpdated(false);
-            $this->shareService->save($folderShare);
+            if($targetUuid === null) {
+                $targetFolder = $this->createTargetFolder($sourceFolder, $sourceRevision, $item['parent'], $receiver, $folderShare);
+                $targetUuid   = $targetFolder->getUuid();
+
+                $folderShare->setTargetFolder($targetUuid);
+                $folderShare->setSourceUpdated(false);
+                $this->shareService->save($folderShare);
+            }
 
             $childFolders = $this->folderService->findByParent($sourceFolder->getUuid());
             $passwords    = $this->passwordService->findByFolder($sourceFolder->getUuid());
@@ -121,7 +146,7 @@ class FolderShareMaterializer {
                 )
             );
 
-            $this->createPasswordShares($passwords, $targetFolder->getUuid(), $rootShare, $receiver);
+            $this->createPasswordShares($passwords, $targetUuid, $rootShare, $receiver);
 
             if($item['depth'] >= self::MAX_DEPTH) {
                 $this->logger->error("Folder share {$rootShare->getUuid()} exceeds maximum depth, remaining folders were not copied");
@@ -130,16 +155,66 @@ class FolderShareMaterializer {
 
             foreach($childFolders as $childFolder) {
                 /** @var Folder $childFolder */
-                $childShare = $this->createChildFolderShare($childFolder->getUuid(), $rootShare, $receiver);
+                $childUuid  = $childFolder->getUuid();
+                $childShare = $this->existingFolders[$childUuid] ?? null;
+
+                if($childShare === null) {
+                    $childShare = $this->createChildFolderShare($childUuid, $rootShare, $receiver);
+                }
 
                 $queue[] = [
-                    'source' => $childFolder->getUuid(),
-                    'parent' => $targetFolder->getUuid(),
+                    'source' => $childUuid,
+                    'parent' => $targetUuid,
                     'share'  => $childShare,
                     'depth'  => $item['depth'] + 1,
                     'isRoot' => false,
+                    'target' => $childShare->getTargetFolder(),
                 ];
             }
+        }
+    }
+
+    /**
+     * Add elements that were created in the source tree after the folder was shared
+     *
+     * @param Share $rootShare
+     *
+     * @throws Exception
+     */
+    public function syncNewChildren(Share $rootShare): void {
+        if(!$rootShare->isFolderShare()) return;
+        if($rootShare->getTargetFolder() === null) return;
+
+        $this->existingFolders   = [];
+        $this->existingPasswords = [];
+
+        foreach($this->shareService->findByParentShare($rootShare->getUuid()) as $childShare) {
+            if($childShare->isFolderShare()) {
+                $this->existingFolders[$childShare->getSourceFolder()] = $childShare;
+            } else if($childShare->getSourcePassword() !== null) {
+                $this->existingPasswords[$childShare->getSourcePassword()] = true;
+            }
+        }
+
+        $this->materialize($rootShare, true);
+    }
+
+    /**
+     * Check if a previously created target folder still exists
+     *
+     * @param string|null $folderUuid
+     *
+     * @return string|null
+     */
+    protected function resolveTargetFolder(?string $folderUuid): ?string {
+        if($folderUuid === null) return null;
+
+        try {
+            $this->folderService->findByUuid($folderUuid);
+
+            return $folderUuid;
+        } catch(DoesNotExistException $e) {
+            return null;
         }
     }
 
@@ -228,6 +303,7 @@ class FolderShareMaterializer {
             /** @var Password $password */
             if($password->getShareId() !== null) continue;
             if($password->getUserId() !== $rootShare->getUserId()) continue;
+            if(isset($this->existingPasswords[$password->getUuid()])) continue;
 
             try {
                 /** @var PasswordRevision $revision */

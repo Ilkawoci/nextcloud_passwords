@@ -190,6 +190,14 @@ class ShareService extends AbstractService {
      * @return Share[]
      * @throws Exception
      */
+    /**
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllRootFolderShares(): array {
+        return $this->mapper->findAllRootFolderShares();
+    }
+
     public function findExpired(): array {
         return $this->mapper->findAllByField('expires', time(), IQueryBuilder::PARAM_INT, 'lte');
     }

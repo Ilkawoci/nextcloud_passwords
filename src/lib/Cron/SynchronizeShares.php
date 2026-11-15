@@ -84,6 +84,7 @@ class SynchronizeShares extends AbstractTimedJob {
         $this->deleteOrphanedTargetPasswords();
         $this->deleteExpiredShares();
         $this->createNewShares();
+        $this->syncFolderShares();
         $this->removeSharedAttribute();
         $this->updatePasswords();
         $this->notifyUsers();
@@ -161,6 +162,23 @@ class SynchronizeShares extends AbstractTimedJob {
         } while($count !== 0);
 
         $this->logger->debugOrInfo(['Deleted %s expired share(s)', $total], $total);
+    }
+
+    /**
+     * Copy elements which were added to already shared folder trees
+     *
+     * @throws Exception
+     */
+    protected function syncFolderShares(): void {
+        $shares = $this->shareService->findAllRootFolderShares();
+
+        foreach($shares as $share) {
+            try {
+                $this->folderShareMaterializer->syncNewChildren($share);
+            } catch(\Throwable $e) {
+                $this->logger->logException($e, [], "Could not sync new children of folder share {$share->getUuid()}: {$e->getMessage()}");
+            }
+        }
     }
 
     /**

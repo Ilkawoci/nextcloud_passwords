@@ -331,8 +331,11 @@ Implementierung muss von einer Person mit Schreibrecht auf `src/` erfolgen.
 - Rechte-Änderung propagiert auf Kind-Shares (`UpdateFolderShareHelper`), Widerruf löscht den materialisierten Baum.
 - Schema erweitert (`source_type`, `source_folder`, `target_folder`, `parent_share`), Backup/Restore läuft generisch über `Share::toArray()`/`addType()` mit.
 
+- Inkrementeller Abgleich: `FolderShareMaterializer::syncNewChildren()` läuft in jedem Cron-Durchlauf über alle Root-Ordner-Shares und kopiert nachträglich angelegte Unterordner und Passwörter. Verifiziert: nach dem Teilen `P2` und `Sub/P3` ergänzt, Empfänger erhielt beides inkl. korrekt entschlüsselter Werte.
+- Unit-Tests: `tests/phpunit/Db/ShareTest.php` und `tests/phpunit/Helper/Sharing/FolderShareMaterializerTest.php` (8 Tests, Suite gesamt 302 grün).
+- `ShareOptionsPreset` in `src/l10n/de_DE.js` und `en_GB.js` ergänzt.
+
 **Bewusst offen**
 
-- Nachträglich angelegte Elemente in bereits geteilten Ordnern werden nicht automatisch nachgezogen (Snapshot-Verhalten). Ein Diff-Lauf im Cron wäre der nächste Schritt.
-- Keine eigenen PHPUnit-/Cypress-Tests für die Folder-Helper; verifiziert wurde über API- und UI-Durchläufe.
-- `ShareOptionsPreset`-Legende ist im Formular visuell versteckt, der Key fehlt in den Übersetzungen (betrifft Passwort- und Ordner-Sharing gleichermaßen).
+- Löschungen und Verschiebungen innerhalb eines geteilten Baums werden nicht an den Empfänger propagiert (nur Neuanlagen). Ein bidirektionaler Abgleich wäre der nächste Ausbauschritt.
+- Keine Cypress-E2E-Tests; die UI wurde manuell durchgeklickt.

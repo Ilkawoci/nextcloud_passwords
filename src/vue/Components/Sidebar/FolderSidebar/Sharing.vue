@@ -15,8 +15,8 @@
             </template>
             <span>
                 <translate say="{name} has shared this folder with you." :variables="folder.share.owner"/>
-                <translate :say="folder.share.editable ? 'ShareInfoEditable':'ShareInfoNotEditable'"/>
-                <translate :say="folder.share.shareable ? 'ShareInfoShareable':'ShareInfoNotShareable'"/>
+                <translate :say="folder.share.editable ? 'You can edit this folder.':'You can not edit this folder.'"/>
+                <translate :say="folder.share.shareable ? 'You can share this folder with others.':'You can not share this folder.'"/>
             </span>
         </nc-note-card>
 

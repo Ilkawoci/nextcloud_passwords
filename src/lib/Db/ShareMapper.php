@@ -132,6 +132,29 @@ class ShareMapper extends AbstractMapper {
     }
 
     /**
+     * Returns all folder shares that are the root of a shared tree
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllRootFolderShares(): array {
+        $qb = $this->getStatement();
+
+        $qb->andWhere(
+            $qb->expr()->eq('source_type', $qb->createNamedParameter(Share::ENTITY_FOLDER))
+        )->andWhere(
+            $qb->expr()->isNull('parent_share')
+        )->andWhere(
+            $qb->expr()->isNotNull('target_folder')
+        );
+
+        /** @var Share[] $shares */
+        $shares = $this->findEntities($qb);
+
+        return $shares;
+    }
+
+    /**
      * @return IQueryBuilder
      */
     protected function getStatement(): IQueryBuilder {
