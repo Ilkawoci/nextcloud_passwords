@@ -470,6 +470,8 @@ Verhalten:
   bei Passwörtern); wer die Gruppe verlässt, behält seine Kopie, bis die Freigabe
   widerrufen wird.
 - In der Freigabeliste erscheinen die einzelnen Mitglieder, nicht die Gruppe.
+- Bereits geteilte Mitglieder werden beim erneuten Teilen übersprungen (kein
+  Fehler, keine doppelte Freigabe).
 
 Prüfen, ob die Gruppe gefunden wird:
 

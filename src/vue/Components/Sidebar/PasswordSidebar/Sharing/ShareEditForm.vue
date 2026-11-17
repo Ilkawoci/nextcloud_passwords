@@ -169,37 +169,61 @@
                 await action.run().catch(LoggingService.catch);
             },
             async createFolderShares() {
-                let created = 0;
+                let created = 0,
+                    skipped = 0,
+                    failed  = 0;
+
+                const existing = await this.getSharedRecipientIds();
 
                 for(let recipient of this.recipients) {
-                    if(recipient.isNoUser) {
-                        created += await this.createFolderGroupShares(recipient.id);
-                    } else {
-                        created += await this.createFolderShare(recipient.id) ? 1:0;
+                    let userIds = recipient.isNoUser ? await this.getGroupMemberIds(recipient.id):[recipient.id];
+
+                    for(let userId of userIds) {
+                        if(existing.has(userId)) {
+                            skipped++;
+                            continue;
+                        }
+
+                        if(await this.createFolderShare(userId)) {
+                            created++;
+                            existing.add(userId);
+                        } else {
+                            failed++;
+                        }
                     }
                 }
 
-                if(created > 0) {
+                if(failed > 0) {
+                    ToastService.error('Some users could not be added to the folder share');
+                } else if(created > 0) {
                     ToastService.success('Folder shared with the selected users');
-                } else {
-                    ToastService.error('Could not share the folder with the selected users');
+                } else if(skipped > 0) {
+                    ToastService.info('The folder is already shared with the selected users');
+                }
+            },
+            /**
+             * Recipients that already have a share for this folder
+             */
+            async getSharedRecipientIds() {
+                try {
+                    let folder = await API.showFolder(this.folder.id, 'model+shares'),
+                        shares = folder.shares || {};
+
+                    return new Set(Object.values(shares).map((share) => share.receiver.id));
+                } catch(e) {
+                    LoggingService.error(e);
+
+                    return new Set();
                 }
             },
             /**
              * Shares are stored per user, so a group is expanded into its members,
              * the same way password group shares are handled.
              */
-            async createFolderGroupShares(groupId) {
-                let created = 0,
-                    users   = await API.resolveGroup(groupId);
+            async getGroupMemberIds(groupId) {
+                let users = await API.resolveGroup(groupId);
 
-                for(let userId in users) {
-                    if(!users.hasOwnProperty(userId) || userId === getCurrentUser().uid) continue;
-
-                    if(await this.createFolderShare(userId)) created++;
-                }
-
-                return created;
+                return Object.keys(users).filter((userId) => userId !== getCurrentUser().uid);
             },
             async createFolderShare(recipientId) {
                 let expires = this.options.expires instanceof Date
