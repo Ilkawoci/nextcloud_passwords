@@ -391,6 +391,9 @@ Migration nicht aus:
 ```
 
 Beim nächsten Upstream-Release (z. B. `2026.12.0`) setzt du `2026.12.1`.
+Die Fork-Version muss außerdem **über der aktuell im App Store verfügbaren**
+liegen, sonst bietet Nextcloud ein Update an und ersetzt den Fork
+(siehe Abschnitt 12).
 Zusätzlich einen Eintrag in `CHANGELOG.md` unter `## [Unreleased]` pflegen.
 
 ### 10.4 Konflikt-Hotspots
@@ -445,7 +448,106 @@ Dann: Version anheben → Tarball bauen → auf einer **Testinstanz** deployen
 
 ---
 
-## 11. Troubleshooting
+## 11. An Gruppen teilen
+
+Ordner lassen sich wie Passwörter auch an **Gruppen** teilen. Nextcloud-Freigaben
+sind technisch immer pro Benutzer, deshalb wird eine Gruppe beim Teilen in ihre
+Mitglieder aufgelöst: jedes Mitglied bekommt eine eigene Freigabe.
+
+Voraussetzungen:
+
+- In Nextcloud muss das Teilen mit Gruppen erlaubt sein
+  (Core-Einstellung `shareapi_allow_group_sharing`, Standard: `yes`).
+  Prüfen: `occ config:app:get core shareapi_allow_group_sharing`
+- Der **Besitzer des Ordners muss selbst Mitglied der Gruppe** sein — die App
+  schlägt nur die eigenen Gruppen als Empfänger vor.
+- Das eigene Konto wird beim Auflösen übersprungen.
+
+Verhalten:
+
+- Mitglieder werden **beim Anlegen** der Freigabe aufgelöst. Wer der Gruppe
+  später beitritt, bekommt die Freigabe nicht automatisch (gleiches Verhalten wie
+  bei Passwörtern); wer die Gruppe verlässt, behält seine Kopie, bis die Freigabe
+  widerrufen wird.
+- In der Freigabeliste erscheinen die einzelnen Mitglieder, nicht die Gruppe.
+
+Prüfen, ob die Gruppe gefunden wird:
+
+```bash
+B="https://cloud.example.com/index.php/apps/passwords/api/1.0"
+curl -s -u admin:admin "$B/share/recipients?search=team"
+curl -s -u admin:admin -H 'Content-Type: application/json' \
+  -X POST "$B/share/recipients/resolve-group" -d '{"groupId":"team"}'
+```
+
+---
+
+## 12. Was passiert bei einem offiziellen Update — und wie man es verhindert
+
+Dieser Fork hat **dieselbe App-ID** (`passwords`) wie die Store-Version. Nextcloud
+vergleicht nur die Versionsnummern: ist die Store-Version höher als die
+Fork-Version, bietet die Instanz ein Update an — und ersetzt damit den Fork.
+
+### Was dabei konkret passiert
+
+1. **Dateien werden überschrieben.** Der gesamte Ordner `apps/passwords` bzw.
+   `custom_apps/passwords` wird durch die Store-Version ersetzt. Ordner-Sharing
+   ist danach weg (Menüeintrag, Sidebar, Backend).
+2. **Die Datenbank bleibt unverändert.** Die zusätzlichen Spalten
+   (`source_type`, `source_folder`, `target_folder`, `parent_share`, `share_id`,
+   `has_shares`) und alle Ordner-Freigabe-Zeilen bleiben erhalten — sie stören die
+   alte App nicht.
+3. **Ordner-Freigaben laufen ins Leere.** Die alte App kennt `source_type` nicht.
+   Ihre Freigabe-Abfrage holt alle Zeilen mit `target_password IS NULL` — das
+   trifft auch die Ordner-Zeilen. Deren `source_password` ist ebenfalls `NULL`,
+   also scheitert die Synchronisation pro Zeile und schreibt bei **jedem**
+   Cron-Lauf eine Fehlermeldung ins Log
+   (`Could not create target password … for share <uuid>`). Kein Datenverlust,
+   aber Log-Spam und keine Aktualisierung mehr.
+4. **Bereits kopierte Ordner/Passwörter bleiben** in den Konten der Empfänger
+   stehen — sie werden nur nicht mehr gepflegt (veraltete Kopien).
+
+### Wie man es verhindert
+
+- **Version immer oberhalb der Store-Version halten.** Aktuell: Store
+  `2026.11.20`, Fork `2026.11.21` → es wird kein Update angeboten.
+  Nach jedem Upstream-Sync erneut anheben (z. B. Store `2026.12.0` → Fork
+  `2026.12.1`).
+- Wer das dauerhaft ausschließen will, setzt die Fork-Version künstlich hoch
+  (z. B. `2099.1.0`). Dann bietet die Instanz für diese App nie ein Update an;
+  der Preis ist, dass der Upstream-Stand nicht mehr an der Nummer ablesbar ist.
+- **Kein blindes „Alle aktualisieren"** im App-Store und kein
+  `occ app:update --all` in Skripten/Cronjobs, solange der Fork installiert ist.
+  Einzeln prüfen:
+  ```bash
+  sudo -S -p '' -u www-data $PHP $NC/occ app:update passwords
+  # erwartet: "passwords is up-to-date or no updates could be found"
+  ```
+- Vor jedem geplanten Upstream-Sync ein Backup machen (Abschnitt 3).
+
+### Wenn es doch passiert ist
+
+```bash
+sudo -S -p '' -u www-data $PHP $NC/occ maintenance:mode --on
+sudo -S -p '' -u www-data $PHP $NC/occ app:disable passwords
+
+# Fork erneut ausrollen (Tarball oder rsync, siehe Abschnitt 5)
+sudo -S -p '' rm -rf $NC/custom_apps/passwords
+sudo -S -p '' tar -xzf passwords-*.tar.gz -C $NC/custom_apps/
+sudo -S -p '' chown -R www-data:www-data $NC/custom_apps/passwords
+
+sudo -S -p '' -u www-data $PHP $NC/occ app:enable passwords
+sudo -S -p '' -u www-data $PHP $NC/occ upgrade
+sudo -S -p '' -u www-data $PHP $NC/occ maintenance:mode --off
+```
+
+Die Ordner-Freigaben sind danach wieder aktiv (die Zeilen waren nie gelöscht);
+der nächste Cron-Lauf gleicht ausstehende Änderungen nach. Datenverlust entsteht
+nur für Änderungen, die in der Zwischenzeit niemand synchronisiert hat.
+
+---
+
+## 13. Troubleshooting
 
 | Symptom | Ursache | Lösung |
 |---|---|---|
@@ -465,7 +567,7 @@ sudo tail -f $NC/data/nextcloud.log
 
 ---
 
-## 12. Kurzfassung (für Eilige)
+## 14. Kurzfassung (für Eilige)
 
 ```bash
 # 1. Backup

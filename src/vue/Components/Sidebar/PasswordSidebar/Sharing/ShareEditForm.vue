@@ -56,6 +56,7 @@
     import ToastService from "@js/Services/ToastService";
     import NcAvatar from "@nextcloud/vue/components/NcAvatar";
     import NcNoteCard from "@nextcloud/vue/components/NcNoteCard";
+    import {getCurrentUser} from '@nextcloud/auth';
 
     export default {
         components: {
@@ -168,23 +169,60 @@
                 await action.run().catch(LoggingService.catch);
             },
             async createFolderShares() {
-                for(let recipient of this.recipients) {
-                    let expires = this.options.expires instanceof Date
-                        ? Math.floor(this.options.expires.getTime() / 1000):this.options.expires;
+                let created = 0;
 
+                for(let recipient of this.recipients) {
+                    if(recipient.isNoUser) {
+                        created += await this.createFolderGroupShares(recipient.id);
+                    } else {
+                        created += await this.createFolderShare(recipient.id) ? 1:0;
+                    }
+                }
+
+                if(created > 0) {
+                    ToastService.success('Folder shared with the selected users');
+                } else {
+                    ToastService.error('Could not share the folder with the selected users');
+                }
+            },
+            /**
+             * Shares are stored per user, so a group is expanded into its members,
+             * the same way password group shares are handled.
+             */
+            async createFolderGroupShares(groupId) {
+                let created = 0,
+                    users   = await API.resolveGroup(groupId);
+
+                for(let userId in users) {
+                    if(!users.hasOwnProperty(userId) || userId === getCurrentUser().uid) continue;
+
+                    if(await this.createFolderShare(userId)) created++;
+                }
+
+                return created;
+            },
+            async createFolderShare(recipientId) {
+                let expires = this.options.expires instanceof Date
+                    ? Math.floor(this.options.expires.getTime() / 1000):this.options.expires;
+
+                try {
                     await API.createShare(
                         {
                             folder   : this.folder.id,
-                            recipient: recipient.id,
-                            type     : recipient.isNoUser ? 'group':'user',
+                            recipient: recipientId,
+                            type     : 'user',
                             expires  : expires ?? null,
                             editable : !!this.options.editable,
                             shareable: !!this.options.shareable
                         }
-                    ).catch(LoggingService.catch);
-                }
+                    );
 
-                ToastService.success('Folder shared with the selected users');
+                    return true;
+                } catch(e) {
+                    LoggingService.error(e);
+
+                    return false;
+                }
             },
             async updateAction() {
                 let share = UtilityService.cloneObject(this.share);
