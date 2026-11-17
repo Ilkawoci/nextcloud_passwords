@@ -82,6 +82,7 @@ class SynchronizeShares extends AbstractTimedJob {
         $this->config->setAppValue(self::EXECUTION_TIMESTAMP, time());
 
         $this->deleteOrphanedTargetPasswords();
+        $this->deleteOrphanedTargetFolders();
         $this->deleteExpiredShares();
         $this->createNewShares();
         $this->syncFolderShares();
@@ -129,6 +130,19 @@ class SynchronizeShares extends AbstractTimedJob {
         } while($count !== 0);
 
         $this->logger->debugOrInfo(['Deleted %s orphaned password(s)', $total], $total);
+    }
+
+    /**
+     * Removes folder copies that belong to revoked shares
+     *
+     * @throws Exception
+     */
+    protected function deleteOrphanedTargetFolders(): void {
+        try {
+            $this->folderShareMaterializer->deleteOrphanedTargets();
+        } catch(\Throwable $e) {
+            $this->logger->logException($e, [], 'Could not delete orphaned folder copies: '.$e->getMessage());
+        }
     }
 
     /**

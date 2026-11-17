@@ -128,6 +128,15 @@ class FolderService extends AbstractModelService {
      *
      * @throws Exception
      */
+    public function findOrphanedTargetFolders(): array {
+        return $this->mapper->findAllOrphanedTargetFolders();
+    }
+
+    /**
+     * @param EntityInterface $model
+     *
+     * @throws Exception
+     */
     public function delete(EntityInterface $model): void {
         if($model->getUuid() === self::BASE_FOLDER_UUID) return;
 

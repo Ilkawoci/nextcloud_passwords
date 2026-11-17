@@ -132,6 +132,18 @@ class ShareMapper extends AbstractMapper {
     }
 
     /**
+     * All share rows whose copy lives in the given target folder
+     *
+     * @param string $folderUuid
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findAllByTargetFolder(string $folderUuid): array {
+        return $this->findAllByField('target_folder', $folderUuid);
+    }
+
+    /**
      * Returns all folder shares that are the root of a shared tree
      *
      * @return Share[]

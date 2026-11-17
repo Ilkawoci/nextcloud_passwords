@@ -194,6 +194,16 @@ class ShareService extends AbstractService {
      * @return Share[]
      * @throws Exception
      */
+    /**
+     * @param string $folderUuid
+     *
+     * @return Share[]
+     * @throws Exception
+     */
+    public function findByTargetFolder(string $folderUuid): array {
+        return $this->mapper->findAllByTargetFolder($folderUuid);
+    }
+
     public function findAllRootFolderShares(): array {
         return $this->mapper->findAllRootFolderShares();
     }

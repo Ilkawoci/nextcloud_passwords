@@ -449,6 +449,43 @@ class FolderShareMaterializer {
     }
 
     /**
+     * Remove folder copies whose share row was deleted or is gone
+     *
+     * Needed because a share can be revoked in a request context, where the
+     * receiver's folders are not visible to the sharing user.
+     *
+     * @throws Exception
+     */
+    public function deleteOrphanedTargets(): void {
+        foreach($this->folderService->findOrphanedTargetFolders() as $folder) {
+            $targetUuids = $this->collectTargetFolders($folder->getUuid());
+
+            foreach($targetUuids as $targetUuid) {
+                foreach($this->shareService->findByTargetFolder($targetUuid) as $share) {
+                    $this->shareService->delete($share);
+                }
+            }
+
+            $this->deleteTargetFolder($folder->getUuid());
+        }
+    }
+
+    /**
+     * @param string $folderUuid
+     *
+     * @return string[]
+     */
+    protected function collectTargetFolders(string $folderUuid): array {
+        $folders = [$folderUuid];
+
+        foreach($this->folderService->findByParent($folderUuid) as $childFolder) {
+            $folders = [...$folders, ...$this->collectTargetFolders($childFolder->getUuid())];
+        }
+
+        return $folders;
+    }
+
+    /**
      * Delete all copies that belong to a folder share
      *
      * @param Share $rootShare

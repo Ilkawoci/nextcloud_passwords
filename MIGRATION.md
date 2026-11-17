@@ -472,6 +472,13 @@ Verhalten:
 - In der Freigabeliste erscheinen die einzelnen Mitglieder, nicht die Gruppe.
 - Bereits geteilte Mitglieder werden beim erneuten Teilen übersprungen (kein
   Fehler, keine doppelte Freigabe).
+- **Widerrufen ist immer pro Person.** Es gibt kein Gruppen-Objekt, das man
+  entfernen könnte: in der Freigabeliste stehen die einzelnen Mitglieder und
+  müssen einzeln widerrufen werden. Wer die Gruppe in Nextcloud verlässt, behält
+  seine Kopie, bis die Freigabe widerrufen wird; wer später beitritt, bekommt
+  nichts automatisch.
+- Beim Widerruf entfernt der Server die Kopie im Empfängerkonto. Die Ordner-Kopie
+  wird dabei spätestens mit dem nächsten Cron-Lauf gelöscht (Abschnitt 8).
 
 Prüfen, ob die Gruppe gefunden wird:
 

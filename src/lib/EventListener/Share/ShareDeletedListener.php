@@ -58,7 +58,14 @@ class ShareDeletedListener implements IEventListener {
     public function handle(Event $event): void {
         if(!($event instanceof ShareDeletedEvent)) return;
         try {
-            $share  = $event->getShare();
+            $share = $event->getShare();
+
+            // Folder shares have no source password; their copies and child rows
+            // are removed by the FolderShareMaterializer.
+            if($share->isFolderShare()) {
+                return;
+            }
+
             $shares = $this->shareService->findBySourcePassword($share->getSourcePassword());
 
             if(empty($shares)) {
