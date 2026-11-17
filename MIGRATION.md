@@ -149,19 +149,44 @@ cd "$FORK"
 
 ```bash
 npm ci
-npm run build:stable
+```
+
+Es gibt zwei Varianten, die **zusammenpassen müssen** mit der Einstellung
+`dev/app/hash` in der Instanz:
+
+| Build | Dateinamen | `dev/app/hash` | Cache |
+|---|---|---|---|
+| `npm run build` | `app.<hash>.js`, `admin.<hash>.js` … | **muss** auf den Hash gesetzt sein | automatisch (neue URL pro Build) |
+| `npm run build:stable` | `app.js`, `admin.js` … | **muss leer** sein (`occ config:app:delete passwords dev/app/hash`) | Browser-Cache, Hard-Reload nötig |
+
+**Empfohlen für den Betrieb: `npm run build`** (gehashte Dateinamen). Damit
+ändert sich die URL des Einstiegspunktes bei jedem Build und Nutzer bekommen
+automatisch die neue Version — keine 404-Fehler auf alte Chunk-Dateien.
+
+```bash
+npm run build
+```
+
+`npm run build` versucht den Hash selbst zu setzen (`docker exec … occ
+config:app:set passwords dev/app/hash`). Auf einem Server ohne laufenden
+Dev-Container schlägt das fehl (harmlos) — dann manuell setzen:
+
+```bash
+HASH=$(ls src/js/Static/app.*.js | sed 's/.*app\.\(.*\)\.js/\1/')
+sudo -u www-data $PHP $NC/occ config:app:set passwords dev/app/hash --value="$HASH"
 ```
 
 Ergebnis prüfen:
 
 ```bash
-ls -l src/js/Static/app.js src/js/Static/admin.js src/js/Static/dashboard.js
-ls src/css/app.css
+ls -l src/js/Static/app.*.js src/css/app.css
 ```
 
-> **Nicht** `npm run build` verwenden: das erzeugt `app.<hash>.js`, während die
-> Templates `js/Static/app.js` anfordern — die App hängt dann im Spinner.
-> `npm run build:testing` funktioniert ebenfalls, ist aber der Dev-Build.
+> Nicht mischen: `app.<hash>.js` gebaut, aber `dev/app/hash` leer (oder
+> umgekehrt) → die Templates fordern eine Datei an, die es nicht gibt, und die
+> App hängt im Spinner. Bei `npm run build:stable` also immer
+> `occ config:app:delete passwords dev/app/hash`, bei `npm run build` immer den
+> Hash setzen.
 
 ### 4.3 Paket erzeugen
 
@@ -436,7 +461,7 @@ alle Schritte idempotent sind.
 
 ```bash
 npm ci
-npm run build:stable
+npm run build                     # gehashte Dateinamen, Hash wird gesetzt (siehe 4.2)
 docker compose run --rm phpunit composer install --no-interaction   # nur beim ersten Mal
 docker compose run --rm phpunit vendor/bin/phpunit --no-coverage
 NODE_TLS_REJECT_UNAUTHORIZED=0 npx cypress run --browser firefox \
@@ -585,7 +610,7 @@ mysqldump -u root -p nextcloud > ~/nextcloud-db.sql
 
 # 2. Bauen
 git clone -b wip/password_folder_share https://github.com/Ilkawoci/nextcloud_passwords.git "$FORK"
-cd "$FORK" && npm ci && npm run build:stable
+cd "$FORK" && npm ci && npm run build
 tar -czf passwords.tar.gz --exclude='./vue' --exclude='./scss' \
   --exclude='./report-stats.json' --exclude='./bundle-report.html' \
   --transform 's,^\./,passwords/,' -C src .
@@ -596,6 +621,10 @@ sudo -u www-data $PHP $NC/occ app:disable passwords
 sudo mv $NC/custom_apps/passwords $NC/custom_apps/passwords.store-backup
 sudo tar -xzf passwords.tar.gz -C $NC/custom_apps/
 sudo chown -R www-data:www-data $NC/custom_apps/passwords
+
+# Hashed-Build: Entry-Datei der Instanz bekannt machen (siehe 4.2)
+HASH=$(ls "$FORK"/src/js/Static/app.*.js | sed 's/.*app\.\(.*\)\.js/\1/')
+sudo -u www-data $PHP $NC/occ config:app:set passwords dev/app/hash --value="$HASH"
 
 # 4. Aktivieren + migrieren
 sudo -u www-data $PHP $NC/occ app:enable passwords
