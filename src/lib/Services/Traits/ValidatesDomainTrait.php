@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services\Traits;
+namespace OCA\PasswordFolders\Services\Traits;
 
 trait ValidatesDomainTrait {
 

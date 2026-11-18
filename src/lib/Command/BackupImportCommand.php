@@ -5,11 +5,11 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
 use Exception;
-use OCA\Passwords\Helper\Backup\BackupMigrationHelper;
-use OCA\Passwords\Services\BackupService;
+use OCA\PasswordFolders\Helper\Backup\BackupMigrationHelper;
+use OCA\PasswordFolders\Services\BackupService;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use OCP\Files\SimpleFS\ISimpleFile;
@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class BackupImportCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class BackupImportCommand extends Command {
 
@@ -52,7 +52,7 @@ class BackupImportCommand extends Command {
      *
      */
     protected function configure(): void {
-        $this->setName('passwords:backup:import')
+        $this->setName('passwordfolders:backup:import')
              ->addArgument('file', InputArgument::REQUIRED, 'The location of the backup file')
              ->setDescription('Import a backup from a file');
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
 use Closure;
 use OCP\DB\ISchemaWrapper;
@@ -16,7 +16,7 @@ use OCP\Migration\SimpleMigrationStep;
  * of a single password. Every element of a shared folder tree gets its own
  * share row so that the existing synchronization cron keeps working.
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class Version20260115 extends SimpleMigrationStep {
 

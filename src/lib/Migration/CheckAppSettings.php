@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
 use Exception;
-use OCA\Passwords\AppInfo\SystemRequirements;
-use OCA\Passwords\Helper\AppSettings\ServiceSettingsHelper;
-use OCA\Passwords\Helper\User\AdminUserHelper;
-use OCA\Passwords\Services\BackgroundJobService;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\HelperService;
-use OCA\Passwords\Services\NotificationService;
+use OCA\PasswordFolders\AppInfo\SystemRequirements;
+use OCA\PasswordFolders\Helper\AppSettings\ServiceSettingsHelper;
+use OCA\PasswordFolders\Helper\User\AdminUserHelper;
+use OCA\PasswordFolders\Services\BackgroundJobService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\HelperService;
+use OCA\PasswordFolders\Services\NotificationService;
 use OCP\Migration\IOutput;
 use OCP\Migration\IRepairStep;
 use OCP\ServerVersion;
@@ -26,7 +26,7 @@ use OCP\ServerVersion;
 /**
  * Class CheckAppSettings
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class CheckAppSettings implements IRepairStep {
 

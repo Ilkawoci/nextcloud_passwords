@@ -9,21 +9,21 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Cron;
+namespace OCA\PasswordFolders\Cron;
 
 use Exception;
-use OCA\Passwords\Helper\Survey\ServerReportHelper;
-use OCA\Passwords\Helper\User\AdminUserHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\NotificationService;
+use OCA\PasswordFolders\Helper\Survey\ServerReportHelper;
+use OCA\PasswordFolders\Helper\User\AdminUserHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\NotificationService;
 use OCP\AppFramework\Utility\ITimeFactory;
 
 /**
  * Class SendServerSurvey
  *
- * @package OCA\Passwords\Cron
+ * @package OCA\PasswordFolders\Cron
  */
 class SendServerSurvey extends AbstractTimedJob {
 

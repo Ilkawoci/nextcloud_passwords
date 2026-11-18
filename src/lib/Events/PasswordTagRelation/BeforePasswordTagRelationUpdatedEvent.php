@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\PasswordTagRelation;
+namespace OCA\PasswordFolders\Events\PasswordTagRelation;
 
 /**
  * Class BeforePasswordTagRelationUpdatedEvent
  *
- * @package OCA\Passwords\Events\PasswordTagRelation
+ * @package OCA\PasswordFolders\Events\PasswordTagRelation
  */
 class BeforePasswordTagRelationUpdatedEvent extends GenericPasswordTagRelationEvent {
 }

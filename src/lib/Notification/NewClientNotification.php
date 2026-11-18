@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Notification;
+namespace OCA\PasswordFolders\Notification;
 
 use Exception;
-use OCA\Passwords\Helper\Settings\ThemeSettingsHelper;
+use OCA\PasswordFolders\Helper\Settings\ThemeSettingsHelper;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
@@ -22,7 +22,7 @@ use OCP\Notification\INotification;
 /**
  * Class NewClientNotification
  *
- * @package OCA\Passwords\Notification
+ * @package OCA\PasswordFolders\Notification
  */
 class NewClientNotification extends AbstractNotification {
 

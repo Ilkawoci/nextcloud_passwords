@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Notification;
+namespace OCA\PasswordFolders\Notification;
 
 use Exception;
-use OCA\Passwords\AppInfo\SystemRequirements;
+use OCA\PasswordFolders\AppInfo\SystemRequirements;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
@@ -23,7 +23,7 @@ use OCP\ServerVersion;
 /**
  * Class UpgradeRequiredNotification
  *
- * @package OCA\Passwords\Notification
+ * @package OCA\PasswordFolders\Notification
  */
 class UpgradeRequiredNotification extends AbstractNotification {
 

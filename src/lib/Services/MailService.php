@@ -5,14 +5,14 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Mail\AbstractMail;
-use OCA\Passwords\Mail\BadPasswordMail;
-use OCA\Passwords\Mail\NewClientMail;
-use OCA\Passwords\Mail\ShareCreatedMail;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Mail\AbstractMail;
+use OCA\PasswordFolders\Mail\BadPasswordMail;
+use OCA\PasswordFolders\Mail\NewClientMail;
+use OCA\PasswordFolders\Mail\ShareCreatedMail;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IUser;
@@ -21,7 +21,7 @@ use OCP\L10N\IFactory;
 /**
  * Class MailService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class MailService {
 

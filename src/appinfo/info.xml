@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>passwords</id>
-    <name>Passwords</name>
-    <summary>Store, manage and access all your passwords with ease.</summary>
-    <summary lang="de">Verwalten und verwenden Sie all Ihre Passwörter schnell, sicher und überall.</summary>
-    <description><![CDATA[Passwords is the most advanced password manager for Nextcloud and allows you to manage and store your passwords safely in your own cloud.
+    <id>passwordfolders</id>
+    <name>Passwords Folders</name>
+    <summary>Password manager fork with sharing for whole folders.</summary>
+    <summary lang="de">Passwort-Manager-Fork, der auch ganze Ordner teilen kann.</summary>
+    <description><![CDATA[**This is a fork of the Passwords app that adds sharing for whole folders.** It uses the same database tables as Passwords, so the original app must not be enabled at the same time.
+
+Passwords is the most advanced password manager for Nextcloud and allows you to manage and store your passwords safely in your own cloud.
 The intuitive and modern web interface of the app makes it easy to update and add new passwords from anywhere.
 Included security checks help you to keep your online accounts safe and up-to-date.
 You can also share passwords with other Nextcloud users.
@@ -83,7 +85,7 @@ Sie können auch einzelne Passwörter mit anderen Nutzern teilen.
     <version>2026.11.21</version>
     <licence>agpl</licence>
     <author homepage="https://www.passwordsapp.org/">Marius David Wieschollek</author>
-    <namespace>Passwords</namespace>
+    <namespace>PasswordFolders</namespace>
     <documentation>
         <user>https://git.mdns.eu/nextcloud-passwords/passwords/-/wikis/users/index</user>
         <admin>https://git.mdns.eu/nextcloud-passwords/passwords/-/wikis/administrators/index</admin>
@@ -132,46 +134,46 @@ Sie können auch einzelne Passwörter mit anderen Nutzern teilen.
         <nextcloud min-version="32.0.1" max-version="35" />
     </dependencies>
     <background-jobs>
-        <job>OCA\Passwords\Cron\CheckPasswordsJob</job>
-        <job>OCA\Passwords\Cron\SynchronizeShares</job>
-        <job>OCA\Passwords\Cron\SendServerSurvey</job>
-        <job>OCA\Passwords\Cron\CleanUpEntities</job>
-        <job>OCA\Passwords\Cron\BackupJob</job>
+        <job>OCA\PasswordFolders\Cron\CheckPasswordsJob</job>
+        <job>OCA\PasswordFolders\Cron\SynchronizeShares</job>
+        <job>OCA\PasswordFolders\Cron\SendServerSurvey</job>
+        <job>OCA\PasswordFolders\Cron\CleanUpEntities</job>
+        <job>OCA\PasswordFolders\Cron\BackupJob</job>
     </background-jobs>
     <repair-steps>
         <pre-migration>
-            <step>OCA\Passwords\Migration\CheckAppRequirements</step>
+            <step>OCA\PasswordFolders\Migration\CheckAppRequirements</step>
         </pre-migration>
         <live-migration>
-            <step>OCA\Passwords\Migration\AutoBackupRestore</step>
-            <step>OCA\Passwords\Migration\DatabaseObjectRepair</step>
-            <step>OCA\Passwords\Migration\CheckAppSettings</step>
-            <step>OCA\Passwords\Migration\ClearAppCaches</step>
+            <step>OCA\PasswordFolders\Migration\AutoBackupRestore</step>
+            <step>OCA\PasswordFolders\Migration\DatabaseObjectRepair</step>
+            <step>OCA\PasswordFolders\Migration\CheckAppSettings</step>
+            <step>OCA\PasswordFolders\Migration\ClearAppCaches</step>
         </live-migration>
         <install>
-            <step>OCA\Passwords\Migration\CheckAppRequirements</step>
+            <step>OCA\PasswordFolders\Migration\CheckAppRequirements</step>
         </install>
     </repair-steps>
     <commands>
-        <command>OCA\Passwords\Command\BackupCreateCommand</command>
-        <command>OCA\Passwords\Command\BackupListCommand</command>
-        <command>OCA\Passwords\Command\BackupRestoreCommand</command>
-        <command>OCA\Passwords\Command\BackupExportCommand</command>
-        <command>OCA\Passwords\Command\BackupImportCommand</command>
-        <command>OCA\Passwords\Command\BackupDeleteCommand</command>
-        <command>OCA\Passwords\Command\UserMoveCommand</command>
-        <command>OCA\Passwords\Command\UserDeleteCommand</command>
-        <command>OCA\Passwords\Command\SystemReportCommand</command>
-        <command>OCA\Passwords\Command\ProcessPwnedPasswordsList</command>
+        <command>OCA\PasswordFolders\Command\BackupCreateCommand</command>
+        <command>OCA\PasswordFolders\Command\BackupListCommand</command>
+        <command>OCA\PasswordFolders\Command\BackupRestoreCommand</command>
+        <command>OCA\PasswordFolders\Command\BackupExportCommand</command>
+        <command>OCA\PasswordFolders\Command\BackupImportCommand</command>
+        <command>OCA\PasswordFolders\Command\BackupDeleteCommand</command>
+        <command>OCA\PasswordFolders\Command\UserMoveCommand</command>
+        <command>OCA\PasswordFolders\Command\UserDeleteCommand</command>
+        <command>OCA\PasswordFolders\Command\SystemReportCommand</command>
+        <command>OCA\PasswordFolders\Command\ProcessPwnedPasswordsList</command>
     </commands>
     <settings>
-        <admin>OCA\Passwords\Settings\AdminSettings</admin>
-        <admin-section>OCA\Passwords\Settings\AdminSection</admin-section>
+        <admin>OCA\PasswordFolders\Settings\AdminSettings</admin>
+        <admin-section>OCA\PasswordFolders\Settings\AdminSection</admin-section>
     </settings>
     <navigations>
         <navigation>
-            <name>Passwords</name>
-            <route>passwords.page.index</route>
+            <name>Passwords Folders</name>
+            <route>passwordfolders.page.index</route>
         </navigation>
     </navigations>
 </info>

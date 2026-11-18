@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 class FolderRevisionMapper extends AbstractRevisionMapper {
 

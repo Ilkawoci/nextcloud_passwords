@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\ApiObjects;
+namespace OCA\PasswordFolders\Helper\ApiObjects;
 
 use Exception;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\ShareService;
-use OCA\Passwords\Services\Object\TagService;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\ShareService;
+use OCA\PasswordFolders\Services\Object\TagService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use Psr\Container\ContainerInterface;
@@ -27,7 +27,7 @@ use Psr\Container\ContainerInterface;
 /**
  * Class PasswordObjectHelper
  *
- * @package OCA\Passwords\Helper
+ * @package OCA\PasswordFolders\Helper
  */
 class PasswordObjectHelper extends AbstractObjectHelper {
 

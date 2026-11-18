@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Mail;
+namespace OCA\PasswordFolders\Mail;
 
 use OCP\IL10N;
 use OCP\IUser;
@@ -13,7 +13,7 @@ use OCP\IUser;
 /**
  * Class BadPasswordMail
  *
- * @package OCA\Passwords\Mail
+ * @package OCA\PasswordFolders\Mail
  */
 class BadPasswordMail extends AbstractMail {
 
@@ -40,7 +40,7 @@ class BadPasswordMail extends AbstractMail {
 
         $template->addBodyButton(
             $localisation->n('Change password now', 'Change passwords now', $passwords),
-            $this->urlGenerator->linkToRouteAbsolute('passwords.page.index').'#/security/2'
+            $this->urlGenerator->linkToRouteAbsolute('passwordfolders.page.index').'#/security/2'
         );
 
         $subject = $this->getSubject($localisation, $passwords);

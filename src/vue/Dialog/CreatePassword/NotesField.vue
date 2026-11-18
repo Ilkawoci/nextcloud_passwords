@@ -66,7 +66,7 @@
                 button.innerHTML = ' ';
                 button.className = 'toastui-editor-toolbar-icons last fa fa-question-circle';
                 button.addEventListener('click', () => {
-                    let url = UtilityService.generateUrl('/apps/passwords/#/help/Passwords%2FMarkdown-Notes');
+                    let url = UtilityService.generateUrl('/apps/passwordfolders/#/help/Passwords%2FMarkdown-Notes');
                     UtilityService.openLink(url);
                 });
                 return button;

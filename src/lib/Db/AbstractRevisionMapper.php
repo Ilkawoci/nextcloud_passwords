@@ -9,9 +9,9 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
-use OCA\Passwords\Exception\Database\DecryptedDataException;
+use OCA\PasswordFolders\Exception\Database\DecryptedDataException;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -21,7 +21,7 @@ use OCP\DB\QueryBuilder\IQueryBuilder;
 /**
  * Class AbstractRevisionMapper
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 abstract class AbstractRevisionMapper extends AbstractMapper {
 

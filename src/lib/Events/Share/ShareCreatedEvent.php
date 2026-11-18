@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Share;
+namespace OCA\PasswordFolders\Events\Share;
 
 /**
  * Class ShareCreatedEvent
  *
- * @package OCA\Passwords\Events\Share
+ * @package OCA\PasswordFolders\Events\Share
  */
 class ShareCreatedEvent extends GenericShareEvent {
 }

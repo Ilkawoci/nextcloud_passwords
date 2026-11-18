@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
-use OCA\Passwords\Services\Object\TagRevisionService;
-use OCA\Passwords\Services\Object\TagService;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Services\Object\TagService;
 
 /**
  * Class TagModelRepair
  *
- * @package OCA\Passwords\Migration\DatabaseRepair
+ * @package OCA\PasswordFolders\Migration\DatabaseRepair
  */
 class TagModelRepair extends AbstractModelRepair {
 

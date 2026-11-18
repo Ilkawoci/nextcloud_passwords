@@ -24,7 +24,7 @@
  *
  */
 
-namespace OCA\Passwords\Fetcher;
+namespace OCA\PasswordFolders\Fetcher;
 
 use Exception;
 use OC\App\AppStore\Fetcher\Fetcher;
@@ -41,7 +41,7 @@ use Throwable;
 /**
  * Class NightlyAppFetcher
  *
- * @package OCA\Passwords\Fetcher
+ * @package OCA\PasswordFolders\Fetcher
  */
 class NightlyAppFetcher extends Fetcher {
 

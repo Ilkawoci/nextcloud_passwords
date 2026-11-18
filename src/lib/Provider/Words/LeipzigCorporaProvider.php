@@ -9,18 +9,18 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Words;
+namespace OCA\PasswordFolders\Provider\Words;
 
 use Exception;
 use GuzzleHttp\RequestOptions;
-use OCA\Passwords\Helper\Words\SpecialCharacterHelper;
+use OCA\PasswordFolders\Helper\Words\SpecialCharacterHelper;
 use OCP\Http\Client\IClientService;
 use Random\Randomizer;
 
 /**
  * Class LeipzigCorporaProvider
  *
- * @package OCA\Passwords\Helper\Words
+ * @package OCA\PasswordFolders\Helper\Words
  */
 class LeipzigCorporaProvider extends AbstractWordsProvider {
 

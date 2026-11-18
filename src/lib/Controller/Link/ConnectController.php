@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Link;
+namespace OCA\PasswordFolders\Controller\Link;
 
 use Exception;
 use OC\Authentication\Token\IToken;
-use OCA\Passwords\Db\Registration;
-use OCA\Passwords\Helper\Settings\ServerSettingsHelper;
-use OCA\Passwords\Helper\Token\ApiTokenHelper;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\MailService;
-use OCA\Passwords\Services\NotificationService;
-use OCA\Passwords\Services\Object\RegistrationService;
-use OCA\Passwords\Services\SessionService;
+use OCA\PasswordFolders\Db\Registration;
+use OCA\PasswordFolders\Helper\Settings\ServerSettingsHelper;
+use OCA\PasswordFolders\Helper\Token\ApiTokenHelper;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\MailService;
+use OCA\PasswordFolders\Services\NotificationService;
+use OCA\PasswordFolders\Services\Object\RegistrationService;
+use OCA\PasswordFolders\Services\SessionService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\AnonRateLimit;
@@ -37,7 +37,7 @@ use Throwable;
 /**
  * Class ConnectController
  *
- * @package OCA\Passwords\Controller\Link
+ * @package OCA\PasswordFolders\Controller\Link
  */
 class ConnectController extends Controller {
 

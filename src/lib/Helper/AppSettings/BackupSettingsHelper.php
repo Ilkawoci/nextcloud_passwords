@@ -5,15 +5,15 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\AppSettings;
+namespace OCA\PasswordFolders\Helper\AppSettings;
 
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCP\IL10N;
 
 /**
  * Class BackupSettingsHelper
  *
- * @package OCA\Passwords\Helper\AppSettings
+ * @package OCA\PasswordFolders\Helper\AppSettings
  */
 class BackupSettingsHelper extends AbstractSettingsHelper {
 

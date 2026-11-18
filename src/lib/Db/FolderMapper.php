@@ -5,12 +5,12 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class FolderMapper
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 use OCP\DB\QueryBuilder\IQueryBuilder;
 

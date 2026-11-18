@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Folder;
+namespace OCA\PasswordFolders\Events\Folder;
 
 /**
  * Class FolderInstantiatedEvent
  *
- * @package OCA\Passwords\Events\Folder
+ * @package OCA\PasswordFolders\Events\Folder
  */
 class FolderInstantiatedEvent extends GenericFolderEvent {
 }

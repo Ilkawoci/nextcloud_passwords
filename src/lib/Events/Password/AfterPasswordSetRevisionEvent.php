@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Password;
+namespace OCA\PasswordFolders\Events\Password;
 
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordRevision;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class AfterPasswordSetRevisionEvent
  *
- * @package OCA\Passwords\Events\Password
+ * @package OCA\PasswordFolders\Events\Password
  */
 class AfterPasswordSetRevisionEvent extends Event {
 

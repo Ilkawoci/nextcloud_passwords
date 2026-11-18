@@ -5,12 +5,12 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class PasswordTagRelation
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  *
  * @method string getTag()
  * @method void setTag(string $tag)

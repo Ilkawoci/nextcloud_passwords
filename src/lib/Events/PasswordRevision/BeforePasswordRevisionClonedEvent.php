@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\PasswordRevision;
+namespace OCA\PasswordFolders\Events\PasswordRevision;
 
-use OCA\Passwords\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\PasswordRevision;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class BeforePasswordRevisionClonedEvent
  *
- * @package OCA\Passwords\Events\PasswordRevision
+ * @package OCA\PasswordFolders\Events\PasswordRevision
  */
 class BeforePasswordRevisionClonedEvent extends Event {
 

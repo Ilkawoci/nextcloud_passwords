@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Preview;
+namespace OCA\PasswordFolders\Provider\Preview;
 
 use Exception;
 use OCP\Files\SimpleFS\ISimpleFile;

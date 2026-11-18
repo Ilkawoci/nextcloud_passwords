@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Folder;
+namespace OCA\PasswordFolders\Events\Folder;
 
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\FolderRevision;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\FolderRevision;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class BeforeFolderSetRevisionEvent
  *
- * @package OCA\Passwords\Events\Folder
+ * @package OCA\PasswordFolders\Events\Folder
  */
 class BeforeFolderSetRevisionEvent extends Event {
 

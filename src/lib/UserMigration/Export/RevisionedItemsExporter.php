@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\UserMigration\Export;
+namespace OCA\PasswordFolders\UserMigration\Export;
 
-use OCA\Passwords\Services\Object\AbstractModelService;
-use OCA\Passwords\Services\Object\AbstractRevisionService;
-use OCA\Passwords\Services\Object\FolderRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\TagRevisionService;
-use OCA\Passwords\Services\Object\TagService;
+use OCA\PasswordFolders\Services\Object\AbstractModelService;
+use OCA\PasswordFolders\Services\Object\AbstractRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Services\Object\TagService;
 
 class RevisionedItemsExporter {
 
@@ -70,7 +70,7 @@ class RevisionedItemsExporter {
         return $data;
     }
 
-    protected function revisionToArray(\OCA\Passwords\Db\RevisionInterface $revision): array {
+    protected function revisionToArray(\OCA\PasswordFolders\Db\RevisionInterface $revision): array {
         $data = $revision->toArray();
 
         if(isset($data['sseKey'])) {
@@ -80,7 +80,7 @@ class RevisionedItemsExporter {
         return $data;
     }
 
-    protected function modelToArray(\OCA\Passwords\Db\ModelInterface $model) {
+    protected function modelToArray(\OCA\PasswordFolders\Db\ModelInterface $model) {
         $data = $model->toArray();
 
         if(isset($data['hasShares'])) {

@@ -9,24 +9,24 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\Helper\Image\AbstractImageHelper;
-use OCA\Passwords\Helper\Image\AutoImageHelper;
-use OCA\Passwords\Helper\Image\GdHelper;
-use OCA\Passwords\Helper\Image\ImagickHelper;
-use OCA\Passwords\Helper\Image\ImaginaryHelper;
-use OCA\Passwords\Provider\SecurityCheck\BigDbPlusHibpSecurityCheckProvider;
-use OCA\Passwords\Provider\SecurityCheck\BigLocalDbSecurityCheckProvider;
-use OCA\Passwords\Provider\SecurityCheck\HaveIBeenPwnedProvider;
-use OCA\Passwords\Provider\SecurityCheck\SecurityCheckProviderInterface;
-use OCA\Passwords\Provider\SecurityCheck\SmallLocalDbSecurityCheckProvider;
-use OCA\Passwords\Provider\Words\AutoWordsProvider;
-use OCA\Passwords\Provider\Words\LeipzigCorporaProvider;
-use OCA\Passwords\Provider\Words\LocalWordsProvider;
-use OCA\Passwords\Provider\Words\RandomCharactersProvider;
-use OCA\Passwords\Provider\Words\SnakesWordsProvider;
-use OCA\Passwords\Provider\Words\WordsProviderInterface;
+use OCA\PasswordFolders\Helper\Image\AbstractImageHelper;
+use OCA\PasswordFolders\Helper\Image\AutoImageHelper;
+use OCA\PasswordFolders\Helper\Image\GdHelper;
+use OCA\PasswordFolders\Helper\Image\ImagickHelper;
+use OCA\PasswordFolders\Helper\Image\ImaginaryHelper;
+use OCA\PasswordFolders\Provider\SecurityCheck\BigDbPlusHibpSecurityCheckProvider;
+use OCA\PasswordFolders\Provider\SecurityCheck\BigLocalDbSecurityCheckProvider;
+use OCA\PasswordFolders\Provider\SecurityCheck\HaveIBeenPwnedProvider;
+use OCA\PasswordFolders\Provider\SecurityCheck\SecurityCheckProviderInterface;
+use OCA\PasswordFolders\Provider\SecurityCheck\SmallLocalDbSecurityCheckProvider;
+use OCA\PasswordFolders\Provider\Words\AutoWordsProvider;
+use OCA\PasswordFolders\Provider\Words\LeipzigCorporaProvider;
+use OCA\PasswordFolders\Provider\Words\LocalWordsProvider;
+use OCA\PasswordFolders\Provider\Words\RandomCharactersProvider;
+use OCA\PasswordFolders\Provider\Words\SnakesWordsProvider;
+use OCA\PasswordFolders\Provider\Words\WordsProviderInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -34,7 +34,7 @@ use Psr\Container\NotFoundExceptionInterface;
 /**
  * Class HelperService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class HelperService {
 

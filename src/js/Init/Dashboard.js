@@ -64,8 +64,8 @@ export default new class Dashboard {
 
     async _initApi() {
         let baseUrl = UtilityService.generateUrl(),
-            user    = loadState('passwords', 'api-user', null),
-            token   = loadState('passwords', 'api-token', null);
+            user    = loadState('passwordfolders', 'api-user', null),
+            token   = loadState('passwordfolders', 'api-token', null);
 
         if(!user || !token) {
             throw new Error('Failed to obtain api credentials');
@@ -89,8 +89,8 @@ export default new class Dashboard {
      * @private
      */
     async _checkLoginRequirement() {
-        let impersonate  = loadState('passwords', 'impersonate', false),
-            authenticate = loadState('passwords', 'authenticate', true);
+        let impersonate  = loadState('passwordfolders', 'impersonate', false),
+            authenticate = loadState('passwordfolders', 'authenticate', true);
         this._loginRequired = authenticate || impersonate;
 
         if(!this._loginRequired) {

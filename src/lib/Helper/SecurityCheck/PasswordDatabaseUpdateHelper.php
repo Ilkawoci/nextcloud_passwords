@@ -9,13 +9,13 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\SecurityCheck;
+namespace OCA\PasswordFolders\Helper\SecurityCheck;
 
-use OCA\Passwords\Helper\User\AdminUserHelper;
-use OCA\Passwords\Provider\SecurityCheck\SecurityCheckProviderInterface;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\NotificationService;
+use OCA\PasswordFolders\Helper\User\AdminUserHelper;
+use OCA\PasswordFolders\Provider\SecurityCheck\SecurityCheckProviderInterface;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\NotificationService;
 use Throwable;
 
 class PasswordDatabaseUpdateHelper {

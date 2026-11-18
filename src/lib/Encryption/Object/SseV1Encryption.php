@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Encryption\Object;
+namespace OCA\PasswordFolders\Encryption\Object;
 
 use Exception;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Exception\Encryption\InvalidEncryptionResultException;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Exception\Encryption\InvalidEncryptionResultException;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\Lock\ILockingProvider;
 use OCP\Lock\LockedException;
 use OCP\Security\ICrypto;
@@ -28,7 +28,7 @@ use OCP\Security\ISecureRandom;
 /**
  * Class SseV1Encryption
  *
- * @package OCA\Passwords\Encryption\Object
+ * @package OCA\PasswordFolders\Encryption\Object
  */
 class SseV1Encryption implements ObjectEncryptionInterface {
 

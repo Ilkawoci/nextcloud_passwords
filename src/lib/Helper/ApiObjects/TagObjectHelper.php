@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\ApiObjects;
+namespace OCA\PasswordFolders\Helper\ApiObjects;
 
 use Exception;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\Tag;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\TagRevisionService;
-use OCA\Passwords\Services\Object\TagService;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\Tag;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Services\Object\TagService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use Psr\Container\ContainerInterface;
@@ -26,7 +26,7 @@ use Psr\Container\ContainerInterface;
 /**
  * Class TagObjectHelper
  *
- * @package OCA\Passwords\Helper\ApiObjects
+ * @package OCA\PasswordFolders\Helper\ApiObjects
  */
 class TagObjectHelper extends AbstractObjectHelper {
 

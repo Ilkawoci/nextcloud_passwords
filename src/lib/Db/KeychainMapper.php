@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 use Exception;
 use OCP\AppFramework\Db\DoesNotExistException;
@@ -15,7 +15,7 @@ use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 /**
  * Class KeychainMapper
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class KeychainMapper extends AbstractMapper {
 

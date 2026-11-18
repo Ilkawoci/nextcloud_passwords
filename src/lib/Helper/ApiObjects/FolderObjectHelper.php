@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\ApiObjects;
+namespace OCA\PasswordFolders\Helper\ApiObjects;
 
 use Exception;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\Object\FolderRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\Object\FolderRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use Psr\Container\ContainerInterface;
@@ -27,7 +27,7 @@ use Psr\Container\ContainerInterface;
 /**
  * Class FolderObjectHelper
  *
- * @package OCA\Passwords\Helper\ApiObjects
+ * @package OCA\PasswordFolders\Helper\ApiObjects
  */
 class FolderObjectHelper extends AbstractObjectHelper {
 

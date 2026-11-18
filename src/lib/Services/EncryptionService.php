@@ -9,27 +9,27 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\Db\Challenge;
-use OCA\Passwords\Db\Keychain;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Encryption\Challenge\ChallengeEncryptionInterface;
-use OCA\Passwords\Encryption\Challenge\SimpleChallengeEncryption;
-use OCA\Passwords\Encryption\Keychain\KeychainEncryptionInterface;
-use OCA\Passwords\Encryption\Keychain\SseV2KeychainEncryption;
-use OCA\Passwords\Encryption\Object\ObjectEncryptionInterface;
-use OCA\Passwords\Encryption\Object\SseV1Encryption;
-use OCA\Passwords\Encryption\Object\SseV2Encryption;
-use OCA\Passwords\Encryption\Object\SseV3Encryption;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Db\Challenge;
+use OCA\PasswordFolders\Db\Keychain;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Encryption\Challenge\ChallengeEncryptionInterface;
+use OCA\PasswordFolders\Encryption\Challenge\SimpleChallengeEncryption;
+use OCA\PasswordFolders\Encryption\Keychain\KeychainEncryptionInterface;
+use OCA\PasswordFolders\Encryption\Keychain\SseV2KeychainEncryption;
+use OCA\PasswordFolders\Encryption\Object\ObjectEncryptionInterface;
+use OCA\PasswordFolders\Encryption\Object\SseV1Encryption;
+use OCA\PasswordFolders\Encryption\Object\SseV2Encryption;
+use OCA\PasswordFolders\Encryption\Object\SseV3Encryption;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
 use Psr\Container\ContainerInterface;
 
 /**
  * Class EncryptionService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class EncryptionService {
 

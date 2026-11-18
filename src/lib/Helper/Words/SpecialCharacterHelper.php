@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Words;
+namespace OCA\PasswordFolders\Helper\Words;
 
 use Exception;
 use Random\Randomizer;
@@ -13,7 +13,7 @@ use Random\Randomizer;
 /**
  * Class SpecialCharacterHelper
  *
- * @package OCA\Passwords\Helper\Words
+ * @package OCA\PasswordFolders\Helper\Words
  */
 class SpecialCharacterHelper {
 

@@ -9,14 +9,14 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Image;
+namespace OCA\PasswordFolders\Helper\Image;
 
 use Exception;
-use OCA\Passwords\Exception\Image\ImageConversionException;
-use OCA\Passwords\Exception\Image\Imaginary\ImaginaryCommunicationException;
-use OCA\Passwords\Exception\Image\Imaginary\NotConfiguredException;
-use OCA\Passwords\Helper\Image\Imaginary\ImaginaryImage;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Exception\Image\ImageConversionException;
+use OCA\PasswordFolders\Exception\Image\Imaginary\ImaginaryCommunicationException;
+use OCA\PasswordFolders\Exception\Image\Imaginary\NotConfiguredException;
+use OCA\PasswordFolders\Helper\Image\Imaginary\ImaginaryImage;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCP\Http\Client\IClientService;
 
 class ImaginaryHelper extends AbstractImageHelper {

@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Sharing;
+namespace OCA\PasswordFolders\Helper\Sharing;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Settings\ShareSettingsHelper;
-use OCA\Passwords\Integrations\GuestsIntegration;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Settings\ShareSettingsHelper;
+use OCA\PasswordFolders\Integrations\GuestsIntegration;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\AppFramework\Http;
 use OCP\IGroupManager;
 use OCP\IUser;
@@ -24,7 +24,7 @@ use OCP\Share\IManager;
 /**
  * Class RecipientSearchHelper
  *
- * @package OCA\Passwords\Helper\Sharing
+ * @package OCA\PasswordFolders\Helper\Sharing
  */
 class RecipientSearchHelper {
 

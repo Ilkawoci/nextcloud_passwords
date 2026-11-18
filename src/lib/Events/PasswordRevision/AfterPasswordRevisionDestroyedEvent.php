@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\PasswordRevision;
+namespace OCA\PasswordFolders\Events\PasswordRevision;
 
 /**
  * Class AfterPasswordRevisionDestroyedEvent
  *
- * @package OCA\Passwords\Events\PasswordRevision
+ * @package OCA\PasswordFolders\Events\PasswordRevision
  */
 class AfterPasswordRevisionDestroyedEvent extends GenericPasswordRevisionEvent {
 }

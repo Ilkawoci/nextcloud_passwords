@@ -5,15 +5,15 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\CleanUp;
+namespace OCA\PasswordFolders\Helper\CleanUp;
 
-use OCA\Passwords\Db\SessionMapper;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Db\SessionMapper;
+use OCA\PasswordFolders\Services\LoggingService;
 
 /**
  * Class CleanSessionsHelper
  *
- * @package OCA\Passwords\Helper\CleanUp
+ * @package OCA\PasswordFolders\Helper\CleanUp
  */
 class CleanSessionsHelper {
 

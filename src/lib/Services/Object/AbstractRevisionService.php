@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
 use Exception;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\AbstractRevisionMapper;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\ValidationService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\AbstractRevisionMapper;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\ValidationService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -28,7 +28,7 @@ use OCP\EventDispatcher\IEventDispatcher;
 /**
  * Class AbstractRevisionService
  *
- * @package OCA\Passwords\Services\Object
+ * @package OCA\PasswordFolders\Services\Object
  */
 abstract class AbstractRevisionService extends AbstractService {
 

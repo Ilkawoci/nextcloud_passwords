@@ -9,11 +9,11 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Integrations;
+namespace OCA\PasswordFolders\Integrations;
 
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Helper\Theming\ThemingColorHelper;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Helper\Theming\ThemingColorHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCA\Theming\Capabilities;
 use OCA\Theming\ThemingDefaults;
 use OCP\IURLGenerator;
@@ -26,7 +26,7 @@ use Psr\Container\NotFoundExceptionInterface;
 /**
  * Class ThemingIntegrationTest
  *
- * @package OCA\Passwords\Integrations
+ * @package OCA\PasswordFolders\Integrations
  */
 class ThemingIntegrationTest extends TestCase {
 

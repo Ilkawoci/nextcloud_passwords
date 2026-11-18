@@ -9,11 +9,11 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Mail;
+namespace OCA\PasswordFolders\Mail;
 
 use OC_Defaults;
-use OCA\Passwords\Helper\Settings\ThemeSettingsHelper;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Helper\Settings\ThemeSettingsHelper;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\IUser;
@@ -22,7 +22,7 @@ use OCP\Mail\IMailer;
 /**
  * Class NewClientMail
  *
- * @package OCA\Passwords\Mail
+ * @package OCA\PasswordFolders\Mail
  */
 class NewClientMail extends AbstractMail {
 

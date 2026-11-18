@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\FolderRevision;
+namespace OCA\PasswordFolders\Events\FolderRevision;
 
-use OCA\Passwords\Db\FolderRevision;
+use OCA\PasswordFolders\Db\FolderRevision;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class GenericFolderRevisionEvent
  *
- * @package OCA\Passwords\Events\FolderRevision
+ * @package OCA\PasswordFolders\Events\FolderRevision
  */
 class GenericFolderRevisionEvent extends Event {
 

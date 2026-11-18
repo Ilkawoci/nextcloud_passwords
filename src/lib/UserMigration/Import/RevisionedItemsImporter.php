@@ -9,22 +9,22 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\UserMigration\Import;
+namespace OCA\PasswordFolders\UserMigration\Import;
 
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\FolderMapper;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\FolderRevisionMapper;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordMapper;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\PasswordRevisionMapper;
-use OCA\Passwords\Db\Tag;
-use OCA\Passwords\Db\TagMapper;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Db\TagRevisionMapper;
-use OCA\Passwords\Services\EncryptionService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\FolderMapper;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\FolderRevisionMapper;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordMapper;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\PasswordRevisionMapper;
+use OCA\PasswordFolders\Db\Tag;
+use OCA\PasswordFolders\Db\TagMapper;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Db\TagRevisionMapper;
+use OCA\PasswordFolders\Services\EncryptionService;
 use OCP\DB\Exception;
 
 class RevisionedItemsImporter {

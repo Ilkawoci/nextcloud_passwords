@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Encryption\Challenge;
+namespace OCA\PasswordFolders\Encryption\Challenge;
 
 use Exception;
-use OCA\Passwords\Db\Challenge;
-use OCA\Passwords\Encryption\Object\SseV1Encryption;
-use OCA\Passwords\Exception\Encryption\InvalidEncryptionResultException;
+use OCA\PasswordFolders\Db\Challenge;
+use OCA\PasswordFolders\Encryption\Object\SseV1Encryption;
+use OCA\PasswordFolders\Exception\Encryption\InvalidEncryptionResultException;
 
 /**
  * Class SimpleChallengeEncryption
  *
- * @package OCA\Passwords\Encryption\Challenge
+ * @package OCA\PasswordFolders\Encryption\Challenge
  */
 class SimpleChallengeEncryption extends SseV1Encryption implements ChallengeEncryptionInterface {
 

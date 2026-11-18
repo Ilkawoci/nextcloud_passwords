@@ -9,23 +9,23 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
 use Exception;
-use OCA\Passwords\Db\FolderMapper;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\Object\FolderRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
+use OCA\PasswordFolders\Db\FolderMapper;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\Object\FolderRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 
 /**
  * Class FolderRevisionRepairHelper
  *
- * @package OCA\Passwords\Migration\DatabaseRepair
+ * @package OCA\PasswordFolders\Migration\DatabaseRepair
  */
 class FolderRevisionRepair extends AbstractRevisionRepair {
 

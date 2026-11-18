@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 use OCP\AppFramework\Db\Entity;
-use OCA\Passwords\Db\Traits\GetterSetterTrait;
+use OCA\PasswordFolders\Db\Traits\GetterSetterTrait;
 
 /**
  * Class AbstractEntity
@@ -28,7 +28,7 @@ use OCA\Passwords\Db\Traits\GetterSetterTrait;
  * @method int getUpdated()
  * @method void setUpdated(int $updated)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 abstract class AbstractEntity extends Entity implements EntityInterface {
 

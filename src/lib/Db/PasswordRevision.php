@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class PasswordRevision
@@ -29,7 +29,7 @@ namespace OCA\Passwords\Db;
  * @method string getStatusCode()
  * @method void setStatusCode(string $statusCode)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class PasswordRevision extends AbstractRevision {
 

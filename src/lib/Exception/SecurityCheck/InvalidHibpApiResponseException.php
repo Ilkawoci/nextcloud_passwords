@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Exception\SecurityCheck;
+namespace OCA\PasswordFolders\Exception\SecurityCheck;
 
 use Exception;
 use GuzzleHttp\Exception\ClientException;
@@ -15,7 +15,7 @@ use Throwable;
 /**
  * Class InvalidHibpApiResponseException
  *
- * @package OCA\Passwords\Exception\SecurityCheck
+ * @package OCA\PasswordFolders\Exception\SecurityCheck
  */
 class InvalidHibpApiResponseException extends Exception {
 

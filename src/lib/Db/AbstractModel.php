@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class AbstractModel
@@ -13,7 +13,7 @@ namespace OCA\Passwords\Db;
  * @method string getRevision()
  * @method void setRevision(string $revision)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 abstract class AbstractModel extends AbstractEntity implements ModelInterface {
 

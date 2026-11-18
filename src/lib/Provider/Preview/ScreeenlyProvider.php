@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Preview;
+namespace OCA\PasswordFolders\Provider\Preview;
 
 use GuzzleHttp\Exception\ClientException;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\HelperService;
-use OCA\Passwords\Services\WebsitePreviewService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\HelperService;
+use OCA\PasswordFolders\Services\WebsitePreviewService;
 use OCP\AppFramework\Http;
 use Throwable;
 
 /**
  * Class ScreeenlyProvider
  *
- * @package OCA\Passwords\Helper\Preview
+ * @package OCA\PasswordFolders\Helper\Preview
  */
 class ScreeenlyProvider extends AbstractPreviewProvider {
 

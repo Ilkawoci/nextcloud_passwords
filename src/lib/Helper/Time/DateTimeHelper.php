@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Time;
+namespace OCA\PasswordFolders\Helper\Time;
 
 use DateTime;
 use DateTimeZone;
@@ -14,7 +14,7 @@ use Exception;
 /**
  * Class DateTimeHelper
  *
- * @package OCA\Passwords\Helper\Time
+ * @package OCA\PasswordFolders\Helper\Time
  */
 class DateTimeHelper {
 

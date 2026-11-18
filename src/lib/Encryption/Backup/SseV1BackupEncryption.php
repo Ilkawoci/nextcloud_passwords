@@ -5,18 +5,18 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Encryption\Backup;
+namespace OCA\PasswordFolders\Encryption\Backup;
 
 use Exception;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Encryption\Object\SseV1Encryption;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Encryption\Object\SseV1Encryption;
 
 /**
  * Class SseV1BackupEncryption
  *
- * @package OCA\Passwords\Encryption\Backup
+ * @package OCA\PasswordFolders\Encryption\Backup
  */
 class SseV1BackupEncryption extends SseV1Encryption {
 

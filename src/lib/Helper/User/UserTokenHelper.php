@@ -5,12 +5,12 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\User;
+namespace OCA\PasswordFolders\Helper\User;
 
 use OC\Authentication\TwoFactorAuth\Manager;
-use OCA\Passwords\Services\DeferredActivationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\SessionService;
+use OCA\PasswordFolders\Services\DeferredActivationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\SessionService;
 use OCP\Authentication\TwoFactorAuth\IProvider;
 use OCP\ISession;
 use OCP\IUser;
@@ -22,7 +22,7 @@ use Throwable;
 /**
  * Class UserTokenHelper
  *
- * @package OCA\Passwords\Helper\Token
+ * @package OCA\PasswordFolders\Helper\Token
  */
 class UserTokenHelper {
 

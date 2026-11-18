@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
 use Exception;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use OCP\Migration\IOutput;
 use Throwable;
 

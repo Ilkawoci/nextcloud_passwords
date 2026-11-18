@@ -5,16 +5,16 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Settings;
+namespace OCA\PasswordFolders\Helper\Settings;
 
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class UserSettingsHelperTest
  *
- * @package OCA\Passwords\Helper\Settings
+ * @package OCA\PasswordFolders\Helper\Settings
  */
 class UserSettingsHelperTest extends TestCase {
 
@@ -97,8 +97,8 @@ class UserSettingsHelperTest extends TestCase {
         $this->configurationService->method('getAppValue')->willReturn('0');
         $this->configurationService->method('getUserValue')->willReturnMap(
             [
-                ['mail/security', '0', null, 'passwords', '0'],
-                ['mail/security', '1', null, 'passwords', '1']
+                ['mail/security', '0', null, 'passwordfolders', '0'],
+                ['mail/security', '1', null, 'passwordfolders', '1']
             ]
         );
         $this->configurationService->expects($this->once())->method('getAppValue')->with('settings/mail/security', true);
@@ -117,8 +117,8 @@ class UserSettingsHelperTest extends TestCase {
         $this->configurationService->method('getAppValue')->willReturn('0');
         $this->configurationService->method('getUserValue')->willReturnMap(
             [
-                ['mail/security', '0', null, 'passwords', '1'],
-                ['mail/security', '1', null, 'passwords', '0']
+                ['mail/security', '0', null, 'passwordfolders', '1'],
+                ['mail/security', '1', null, 'passwordfolders', '0']
             ]
         );
         $this->configurationService->expects($this->once())->method('getAppValue')->with('settings/mail/security', true);
@@ -137,8 +137,8 @@ class UserSettingsHelperTest extends TestCase {
         $this->configurationService->method('getAppValue')->willReturn('0');
         $this->configurationService->method('getUserValue')->willReturnMap(
             [
-                ['mail/shares', '0', null, 'passwords', '0'],
-                ['mail/shares', '1', null, 'passwords', '1']
+                ['mail/shares', '0', null, 'passwordfolders', '0'],
+                ['mail/shares', '1', null, 'passwordfolders', '1']
             ]
         );
         $this->configurationService->expects($this->once())->method('getAppValue')->with('settings/mail/shares', false);
@@ -157,8 +157,8 @@ class UserSettingsHelperTest extends TestCase {
         $this->configurationService->method('getAppValue')->willReturn('0');
         $this->configurationService->method('getUserValue')->willReturnMap(
             [
-                ['mail/shares', '0', null, 'passwords', '1'],
-                ['mail/shares', '1', null, 'passwords', '0']
+                ['mail/shares', '0', null, 'passwordfolders', '1'],
+                ['mail/shares', '1', null, 'passwordfolders', '0']
             ]
         );
         $this->configurationService->expects($this->once())->method('getAppValue')->with('settings/mail/shares', false);
@@ -177,8 +177,8 @@ class UserSettingsHelperTest extends TestCase {
         $this->configurationService->method('hasUserValue')->willReturn(true);
         $this->configurationService->method('getUserValue')->willReturnMap(
             [
-                ['encryption/cse', 0, null, 'passwords', '0'],
-                ['encryption/cse', 1, null, 'passwords', '1']
+                ['encryption/cse', 0, null, 'passwordfolders', '0'],
+                ['encryption/cse', 1, null, 'passwordfolders', '1']
             ]
         );
         $this->configurationService->expects($this->once())->method('hasUserValue')->with('user/challenge/id', null);
@@ -197,8 +197,8 @@ class UserSettingsHelperTest extends TestCase {
         $this->configurationService->method('hasUserValue')->willReturn(false);
         $this->configurationService->method('getUserValue')->willReturnMap(
             [
-                ['encryption/cse', 0, null, 'passwords', '0'],
-                ['encryption/cse', 1, null, 'passwords', '1']
+                ['encryption/cse', 0, null, 'passwordfolders', '0'],
+                ['encryption/cse', 1, null, 'passwordfolders', '1']
             ]
         );
         $this->configurationService->expects($this->once())->method('hasUserValue')->with('user/challenge/id', null);

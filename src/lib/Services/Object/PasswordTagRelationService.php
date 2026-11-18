@@ -5,24 +5,24 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
 use Exception;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\PasswordTagRelation;
-use OCA\Passwords\Db\PasswordTagRelationMapper;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\PasswordTagRelation;
+use OCA\PasswordFolders\Db\PasswordTagRelationMapper;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\AppFramework\Db\Entity;
 use OCP\EventDispatcher\IEventDispatcher;
 
 /**
  * Class PasswordTagRelationService
  *
- * @package OCA\Passwords\Services\Object
+ * @package OCA\PasswordFolders\Services\Object
  */
 class PasswordTagRelationService extends AbstractService {
 

@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\SecurityCheck;
+namespace OCA\PasswordFolders\Provider\SecurityCheck;
 
 interface SecurityCheckProviderInterface {
 

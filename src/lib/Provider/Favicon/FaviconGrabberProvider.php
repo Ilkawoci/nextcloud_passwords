@@ -9,14 +9,14 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Favicon;
+namespace OCA\PasswordFolders\Provider\Favicon;
 
 use Exception;
-use OCA\Passwords\Exception\Favicon\FaviconRequestException;
-use OCA\Passwords\Exception\Favicon\UnexpectedResponseCodeException;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Exception\Favicon\FaviconRequestException;
+use OCA\PasswordFolders\Exception\Favicon\UnexpectedResponseCodeException;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
@@ -25,7 +25,7 @@ use Throwable;
 /**
  * Class FaviconGrabberProvider
  *
- * @package OCA\Passwords\Helper\Favicon
+ * @package OCA\PasswordFolders\Helper\Favicon
  */
 class FaviconGrabberProvider extends AbstractFaviconProvider {
 

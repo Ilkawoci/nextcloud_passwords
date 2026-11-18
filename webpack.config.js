@@ -34,7 +34,7 @@ module.exports = (env, argv) => {
                     APP_FEATURE_VERSION: `"${config.version.substr(0, config.version.lastIndexOf('.'))}"`,
                     APP_ENVIRONMENT    : production ? '"production"':'"development"',
                     APP_NIGHTLY        : !!(env && env.features === 'true'),
-                    appName            : '"passwords"',
+                    appName            : '"passwordfolders"',
                     appVersion         : `"${config.version}"`
                 }
             ),
@@ -72,7 +72,7 @@ module.exports = (env, argv) => {
             apply(compiler) {
                 compiler.hooks.done.tap(this.constructor.name, stats => {
                     exec(
-                        'docker exec -u www-data passwords-php php ./occ config:app:set passwords dev/app/hash --value=' + stats.compilation.hash,
+                        'docker exec -u www-data passwords-php php ./occ config:app:set passwordfolders dev/app/hash --value=' + stats.compilation.hash,
                         (error, stdout, stderr) => {
                             if(error) {
                                 console.error(`Could not set app hash: ${error}`);
@@ -154,7 +154,7 @@ module.exports = (env, argv) => {
                                 modules : 'global',
                                 url     : {
                                     filter: (url) => {
-                                        return url.indexOf('/apps/passwords/') === -1;
+                                        return url.indexOf('/apps/passwordfolders/') === -1;
                                     }
                                 }
                             }

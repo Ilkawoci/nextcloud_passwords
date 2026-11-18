@@ -5,9 +5,9 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Settings;
+namespace OCA\PasswordFolders\Helper\Settings;
 
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCP\IURLGenerator;
 use OCP\ServerVersion;
 use OCP\Util;
@@ -15,7 +15,7 @@ use OCP\Util;
 /**
  * Class ServerSettingsHelper
  *
- * @package OCA\Passwords\Helper\Settings
+ * @package OCA\PasswordFolders\Helper\Settings
  */
 class ServerSettingsHelper {
 

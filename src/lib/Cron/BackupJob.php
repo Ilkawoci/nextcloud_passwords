@@ -9,20 +9,20 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Cron;
+namespace OCA\PasswordFolders\Cron;
 
 use Exception;
-use OCA\Passwords\Services\BackupService;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Services\BackupService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\Util;
 
 /**
  * Class BackupJob
  *
- * @package OCA\Passwords\Cron
+ * @package OCA\PasswordFolders\Cron
  */
 class BackupJob extends AbstractTimedJob {
 

@@ -9,11 +9,11 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\UserMigration\Export;
+namespace OCA\PasswordFolders\UserMigration\Export;
 
-use OCA\Passwords\Services\Object\ChallengeService;
-use OCA\Passwords\Services\Object\KeychainService;
-use OCA\Passwords\Services\Object\PasswordTagRelationService;
+use OCA\PasswordFolders\Services\Object\ChallengeService;
+use OCA\PasswordFolders\Services\Object\KeychainService;
+use OCA\PasswordFolders\Services\Object\PasswordTagRelationService;
 
 class SimpleItemExporter {
 

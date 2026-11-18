@@ -5,31 +5,31 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\User;
+namespace OCA\PasswordFolders\Helper\User;
 
 use Exception;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\SessionMapper;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\Object\AbstractModelService;
-use OCA\Passwords\Services\Object\AbstractService;
-use OCA\Passwords\Services\Object\ChallengeService;
-use OCA\Passwords\Services\Object\FolderRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\KeychainService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\PasswordTagRelationService;
-use OCA\Passwords\Services\Object\ShareService;
-use OCA\Passwords\Services\Object\TagRevisionService;
-use OCA\Passwords\Services\Object\TagService;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\SessionMapper;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\Object\AbstractModelService;
+use OCA\PasswordFolders\Services\Object\AbstractService;
+use OCA\PasswordFolders\Services\Object\ChallengeService;
+use OCA\PasswordFolders\Services\Object\FolderRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\KeychainService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\PasswordTagRelationService;
+use OCA\PasswordFolders\Services\Object\ShareService;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Services\Object\TagService;
 
 /**
  * Class MoveUserDataHelper
  *
- * @package OCA\Passwords\Helper\User
+ * @package OCA\PasswordFolders\Helper\User
  */
 class MoveUserDataHelper {
 

@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Password;
+namespace OCA\PasswordFolders\EventListener\Password;
 
 use Exception;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Events\Password\BeforePasswordSetRevisionEvent;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Events\Password\BeforePasswordSetRevisionEvent;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\EventDispatcher\Event;
@@ -22,7 +22,7 @@ use OCP\EventDispatcher\Event;
 /**
  * Class BeforePasswordSetRevisionListener
  *
- * @package OCA\Passwords\EventListener\Password
+ * @package OCA\PasswordFolders\EventListener\Password
  */
 class BeforePasswordSetRevisionListener extends AbstractPasswordListener {
 

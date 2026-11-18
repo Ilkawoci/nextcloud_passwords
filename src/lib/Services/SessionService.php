@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
 use OC\Authentication\Token\PublicKeyToken;
-use OCA\Passwords\Db\Session;
-use OCA\Passwords\Db\SessionMapper;
-use OCA\Passwords\Encryption\Object\SimpleEncryption;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Db\Session;
+use OCA\PasswordFolders\Db\SessionMapper;
+use OCA\PasswordFolders\Encryption\Object\SimpleEncryption;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\Authentication\Token\IProvider;
@@ -28,7 +28,7 @@ use Throwable;
 /**
  * Class SessionService
  *
- * @package OCA\Passwords\Services\Object
+ * @package OCA\PasswordFolders\Services\Object
  */
 class SessionService {
 

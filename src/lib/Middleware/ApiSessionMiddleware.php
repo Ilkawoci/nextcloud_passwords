@@ -9,14 +9,14 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Middleware;
+namespace OCA\PasswordFolders\Middleware;
 
-use OCA\Passwords\Controller\Api\ServiceApiController;
-use OCA\Passwords\Controller\Api\SessionApiController;
-use OCA\Passwords\Controller\Api\SettingsApiController;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\SessionService;
-use OCA\Passwords\Services\UserChallengeService;
+use OCA\PasswordFolders\Controller\Api\ServiceApiController;
+use OCA\PasswordFolders\Controller\Api\SessionApiController;
+use OCA\PasswordFolders\Controller\Api\SettingsApiController;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\SessionService;
+use OCA\PasswordFolders\Services\UserChallengeService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\FileDisplayResponse;
@@ -27,7 +27,7 @@ use OCP\DB\Exception;
 /**
  * Class ApiSessionMiddleware
  *
- * @package OCA\Passwords\Middleware
+ * @package OCA\PasswordFolders\Middleware
  */
 class ApiSessionMiddleware extends Middleware {
 
@@ -89,7 +89,7 @@ class ApiSessionMiddleware extends Middleware {
     protected function isApiRequest(Controller $controller): bool {
         $class = get_class($controller);
 
-        return str_starts_with($class, 'OCA\Passwords\Controller\Api');
+        return str_starts_with($class, 'OCA\PasswordFolders\Controller\Api');
     }
 
     /**

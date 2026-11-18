@@ -5,18 +5,18 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Backup;
+namespace OCA\PasswordFolders\Helper\Backup;
 
 use Exception;
-use OCA\Passwords\Encryption\Backup\SseV1BackupEncryption;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Encryption\Backup\SseV1BackupEncryption;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
 
 /**
  * Class BackupMigrationHelper
  *
- * @package OCA\Passwords\Helper\Backup
+ * @package OCA\PasswordFolders\Helper\Backup
  */
 class BackupMigrationHelper {
 

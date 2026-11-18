@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Image;
+namespace OCA\PasswordFolders\Helper\Image;
 
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\HelperService;
 
 class AutoImageHelper extends AbstractImageHelper {
 

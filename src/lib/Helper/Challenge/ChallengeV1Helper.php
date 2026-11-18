@@ -1,11 +1,11 @@
 <?php
 
-namespace OCA\Passwords\Helper\Challenge;
+namespace OCA\PasswordFolders\Helper\Challenge;
 
 use Exception;
-use OCA\Passwords\Db\Challenge;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\Object\ChallengeService;
+use OCA\PasswordFolders\Db\Challenge;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\Object\ChallengeService;
 use OCP\AppFramework\Http;
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;

@@ -5,21 +5,21 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
 use Exception;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\ModelInterface;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordMapper;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\ModelInterface;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordMapper;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\EventDispatcher\IEventDispatcher;
 
 /**
  * Class PasswordService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class PasswordService extends AbstractModelService {
 

@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\FolderRevision;
+namespace OCA\PasswordFolders\Events\FolderRevision;
 
 /**
  * Class BeforeFolderRevisionCreatedEvent
  *
- * @package OCA\Passwords\Events\FolderRevision
+ * @package OCA\PasswordFolders\Events\FolderRevision
  */
 class BeforeFolderRevisionCreatedEvent extends GenericFolderRevisionEvent {
 }

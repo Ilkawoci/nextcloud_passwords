@@ -9,18 +9,18 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Sharing;
+namespace OCA\PasswordFolders\Helper\Sharing;
 
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Exception\ApiException;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Exception\ApiException;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 
 /**
  * Class UpdatePasswordShareHelper
  *
- * @package OCA\Passwords\Helper\Sharing
+ * @package OCA\PasswordFolders\Helper\Sharing
  */
 class UpdatePasswordShareHelper extends CreatePasswordShareHelper {
 

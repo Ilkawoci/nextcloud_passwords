@@ -5,22 +5,22 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\AppSettings\BackupSettingsHelper;
-use OCA\Passwords\Helper\AppSettings\DefaultSettingsHelper;
-use OCA\Passwords\Helper\AppSettings\EncryptionSettingsHelper;
-use OCA\Passwords\Helper\AppSettings\EntitySettingsHelper;
-use OCA\Passwords\Helper\AppSettings\NightlySettingsHelper;
-use OCA\Passwords\Helper\AppSettings\ServiceSettingsHelper;
-use OCA\Passwords\Helper\AppSettings\SurveySettingsHelper;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\AppSettings\BackupSettingsHelper;
+use OCA\PasswordFolders\Helper\AppSettings\DefaultSettingsHelper;
+use OCA\PasswordFolders\Helper\AppSettings\EncryptionSettingsHelper;
+use OCA\PasswordFolders\Helper\AppSettings\EntitySettingsHelper;
+use OCA\PasswordFolders\Helper\AppSettings\NightlySettingsHelper;
+use OCA\PasswordFolders\Helper\AppSettings\ServiceSettingsHelper;
+use OCA\PasswordFolders\Helper\AppSettings\SurveySettingsHelper;
 use OCP\AppFramework\Http;
 
 /**
  * Class AppSettingsService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class AppSettingsService {
 

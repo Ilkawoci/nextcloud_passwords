@@ -5,12 +5,12 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
 use Exception;
-use OCA\Passwords\Helper\User\DeleteUserDataHelper;
-use OCA\Passwords\Helper\User\MoveUserDataHelper;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Helper\User\DeleteUserDataHelper;
+use OCA\PasswordFolders\Helper\User\MoveUserDataHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCP\IUser;
 use OCP\IUserManager;
 use Symfony\Component\Console\Input\InputArgument;
@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class UserMoveCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class UserMoveCommand extends AbstractInteractiveCommand {
 
@@ -47,7 +47,7 @@ class UserMoveCommand extends AbstractInteractiveCommand {
      *
      */
     protected function configure() {
-        $this->setName('passwords:user:move')
+        $this->setName('passwordfolders:user:move')
              ->setDescription('Moves all data from one user account to another')
              ->addArgument('source_user', InputArgument::REQUIRED, 'The id of the user to move from')
              ->addArgument('target_user', InputArgument::REQUIRED, 'The id of the user to move to');

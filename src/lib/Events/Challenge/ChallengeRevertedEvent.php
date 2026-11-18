@@ -9,14 +9,14 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Challenge;
+namespace OCA\PasswordFolders\Events\Challenge;
 
 use OCP\EventDispatcher\Event;
 
 /**
  * Class ChallengeRevertedEvent
  *
- * @package OCA\Passwords\Events\Challenge
+ * @package OCA\PasswordFolders\Events\Challenge
  */
 class ChallengeRevertedEvent extends Event {
 

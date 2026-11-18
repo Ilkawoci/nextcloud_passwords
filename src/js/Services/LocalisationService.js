@@ -86,7 +86,7 @@ export default new class LocalisationService {
      */
     translate(text, variables = {}) {
         if(text === undefined) return '';
-        if(OC !== undefined) return translate('passwords', text, variables).replace('&amp;', '&');
+        if(OC !== undefined) return translate('passwordfolders', text, variables).replace('&amp;', '&');
 
         return '';
     }
@@ -125,9 +125,9 @@ export default new class LocalisationService {
      */
     async loadSection(section, alternative = false) {
         let language = this.language.replace('-', '_'),
-            url      = generateFilePath('passwords', 'l10n', `${section}/${language}.json?_=${APP_VERSION}`);
+            url      = generateFilePath('passwordfolders', 'l10n', `${section}/${language}.json?_=${APP_VERSION}`);
         if(alternative) {
-            url = generateUrl(`/apps/passwords/l10n/${section}/${language}.json`);
+            url = generateUrl(`/apps/passwordfolders/l10n/${section}/${language}.json`);
         }
 
         let result = await this._loadFile(url);
@@ -174,7 +174,7 @@ export default new class LocalisationService {
                 translations = Object.assign.apply(this, translations);
             }
 
-            OC.L10N.register('passwords', translations);
+            OC.L10N.register('passwordfolders', translations);
 
             return true;
         }

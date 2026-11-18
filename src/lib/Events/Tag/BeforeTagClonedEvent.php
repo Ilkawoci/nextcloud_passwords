@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Tag;
+namespace OCA\PasswordFolders\Events\Tag;
 
-use OCA\Passwords\Db\Tag;
+use OCA\PasswordFolders\Db\Tag;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class BeforeTagClonedEvent
  *
- * @package OCA\Passwords\Events\Tag
+ * @package OCA\PasswordFolders\Events\Tag
  */
 class BeforeTagClonedEvent extends Event {
 

@@ -5,18 +5,18 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\EventListener\Share;
+namespace OCA\PasswordFolders\EventListener\Share;
 
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Events\Share\ShareDeletedEvent;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Events\Share\ShareDeletedEvent;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class ShareDeletedListenerTest
  *
- * @package OCA\Passwords\EventListener\Share
+ * @package OCA\PasswordFolders\EventListener\Share
  */
 class ShareDeletedListenerTest extends TestCase {
 

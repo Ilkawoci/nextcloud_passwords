@@ -1,4 +1,6 @@
 ## [Unreleased]
+### Changed
+- The app now uses its own app id `passwordfolders` and no longer overwrites the official Passwords app
 ### Added
 - Folders can be shared with other users, including all subfolders and passwords
 - Folder details sidebar with sharing tab

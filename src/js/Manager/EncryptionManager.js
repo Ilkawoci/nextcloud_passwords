@@ -451,7 +451,7 @@ class EncryptionManager {
      */
     async _saveMasterPassword(password) {
         this._sendStatus('password', 'processing', 1);
-        let username = loadState('passwords', 'api-user', null),
+        let username = loadState('passwordfolders', 'api-user', null),
             label    = LocalisationService.translate('Passwords App Encryption Passphrase'),
             notes    = LocalisationService.translate(
                 'This is a copy of the passphrase you chose for encryption. Changing or deleting this entry does not affect the encryption. The passphrase can only be changed in the settings. More information can be found in the handbook.'),

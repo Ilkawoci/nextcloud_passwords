@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\UserMigration;
+namespace OCA\PasswordFolders\UserMigration;
 
-use OCA\Passwords\Db\Keychain;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\NotificationService;
-use OCA\Passwords\Services\Object\KeychainService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\UserMigration\Export\RevisionedItemsExporter;
-use OCA\Passwords\UserMigration\Export\SettingsExporter;
-use OCA\Passwords\UserMigration\Export\SimpleItemExporter;
-use OCA\Passwords\UserMigration\Import\RevisionedItemsImporter;
-use OCA\Passwords\UserMigration\Import\SettingsImporter;
-use OCA\Passwords\UserMigration\Import\SimpleItemImporter;
+use OCA\PasswordFolders\Db\Keychain;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\NotificationService;
+use OCA\PasswordFolders\Services\Object\KeychainService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\UserMigration\Export\RevisionedItemsExporter;
+use OCA\PasswordFolders\UserMigration\Export\SettingsExporter;
+use OCA\PasswordFolders\UserMigration\Export\SimpleItemExporter;
+use OCA\PasswordFolders\UserMigration\Import\RevisionedItemsImporter;
+use OCA\PasswordFolders\UserMigration\Import\SettingsImporter;
+use OCA\PasswordFolders\UserMigration\Import\SimpleItemImporter;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\IL10N;

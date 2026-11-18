@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 use Exception;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -24,7 +24,7 @@ use OCP\IDBConnection;
 /**
  * Class AbstractMapper
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 abstract class AbstractMapper extends QBMapper {
 

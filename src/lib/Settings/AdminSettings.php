@@ -9,22 +9,22 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Settings;
+namespace OCA\PasswordFolders\Settings;
 
 use Exception;
 use OC;
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\AppInfo\SystemRequirements;
-use OCA\Passwords\Encryption\Object\SseV3KeyProviderInterface;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\AppInfo\SystemRequirements;
+use OCA\PasswordFolders\Encryption\Object\SseV3KeyProviderInterface;
 use OCP\ServerVersion;
-use OCA\Passwords\Provider\Favicon\BestIconProvider;
-use OCA\Passwords\Provider\Preview\BrowshotPreviewProvider;
-use OCA\Passwords\Provider\Preview\ScreeenlyProvider;
-use OCA\Passwords\Provider\Preview\ScreenShotLayerProvider;
-use OCA\Passwords\Provider\Preview\ScreenShotMachineProvider;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Provider\Favicon\BestIconProvider;
+use OCA\PasswordFolders\Provider\Preview\BrowshotPreviewProvider;
+use OCA\PasswordFolders\Provider\Preview\ScreeenlyProvider;
+use OCA\PasswordFolders\Provider\Preview\ScreenShotLayerProvider;
+use OCA\PasswordFolders\Provider\Preview\ScreenShotMachineProvider;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IRequest;
 use OCP\IURLGenerator;
@@ -33,7 +33,7 @@ use OCP\Settings\ISettings;
 /**
  * Class AdminSettings
  *
- * @package OCA\Passwords\Settings
+ * @package OCA\PasswordFolders\Settings
  */
 class AdminSettings implements ISettings {
 

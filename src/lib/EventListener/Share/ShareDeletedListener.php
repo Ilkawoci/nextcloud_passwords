@@ -9,13 +9,13 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Share;
+namespace OCA\PasswordFolders\EventListener\Share;
 
 use Exception;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Events\Share\ShareDeletedEvent;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Events\Share\ShareDeletedEvent;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\EventDispatcher\Event;
@@ -24,7 +24,7 @@ use OCP\EventDispatcher\IEventListener;
 /**
  * Class ShareDeletedListener
  *
- * @package OCA\Passwords\EventListener\Share
+ * @package OCA\PasswordFolders\EventListener\Share
  */
 class ShareDeletedListener implements IEventListener {
 

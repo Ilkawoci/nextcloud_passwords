@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Password;
+namespace OCA\PasswordFolders\EventListener\Password;
 
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Events\Password\PasswordClonedEvent;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Events\Password\PasswordClonedEvent;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class PasswordClonedListener
  *
- * @package OCA\Passwords\EventListener\Password
+ * @package OCA\PasswordFolders\EventListener\Password
  */
 class PasswordClonedListener extends AbstractPasswordListener {
 

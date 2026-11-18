@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Folder;
+namespace OCA\PasswordFolders\Events\Folder;
 
-use OCA\Passwords\Db\Folder;
+use OCA\PasswordFolders\Db\Folder;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class AfterFolderClonedEvent
  *
- * @package OCA\Passwords\Events\Folder
+ * @package OCA\PasswordFolders\Events\Folder
  */
 class AfterFolderClonedEvent extends Event {
 

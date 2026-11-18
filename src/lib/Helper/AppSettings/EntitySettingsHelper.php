@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\AppSettings;
+namespace OCA\PasswordFolders\Helper\AppSettings;
 
 /**
  * Class EntitySettingsHelper
  *
- * @package OCA\Passwords\Helper\AppSettings
+ * @package OCA\PasswordFolders\Helper\AppSettings
  */
 class EntitySettingsHelper extends AbstractSettingsHelper {
 

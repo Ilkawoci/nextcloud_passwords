@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\Image\Imaginary;
+namespace OCA\PasswordFolders\Exception\Image\Imaginary;
 
 use Throwable;
 

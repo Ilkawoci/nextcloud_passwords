@@ -5,10 +5,10 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Helper\Settings\ServerSettingsHelper;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Helper\Settings\ServerSettingsHelper;
 use OCP\Files\SimpleFS\ISimpleFile;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
@@ -20,7 +20,7 @@ use ReflectionException;
 /**
  * Class DeferredActivationServiceTest
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class DeferredActivationServiceTest extends TestCase {
 

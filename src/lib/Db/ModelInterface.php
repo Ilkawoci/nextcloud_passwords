@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Interface ModelInterface
@@ -15,7 +15,7 @@ namespace OCA\Passwords\Db;
  * @method string getRevision()
  * @method void setRevision(string $revision)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 interface ModelInterface extends EntityInterface {
 }

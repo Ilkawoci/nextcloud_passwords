@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Favicon\ResizeFaviconHelper;
-use OCA\Passwords\Provider\Favicon\FaviconProviderInterface;
-use OCA\Passwords\Services\Traits\ValidatesDomainTrait;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Favicon\ResizeFaviconHelper;
+use OCA\PasswordFolders\Provider\Favicon\FaviconProviderInterface;
+use OCA\PasswordFolders\Services\Traits\ValidatesDomainTrait;
 use OCP\AppFramework\Http;
 use OCP\Files\SimpleFS\ISimpleFile;
 use Throwable;
@@ -22,7 +22,7 @@ use Throwable;
 /**
  * Class FaviconService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class FaviconService {
 

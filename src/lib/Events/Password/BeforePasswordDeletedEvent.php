@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Password;
+namespace OCA\PasswordFolders\Events\Password;
 
 /**
  * Class BeforePasswordDeletedEvent
  *
- * @package OCA\Passwords\Events\Password
+ * @package OCA\PasswordFolders\Events\Password
  */
 class BeforePasswordDeletedEvent extends GenericPasswordEvent {
 }

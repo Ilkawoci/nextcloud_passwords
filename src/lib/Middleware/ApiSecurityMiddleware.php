@@ -5,11 +5,11 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Middleware;
+namespace OCA\PasswordFolders\Middleware;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Http;
@@ -20,7 +20,7 @@ use OCP\IRequest;
 /**
  * Class ApiSecurityMiddleware
  *
- * @package OCA\Passwords\Middleware
+ * @package OCA\PasswordFolders\Middleware
  */
 class ApiSecurityMiddleware extends Middleware {
 
@@ -107,7 +107,7 @@ class ApiSecurityMiddleware extends Middleware {
     protected function isApiClass($object): bool {
         $class = get_class($object);
 
-        return substr($class, 0, 28) === 'OCA\Passwords\Controller\Api' ||
-               substr($class, 0, 30) === 'OCA\Passwords\Controller\Admin';
+        return substr($class, 0, 28) === 'OCA\PasswordFolders\Controller\Api' ||
+               substr($class, 0, 30) === 'OCA\PasswordFolders\Controller\Admin';
     }
 }

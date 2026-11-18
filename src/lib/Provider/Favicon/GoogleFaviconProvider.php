@@ -9,11 +9,11 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Favicon;
+namespace OCA\PasswordFolders\Provider\Favicon;
 
-use OCA\Passwords\Exception\Favicon\FaviconRequestException;
-use OCA\Passwords\Exception\Favicon\UnexpectedResponseCodeException;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Exception\Favicon\FaviconRequestException;
+use OCA\PasswordFolders\Exception\Favicon\UnexpectedResponseCodeException;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use Throwable;
@@ -21,7 +21,7 @@ use Throwable;
 /**
  * Class GoogleFaviconProvider
  *
- * @package OCA\Passwords\Helper\Favicon
+ * @package OCA\PasswordFolders\Helper\Favicon
  */
 class GoogleFaviconProvider extends AbstractFaviconProvider {
     const string DEFAULT_ICON_MD5 = '3ca64f83fdcf25135d87e08af65e68c9';

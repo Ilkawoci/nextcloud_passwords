@@ -9,31 +9,31 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Backup;
+namespace OCA\PasswordFolders\Helper\Backup;
 
 use Exception;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\AbstractRevisionMapper;
-use OCA\Passwords\Db\ChallengeMapper;
-use OCA\Passwords\Db\FolderMapper;
-use OCA\Passwords\Db\FolderRevisionMapper;
-use OCA\Passwords\Db\KeychainMapper;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordMapper;
-use OCA\Passwords\Db\PasswordRevisionMapper;
-use OCA\Passwords\Db\PasswordTagRelationMapper;
-use OCA\Passwords\Db\ShareMapper;
-use OCA\Passwords\Db\TagMapper;
-use OCA\Passwords\Db\TagRevisionMapper;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Services\AppSettingsService;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\UserChallengeService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\AbstractRevisionMapper;
+use OCA\PasswordFolders\Db\ChallengeMapper;
+use OCA\PasswordFolders\Db\FolderMapper;
+use OCA\PasswordFolders\Db\FolderRevisionMapper;
+use OCA\PasswordFolders\Db\KeychainMapper;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordMapper;
+use OCA\PasswordFolders\Db\PasswordRevisionMapper;
+use OCA\PasswordFolders\Db\PasswordTagRelationMapper;
+use OCA\PasswordFolders\Db\ShareMapper;
+use OCA\PasswordFolders\Db\TagMapper;
+use OCA\PasswordFolders\Db\TagRevisionMapper;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Services\AppSettingsService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\UserChallengeService;
 
 /**
  * Class CreateBackupHelper
  *
- * @package OCA\Passwords\Helper\Backup
+ * @package OCA\PasswordFolders\Helper\Backup
  */
 class CreateBackupHelper {
 

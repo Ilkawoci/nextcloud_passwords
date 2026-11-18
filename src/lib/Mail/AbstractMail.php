@@ -5,11 +5,11 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Mail;
+namespace OCA\PasswordFolders\Mail;
 
 use Exception;
 use OC_Defaults;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\IUser;
@@ -20,7 +20,7 @@ use OCP\Util;
 /**
  * Class AbstractMail
  *
- * @package OCA\Passwords\Mail
+ * @package OCA\PasswordFolders\Mail
  */
 abstract class AbstractMail {
 
@@ -82,7 +82,7 @@ abstract class AbstractMail {
      * @return IEMailTemplate
      */
     protected function getTemplate() {
-        $template = $this->mailer->createEMailTemplate('passwords.EMail.'.static::MAIL_ID);
+        $template = $this->mailer->createEMailTemplate('passwordfolders.EMail.'.static::MAIL_ID);
 
         $template->addHeader();
 

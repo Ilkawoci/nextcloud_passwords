@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Challenge;
+namespace OCA\PasswordFolders\Events\Challenge;
 
-use OCA\Passwords\Db\Challenge;
+use OCA\PasswordFolders\Db\Challenge;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class BeforeChallengeClonedEvent
  *
- * @package OCA\Passwords\Events\Challenge
+ * @package OCA\PasswordFolders\Events\Challenge
  */
 class BeforeChallengeClonedEvent extends Event {
 

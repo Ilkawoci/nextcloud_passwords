@@ -5,28 +5,28 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
 use Exception;
 use OCP\IL10N;
 use OCP\AppFramework\Db\Entity;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
 use OCP\EventDispatcher\IEventDispatcher;
-use OCA\Passwords\Db\FolderRevisionMapper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\ValidationService;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Db\FolderRevisionMapper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\ValidationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 
 /**
  * Class FolderRevisionService
  *
- * @package OCA\Passwords\Services\Object
+ * @package OCA\PasswordFolders\Services\Object
  */
 class FolderRevisionService extends AbstractRevisionService {
 

@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Challenge;
+namespace OCA\PasswordFolders\EventListener\Challenge;
 
 use Exception;
-use OCA\Passwords\Db\Keychain;
-use OCA\Passwords\Events\Challenge\BeforeChallengeActivatedEvent;
-use OCA\Passwords\Events\Challenge\ChallengeActivatedEvent;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\Object\KeychainService;
+use OCA\PasswordFolders\Db\Keychain;
+use OCA\PasswordFolders\Events\Challenge\BeforeChallengeActivatedEvent;
+use OCA\PasswordFolders\Events\Challenge\ChallengeActivatedEvent;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\Object\KeychainService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\EventDispatcher\Event;
@@ -27,7 +27,7 @@ use OCP\Security\ISecureRandom;
 /**
  * Class ChallengeActivatedListener
  *
- * @package OCA\Passwords\EventListener\Challenge
+ * @package OCA\PasswordFolders\EventListener\Challenge
  */
 class ChallengeActivatedListener implements IEventListener {
 

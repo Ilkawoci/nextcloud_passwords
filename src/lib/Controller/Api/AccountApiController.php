@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\User\DeleteUserDataHelper;
-use OCA\Passwords\Services\DeferredActivationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\SessionService;
-use OCA\Passwords\Services\UserChallengeService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\User\DeleteUserDataHelper;
+use OCA\PasswordFolders\Services\DeferredActivationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\SessionService;
+use OCA\PasswordFolders\Services\UserChallengeService;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\CORS;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
@@ -30,7 +30,7 @@ use OCP\Security\ISecureRandom;
 /**
  * Class AccountApiController
  *
- * @package OCA\Passwords\Controller\Api
+ * @package OCA\PasswordFolders\Controller\Api
  */
 class AccountApiController extends AbstractApiController {
 

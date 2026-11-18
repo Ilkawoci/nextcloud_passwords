@@ -9,13 +9,13 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Preview\ResizePreviewHelper;
-use OCA\Passwords\Provider\Preview\PreviewProviderInterface;
-use OCA\Passwords\Services\Traits\ValidatesDomainTrait;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Preview\ResizePreviewHelper;
+use OCA\PasswordFolders\Provider\Preview\PreviewProviderInterface;
+use OCA\PasswordFolders\Services\Traits\ValidatesDomainTrait;
 use OCP\AppFramework\Http;
 use OCP\Files\SimpleFS\ISimpleFile;
 use Throwable;
@@ -23,7 +23,7 @@ use Throwable;
 /**
  * Class WebsitePreviewService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class WebsitePreviewService {
 

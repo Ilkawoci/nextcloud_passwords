@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Db\Traits;
+namespace OCA\PasswordFolders\Db\Traits;
 
 use BadFunctionCallException;
 use Exception;

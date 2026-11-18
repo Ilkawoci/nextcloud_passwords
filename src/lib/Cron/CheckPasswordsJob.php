@@ -9,26 +9,26 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Cron;
+namespace OCA\PasswordFolders\Cron;
 
 use Exception;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\PasswordRevisionMapper;
-use OCA\Passwords\Exception\Database\DecryptedDataException;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\MailService;
-use OCA\Passwords\Services\NotificationService;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\PasswordRevisionMapper;
+use OCA\PasswordFolders\Exception\Database\DecryptedDataException;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\MailService;
+use OCA\PasswordFolders\Services\NotificationService;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
 use OCP\AppFramework\Utility\ITimeFactory;
 use Throwable;
 
 /**
  * Class CheckPasswordsJob
  *
- * @package OCA\Passwords\Cron
+ * @package OCA\PasswordFolders\Cron
  */
 class CheckPasswordsJob extends AbstractTimedJob {
 

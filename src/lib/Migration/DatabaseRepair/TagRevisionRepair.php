@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
-use OCA\Passwords\Db\TagMapper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Db\TagMapper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
 
 /**
  * Class TagRevisionRepairHelper
  *
- * @package OCA\Passwords\Helper\Repair
+ * @package OCA\PasswordFolders\Helper\Repair
  */
 class TagRevisionRepair extends AbstractRevisionRepair {
 

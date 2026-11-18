@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Favicon;
+namespace OCA\PasswordFolders\Provider\Favicon;
 
-use OCA\Passwords\Exception\Favicon\FaviconRequestException;
-use OCA\Passwords\Exception\Favicon\UnexpectedResponseCodeException;
-use OCA\Passwords\Helper\Time\DateTimeHelper;
-use OCA\Passwords\Helper\User\AdminUserHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\HelperService;
-use OCA\Passwords\Services\NotificationService;
+use OCA\PasswordFolders\Exception\Favicon\FaviconRequestException;
+use OCA\PasswordFolders\Exception\Favicon\UnexpectedResponseCodeException;
+use OCA\PasswordFolders\Helper\Time\DateTimeHelper;
+use OCA\PasswordFolders\Helper\User\AdminUserHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\HelperService;
+use OCA\PasswordFolders\Services\NotificationService;
 use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;

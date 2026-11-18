@@ -5,14 +5,14 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Encryption\Keychain;
+namespace OCA\PasswordFolders\Encryption\Keychain;
 
-use OCA\Passwords\Db\Keychain;
+use OCA\PasswordFolders\Db\Keychain;
 
 /**
  * Interface KeychainEncryptionInterface
  *
- * @package OCA\Passwords\Encryption\Keychain
+ * @package OCA\PasswordFolders\Encryption\Keychain
  */
 interface KeychainEncryptionInterface {
 

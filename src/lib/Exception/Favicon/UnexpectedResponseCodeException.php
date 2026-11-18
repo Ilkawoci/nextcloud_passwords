@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Exception\Favicon;
+namespace OCA\PasswordFolders\Exception\Favicon;
 
 use Exception;
 use Throwable;
@@ -13,7 +13,7 @@ use Throwable;
 /**
  * Class UnexpectedResponseCodeException
  *
- * @package OCA\Passwords\Exception\Favicon
+ * @package OCA\PasswordFolders\Exception\Favicon
  */
 class UnexpectedResponseCodeException extends Exception {
     const int EXCEPTION_CODE = 102;

@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Preview;
+namespace OCA\PasswordFolders\Provider\Preview;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\HelperService;
-use OCA\Passwords\Services\WebsitePreviewService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\HelperService;
+use OCA\PasswordFolders\Services\WebsitePreviewService;
 use OCP\AppFramework\Http;
 use stdClass;
 
 /**
  * Class BrowshotPreviewProvider
  *
- * @package OCA\Passwords\Helper\Preview
+ * @package OCA\PasswordFolders\Helper\Preview
  */
 class BrowshotPreviewProvider extends AbstractPreviewProvider {
 

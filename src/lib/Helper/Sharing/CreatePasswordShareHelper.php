@@ -5,19 +5,19 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Sharing;
+namespace OCA\PasswordFolders\Helper\Sharing;
 
 use Exception;
-use OCA\Passwords\Db\ModelInterface;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Settings\ShareSettingsHelper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Db\ModelInterface;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Settings\ShareSettingsHelper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\Http;
@@ -25,7 +25,7 @@ use OCP\AppFramework\Http;
 /**
  * Class CreatePasswordShareHelper
  *
- * @package OCA\Passwords\Helper\Share
+ * @package OCA\PasswordFolders\Helper\Share
  */
 class CreatePasswordShareHelper {
 

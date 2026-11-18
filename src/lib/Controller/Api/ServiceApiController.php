@@ -9,21 +9,21 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
 use DateTime;
 use Exception;
 use DateTimeInterface;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Services\AvatarService;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\FaviconService;
-use OCA\Passwords\Services\PasswordChangeUrlService;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
-use OCA\Passwords\Services\WebsitePreviewService;
-use OCA\Passwords\Services\WordsService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Services\AvatarService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\FaviconService;
+use OCA\PasswordFolders\Services\PasswordChangeUrlService;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Services\WebsitePreviewService;
+use OCA\PasswordFolders\Services\WordsService;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\CORS;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
@@ -39,7 +39,7 @@ use Throwable;
 /**
  * Class ServiceApiController
  *
- * @package OCA\Passwords\Controller
+ * @package OCA\PasswordFolders\Controller
  */
 class ServiceApiController extends AbstractApiController {
 

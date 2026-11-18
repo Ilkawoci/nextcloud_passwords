@@ -9,13 +9,13 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Favicon;
+namespace OCA\PasswordFolders\Provider\Favicon;
 
 use Exception;
 use GuzzleHttp\Exception\ClientException;
-use OCA\Passwords\Exception\Favicon\FaviconRequestException;
-use OCA\Passwords\Exception\Favicon\UnexpectedResponseCodeException;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Exception\Favicon\FaviconRequestException;
+use OCA\PasswordFolders\Exception\Favicon\UnexpectedResponseCodeException;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use Throwable;
@@ -23,7 +23,7 @@ use Throwable;
 /**
  * Class DuckDuckGoProvider
  *
- * @package OCA\Passwords\Helper\Favicon
+ * @package OCA\PasswordFolders\Helper\Favicon
  */
 class DuckDuckGoProvider extends AbstractFaviconProvider {
 

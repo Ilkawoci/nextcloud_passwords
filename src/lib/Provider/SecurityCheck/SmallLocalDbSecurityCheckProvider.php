@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\SecurityCheck;
+namespace OCA\PasswordFolders\Provider\SecurityCheck;
 
 /**
  * Class SmallLocalDbSecurityCheckProvider
  *
- * @package OCA\Passwords\Helper\SecurityCheck
+ * @package OCA\PasswordFolders\Helper\SecurityCheck
  */
 class SmallLocalDbSecurityCheckProvider extends BigLocalDbSecurityCheckProvider {
     const string ARCHIVE_URL = 'https://breached.passwordsapp.org/databases/5m-v:version-:format.zip';

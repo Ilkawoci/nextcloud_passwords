@@ -9,9 +9,9 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\Image;
+namespace OCA\PasswordFolders\Exception\Image;
 
-use OCA\Passwords\Exception\AbstractException;
+use OCA\PasswordFolders\Exception\AbstractException;
 
 class ImageConversionException extends AbstractException {
 

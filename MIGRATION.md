@@ -18,34 +18,38 @@ Alle `occ`-Aufrufe laufen als Webserver-Benutzer (`www-data` bei Debian/Ubuntu,
 
 ---
 
-## 1. Was sich technisch ändert — und was nicht
+## 1. Was dieses Paket ist — und was es mit der Original-App teilt
 
-**Es werden keine Passwörter migriert.** Beide Varianten benutzen dieselben
-Tabellen (`oc_passwords_*`) und dasselbe Verschlüsselungsverfahren. Der Fork
-ergänzt ausschließlich Spalten, die die Standard-App nicht kennt:
+Die App hat eine **eigene App-ID**: `passwordfolders`, Anzeigename „Passwords Folders".
+Damit hat sie einen eigenen Ordner (`custom_apps/passwordfolders`), eigene Routen
+(`/apps/passwordfolders`), eigene occ-Befehle (`occ passwordfolders:…`) und eine eigene
+Einstellungsseite. Die Dateien der Original-App werden **nicht mehr überschrieben**, und
+ein Update der Original-App kann dieses Paket nicht mehr ersetzen.
+
+**Geteilt wird die Datenbank.** Beide Apps arbeiten auf denselben Tabellen
+(`oc_passwords_*`). Das ist Absicht: Passwörter, Ordner, Tags, Revisions, Freigaben und die
+Verschlüsselung bleiben unverändert, es muss nichts umgezogen werden.
+
+Daraus folgen zwei harte Regeln:
+
+1. **Die Original-App (`passwords`) muss deaktiviert bleiben**, solange dieses Paket läuft.
+   Zwei Apps auf denselben Tabellen stören sich gegenseitig (doppelte Cron-Jobs,
+   Freigabe-Zeilen, die die jeweils andere App nicht kennt).
+2. **App-Konfiguration und Benutzereinstellungen müssen einmalig kopiert werden**
+   (Abschnitt 6.2). Sonst fehlen der Serverschlüssel (`SSEv1ServerKey`) und die
+   Benutzerschlüssel (`SSEv1UserKey`) — bestehende Passwörter wären nicht mehr lesbar.
+
+Technisch ergänzt das Paket nur Spalten, die die Original-App nicht kennt:
 
 | Tabelle | Änderung | Auswirkung auf Bestandsdaten |
 |---|---|---|
-| `passwords_share` | neue Spalten `source_type` (Default `password`), `source_folder`, `target_folder`, `parent_share` | bestehende Freigaben bleiben gültig, `source_type` wird `password` |
+| `passwords_share` | neue Spalten `source_type` (Default `password`), `source_folder`, `target_folder`, `parent_share` | bestehende Freigaben bleiben gültig |
 | `passwords_share` | `source_password` darf jetzt `NULL` sein | keine |
 | `passwords_share` | drei neue Indizes | keine |
-| `passwords_folder` | neue Spalten `share_id`, `has_shares` | bestehende Ordner bleiben unverändert (`NULL`/`false`) |
+| `passwords_folder` | neue Spalten `share_id`, `has_shares` | bestehende Ordner unverändert |
 
-Daraus folgt:
-
-- Passwörter, Ordner, Tags, Custom Fields, Revisions, Favoriten, Papierkorb und
-  bestehende **Passwort**-Freigaben bleiben vollständig erhalten.
-- Die Ende-zu-Ende-Verschlüsselung (CSE) bleibt unangetastet — Schlüssel und
-  Passphrase liegen in denselben Feldern wie vorher.
-- Browser-Erweiterungen und Mobile-Apps funktionieren weiter, weil die API
-  unverändert bleibt (nur additive Felder).
-- **Wichtig:** Die App-ID ist in beiden Varianten `passwords`. Beide können nicht
-  parallel installiert werden — die Store-Version wird ersetzt.
-
-Die Migration ist idempotent: jede Änderung ist mit `hasColumn()`/`hasIndex()`
-abgesichert und kann gefahrlos erneut laufen.
-
----
+Die Migrationen sind idempotent (`hasTable`/`hasColumn`/`hasIndex`) und laufen auch dann
+sauber durch, wenn die Tabellen schon von der Original-App angelegt wurden.
 
 ## 2. Voraussetzungen
 
@@ -60,7 +64,7 @@ Prüfen:
 
 ```bash
 sudo -u www-data $PHP $NC/occ status
-sudo -u www-data $PHP $NC/occ app:list | grep -i passwords
+sudo -u www-data $PHP $NC/occ app:list | grep -i passwordfolders
 sudo -u www-data $PHP $NC/occ config:system:get cronMethod   # muss "cron" sein
 ```
 
@@ -80,14 +84,14 @@ Das ist das wichtigste Backup: es enthält die komplette Passwort-Datenbank in
 einem app-eigenen Format und lässt sich mit einem Befehl zurückrollen.
 
 ```bash
-sudo -u www-data $PHP $NC/occ passwords:backup:create vor-fork-migration
-sudo -u www-data $PHP $NC/occ passwords:backup:list
+sudo -u www-data $PHP $NC/occ passwordfolders:backup:create vor-fork-migration
+sudo -u www-data $PHP $NC/occ passwordfolders:backup:list
 ```
 
 Zusätzlich pro Benutzer exportierbar (JSON, unabhängig von der App-Version):
 
 ```bash
-sudo -u www-data $PHP $NC/occ passwords:backup:export --help   # Optionen anzeigen
+sudo -u www-data $PHP $NC/occ passwordfolders:backup:export --help   # Optionen anzeigen
 ```
 
 > Das Backup wird im App-Datenverzeichnis abgelegt
@@ -125,7 +129,7 @@ Passwords-App und `$NC/data/appdata_*/passwords`.
 ### 3.5 Alte App-Version notieren
 
 ```bash
-sudo -u www-data $PHP $NC/occ app:list | grep -i passwords
+sudo -u www-data $PHP $NC/occ app:list | grep -i passwordfolders
 ```
 
 Notiere die Version (z. B. `2026.11.0`) — du brauchst sie für den Rollback.
@@ -157,7 +161,7 @@ Es gibt zwei Varianten, die **zusammenpassen müssen** mit der Einstellung
 | Build | Dateinamen | `dev/app/hash` | Cache |
 |---|---|---|---|
 | `npm run build` | `app.<hash>.js`, `admin.<hash>.js` … | **muss** auf den Hash gesetzt sein | automatisch (neue URL pro Build) |
-| `npm run build:stable` | `app.js`, `admin.js` … | **muss leer** sein (`occ config:app:delete passwords dev/app/hash`) | Browser-Cache, Hard-Reload nötig |
+| `npm run build:stable` | `app.js`, `admin.js` … | **muss leer** sein (`occ config:app:delete passwordfolders dev/app/hash`) | Browser-Cache, Hard-Reload nötig |
 
 **Empfohlen für den Betrieb: `npm run build`** (gehashte Dateinamen). Damit
 ändert sich die URL des Einstiegspunktes bei jedem Build und Nutzer bekommen
@@ -173,7 +177,7 @@ Dev-Container schlägt das fehl (harmlos) — dann manuell setzen:
 
 ```bash
 HASH=$(ls src/js/Static/app.*.js | sed 's/.*app\.\(.*\)\.js/\1/')
-sudo -u www-data $PHP $NC/occ config:app:set passwords dev/app/hash --value="$HASH"
+sudo -u www-data $PHP $NC/occ config:app:set passwordfolders dev/app/hash --value="$HASH"
 ```
 
 Ergebnis prüfen:
@@ -185,7 +189,7 @@ ls -l src/js/Static/app.*.js src/css/app.css
 > Nicht mischen: `app.<hash>.js` gebaut, aber `dev/app/hash` leer (oder
 > umgekehrt) → die Templates fordern eine Datei an, die es nicht gibt, und die
 > App hängt im Spinner. Bei `npm run build:stable` also immer
-> `occ config:app:delete passwords dev/app/hash`, bei `npm run build` immer den
+> `occ config:app:delete passwordfolders dev/app/hash`, bei `npm run build` immer den
 > Hash setzen.
 
 ### 4.3 Paket erzeugen
@@ -216,90 +220,119 @@ Alternativ kannst du direkt per `rsync` deployen (ohne Tarball), siehe 5.2.
 
 ---
 
-## 5. Schritt 3 — App ersetzen
+## 5. Schritt 3 — Als zusätzliche App installieren
 
-### 5.1 Alte App deaktivieren
+### 5.1 Original-App deaktivieren
 
 ```bash
 sudo -u www-data $PHP $NC/occ app:disable passwords
 ```
 
-### 5.2 Altes App-Verzeichnis wegnehmen (Rollback-Kopie behalten)
-
-Die Store-Version liegt je nach Installation in `$NC/apps/passwords` **oder**
-`$NC/custom_apps/passwords`. Prüfe beides:
+Die Dateien der Original-App kannst du liegen lassen (sie wird nicht mehr geladen) oder
+zur Seite legen:
 
 ```bash
-ls -d $NC/apps/passwords $NC/custom_apps/passwords 2>/dev/null
+sudo mv $NC/custom_apps/passwords $NC/custom_apps/passwords.store-backup 2>/dev/null || true
+sudo mv $NC/apps/passwords $NC/apps/passwords.store-backup 2>/dev/null || true
 ```
 
-Gefundenes Verzeichnis umbenennen statt löschen:
+### 5.2 Neues Paket entpacken
 
 ```bash
-sudo mv $NC/custom_apps/passwords $NC/custom_apps/passwords.store-backup
-# bzw.
-sudo mv $NC/apps/passwords $NC/apps/passwords.store-backup
+sudo tar -xzf passwords-*.tar.gz -C $NC/custom_apps/
+sudo chown -R www-data:www-data $NC/custom_apps/passwordfolders
+sudo find $NC/custom_apps/passwordfolders -type d -exec chmod 755 {} \;
+sudo find $NC/custom_apps/passwordfolders -type f -exec chmod 644 {} \;
 ```
 
-### 5.3 Neues Paket entpacken
-
-```bash
-sudo tar -xzf dist/passwords-*.tar.gz -C $NC/custom_apps/
-sudo chown -R www-data:www-data $NC/custom_apps/passwords
-sudo find $NC/custom_apps/passwords -type d -exec chmod 755 {} \;
-sudo find $NC/custom_apps/passwords -type f -exec chmod 644 {} \;
-```
+Kontrolle: `ls $NC/custom_apps/passwordfolders/appinfo/info.xml`
 
 Variante ohne Tarball:
 
 ```bash
-sudo rsync -a --delete "$FORK/src/" $NC/custom_apps/passwords/
-sudo chown -R www-data:www-data $NC/custom_apps/passwords
+sudo rsync -a --delete "$FORK/src/" $NC/custom_apps/passwordfolders/
+sudo chown -R www-data:www-data $NC/custom_apps/passwordfolders
 ```
 
-> Liegt deine Installation noch auf `$NC/apps` (App-Store-Standard), kannst du
-> den Fork auch dort ablegen. `custom_apps` ist vorzuziehen, weil App-Store-
-> Updates sonst versuchen könnten, den Fork zu überschreiben.
+## 6. Schritt 4 — Aktivieren, migrieren, Konfiguration übernehmen
 
----
-
-## 6. Schritt 4 — Migration ausführen
+### 6.1 App aktivieren
 
 ```bash
-sudo -u www-data $PHP $NC/occ app:enable passwords
-sudo -u www-data $PHP $NC/occ app:update passwords
-sudo -u www-data $PHP $NC/occ upgrade        # nur falls Nextcloud es verlangt
+sudo -u www-data $PHP $NC/occ app:enable passwordfolders
 ```
 
-`app:update` führt `Version20260115` aus. Erwartete Ausgabe (gekürzt):
+Die Migrationen laufen dabei automatisch und legen nur fehlende Spalten/Indizes an.
+Erwartete Ausgabe (gekürzt, je nach Zustand der Tabellen):
 
 ```
 Creating column source_type in table passwords_share
 Creating column source_folder in table passwords_share
-Creating column target_folder in table passwords_share
-Creating column parent_share in table passwords_share
-Allowing NULL values in column source_password of table passwords_share
-Creating index share_source_folder_index in table passwords_share
-Creating index share_parent_share_index in table passwords_share
-Creating index share_source_type_index in table passwords_share
-Creating column share_id in table passwords_folder
+...
 Creating column has_shares in table passwords_folder
 ```
 
-Danach Wartungsmodus aus:
+Falls Nextcloud einen Upgrade verlangt:
+
+```bash
+sudo -u www-data $PHP $NC/occ upgrade
+```
+
+### 6.2 Konfiguration und Benutzereinstellungen kopieren (Pflicht!)
+
+Beide Apps speichern ihre Einstellungen und **ihre Verschlüsselungsschlüssel** unter der
+eigenen App-ID. Ohne diesen Schritt kann die neue App die vorhandenen Passwörter nicht
+entschlüsseln (Fehler `HMAC does not match`).
+
+```bash
+mysql -u root -p nextcloud <<'SQL'
+INSERT INTO oc_appconfig (appid, configkey, configvalue)
+SELECT 'passwordfolders', configkey, configvalue FROM oc_appconfig
+WHERE appid = 'passwords'
+  AND configkey NOT IN ('enabled', 'installed_version', 'types')
+ON DUPLICATE KEY UPDATE configvalue = VALUES(configvalue);
+
+INSERT INTO oc_preferences (userid, appid, configkey, configvalue)
+SELECT userid, 'passwordfolders', configkey, configvalue FROM oc_preferences
+WHERE appid = 'passwords'
+ON DUPLICATE KEY UPDATE configvalue = VALUES(configvalue);
+SQL
+```
+
+PostgreSQL:
+
+```sql
+INSERT INTO oc_appconfig (appid, configkey, configvalue)
+SELECT 'passwordfolders', configkey, configvalue FROM oc_appconfig
+WHERE appid = 'passwords' AND configkey NOT IN ('enabled','installed_version','types')
+ON CONFLICT (appid, configkey) DO UPDATE SET configvalue = EXCLUDED.configvalue;
+
+INSERT INTO oc_preferences (userid, appid, configkey, configvalue)
+SELECT userid, 'passwordfolders', configkey, configvalue FROM oc_preferences
+WHERE appid = 'passwords'
+ON CONFLICT (userid, appid, configkey) DO UPDATE SET configvalue = EXCLUDED.configvalue;
+```
+
+Kontrolle:
+
+```bash
+sudo -u www-data $PHP $NC/occ config:app:get passwordfolders SSEv1ServerKey | head -c 20
+```
+
+Ist der Wert leer, wurde nichts kopiert — dann bleiben bestehende Passwörter unlesbar.
+
+### 6.3 Wartungsmodus aus
 
 ```bash
 sudo -u www-data $PHP $NC/occ maintenance:mode --off
 ```
-
----
 
 ## 7. Schritt 5 — Verifizieren
 
 ### 7.1 Version und Schema
 
 ```bash
-sudo -u www-data $PHP $NC/occ app:list | grep -i passwords     # erwartet 2026.11.1
+sudo -u www-data $PHP $NC/occ app:list | grep -i passwordfolders     # erwartet 2026.11.1
 ```
 
 Spalten prüfen (MySQL/MariaDB):
@@ -352,8 +385,8 @@ Lösch-/Verschiebe-Abgleich innerhalb geteilter Ordner nicht ausgeführt.
 ```bash
 sudo -u www-data $PHP $NC/occ maintenance:mode --on
 sudo -u www-data $PHP $NC/occ app:disable passwords
-sudo rm -rf $NC/custom_apps/passwords
-sudo mv $NC/custom_apps/passwords.store-backup $NC/custom_apps/passwords
+sudo rm -rf $NC/custom_apps/passwordfolders
+sudo mv $NC/custom_apps/passwordfolders.store-backup $NC/custom_apps/passwordfolders
 sudo -u www-data $PHP $NC/occ app:enable passwords
 sudo -u www-data $PHP $NC/occ maintenance:mode --off
 ```
@@ -377,7 +410,7 @@ Oder über das App-Backup (überschreibt die Passwort-Daten mit dem Stand des
 Backups — Änderungen danach gehen verloren):
 
 ```bash
-sudo -u www-data $PHP $NC/occ passwords:backup:restore vor-fork-migration
+sudo -u www-data $PHP $NC/occ passwordfolders:backup:restore vor-fork-migration
 ```
 
 ---
@@ -508,7 +541,7 @@ Verhalten:
 Prüfen, ob die Gruppe gefunden wird:
 
 ```bash
-B="https://cloud.example.com/index.php/apps/passwords/api/1.0"
+B="https://cloud.example.com/index.php/apps/passwordfolders/api/1.0"
 curl -s -u admin:admin "$B/share/recipients?search=team"
 curl -s -u admin:admin -H 'Content-Type: application/json' \
   -X POST "$B/share/recipients/resolve-group" -d '{"groupId":"team"}'
@@ -516,68 +549,35 @@ curl -s -u admin:admin -H 'Content-Type: application/json' \
 
 ---
 
-## 12. Was passiert bei einem offiziellen Update — und wie man es verhindert
+## 12. Updates der Original-App
 
-Dieser Fork hat **dieselbe App-ID** (`passwords`) wie die Store-Version. Nextcloud
-vergleicht nur die Versionsnummern: ist die Store-Version höher als die
-Fork-Version, bietet die Instanz ein Update an — und ersetzt damit den Fork.
+Weil dieses Paket eine eigene App-ID hat, kann ein Update der Original-App die Dateien
+**nicht mehr überschreiben**. Im App Store erscheinen "Passwords" und "Passwords Folders"
+als zwei getrennte Apps.
 
-### Was dabei konkret passiert
+Wichtig bleibt:
 
-1. **Dateien werden überschrieben.** Der gesamte Ordner `apps/passwords` bzw.
-   `custom_apps/passwords` wird durch die Store-Version ersetzt. Ordner-Sharing
-   ist danach weg (Menüeintrag, Sidebar, Backend).
-2. **Die Datenbank bleibt unverändert.** Die zusätzlichen Spalten
-   (`source_type`, `source_folder`, `target_folder`, `parent_share`, `share_id`,
-   `has_shares`) und alle Ordner-Freigabe-Zeilen bleiben erhalten — sie stören die
-   alte App nicht.
-3. **Ordner-Freigaben laufen ins Leere.** Die alte App kennt `source_type` nicht.
-   Ihre Freigabe-Abfrage holt alle Zeilen mit `target_password IS NULL` — das
-   trifft auch die Ordner-Zeilen. Deren `source_password` ist ebenfalls `NULL`,
-   also scheitert die Synchronisation pro Zeile und schreibt bei **jedem**
-   Cron-Lauf eine Fehlermeldung ins Log
-   (`Could not create target password … for share <uuid>`). Kein Datenverlust,
-   aber Log-Spam und keine Aktualisierung mehr.
-4. **Bereits kopierte Ordner/Passwörter bleiben** in den Konten der Empfänger
-   stehen — sie werden nur nicht mehr gepflegt (veraltete Kopien).
+- **Die Original-App darf nicht aktiviert werden.** Sie arbeitet auf denselben Tabellen.
+  Laeuft sie zusaetzlich, schreibt ihr Cron bei jedem Durchlauf Fehler
+  (`Could not create target password ... for share <uuid>`), weil sie die
+  Ordner-Freigabe-Zeilen nicht kennt, und beide Apps synchronisieren parallel.
+- Pruefen, ob sie aus ist:
 
-### Wie man es verhindert
-
-- **Version immer oberhalb der Store-Version halten.** Aktuell: Store
-  `2026.11.20`, Fork `2026.11.21` → es wird kein Update angeboten.
-  Nach jedem Upstream-Sync erneut anheben (z. B. Store `2026.12.0` → Fork
-  `2026.12.1`).
-- Wer das dauerhaft ausschließen will, setzt die Fork-Version künstlich hoch
-  (z. B. `2099.1.0`). Dann bietet die Instanz für diese App nie ein Update an;
-  der Preis ist, dass der Upstream-Stand nicht mehr an der Nummer ablesbar ist.
-- **Kein blindes „Alle aktualisieren"** im App-Store und kein
-  `occ app:update --all` in Skripten/Cronjobs, solange der Fork installiert ist.
-  Einzeln prüfen:
   ```bash
-  sudo -S -p '' -u www-data $PHP $NC/occ app:update passwords
-  # erwartet: "passwords is up-to-date or no updates could be found"
+  sudo -u www-data $PHP $NC/occ app:list | grep -E "passwords|passwordfolders"
   ```
-- Vor jedem geplanten Upstream-Sync ein Backup machen (Abschnitt 3).
 
-### Wenn es doch passiert ist
+  Erwartet: `passwordfolders` unter "Enabled", `passwords` unter "Disabled".
+- Ein **Update der Original-App ist unkritisch**, solange sie deaktiviert bleibt. Nach einem
+  solchen Update trotzdem einmal pruefen:
 
-```bash
-sudo -S -p '' -u www-data $PHP $NC/occ maintenance:mode --on
-sudo -S -p '' -u www-data $PHP $NC/occ app:disable passwords
+  ```bash
+  sudo -u www-data $PHP $NC/occ app:update passwordfolders
+  sudo -u www-data $PHP $NC/occ upgrade
+  ```
 
-# Fork erneut ausrollen (Tarball oder rsync, siehe Abschnitt 5)
-sudo -S -p '' rm -rf $NC/custom_apps/passwords
-sudo -S -p '' tar -xzf passwords-*.tar.gz -C $NC/custom_apps/
-sudo -S -p '' chown -R www-data:www-data $NC/custom_apps/passwords
-
-sudo -S -p '' -u www-data $PHP $NC/occ app:enable passwords
-sudo -S -p '' -u www-data $PHP $NC/occ upgrade
-sudo -S -p '' -u www-data $PHP $NC/occ maintenance:mode --off
-```
-
-Die Ordner-Freigaben sind danach wieder aktiv (die Zeilen waren nie gelöscht);
-der nächste Cron-Lauf gleicht ausstehende Änderungen nach. Datenverlust entsteht
-nur für Änderungen, die in der Zwischenzeit niemand synchronisiert hat.
+- Wird dieses Paket deinstalliert, bleiben die Daten erhalten (gemeinsame Tabellen). Die
+  Original-App kann danach wieder aktiviert werden.
 
 ---
 
@@ -589,6 +589,7 @@ nur für Änderungen, die in der Zwischenzeit niemand synchronisiert hat.
 | `Column not found: source_type` | `app:update` nicht gelaufen | `occ app:update passwords`, ggf. `occ upgrade` |
 | Empfänger sieht geteilten Ordner nicht | Cron läuft nicht / erst ein Lauf | `occ config:system:get cronMethod` → `cron`; zweimal `cron.php` ausführen |
 | „Teilen" fehlt im Ordner-Menü | altes JS im Browser-Cache | Hard-Reload; prüfen ob `js/Static/app.js` das neue Datum hat |
+| `HMAC does not match` / Passwörter unlesbar | Konfiguration nicht kopiert | Abschnitt 6.2 ausführen (`SSEv1ServerKey`, `SSEv1UserKey`) |
 | `app:enable` meldet „already installed" | Store-Version noch vorhanden | `occ app:disable passwords`, Verzeichnis ersetzen, neu aktivieren |
 | Update wird nicht angeboten | Fork-Version ≤ Upstream-Version | Version in `src/appinfo/info.xml` anheben |
 | 500 nach Update | PHP-Version zu alt | PHP 8.4/8.5 bereitstellen |
@@ -608,29 +609,28 @@ sudo tail -f $NC/data/nextcloud.log
 sudo -u www-data $PHP $NC/occ passwords:backup:create vor-fork-migration
 mysqldump -u root -p nextcloud > ~/nextcloud-db.sql
 
-# 2. Bauen
-git clone -b wip/password_folder_share https://github.com/Ilkawoci/nextcloud_passwords.git "$FORK"
+# 2. Bauen (Hashed-Build, siehe 4.2)
+git clone -b master https://github.com/Ilkawoci/nextcloud_passwords.git "$FORK"
 cd "$FORK" && npm ci && npm run build
 tar -czf passwords.tar.gz --exclude='./vue' --exclude='./scss' \
   --exclude='./report-stats.json' --exclude='./bundle-report.html' \
-  --transform 's,^\./,passwords/,' -C src .
+  --transform 's,^\./,passwordfolders/,' -C src .
 
-# 3. Ersetzen
+# 3. Installieren (Original-App aus, neue App daneben)
 sudo -u www-data $PHP $NC/occ maintenance:mode --on
 sudo -u www-data $PHP $NC/occ app:disable passwords
-sudo mv $NC/custom_apps/passwords $NC/custom_apps/passwords.store-backup
 sudo tar -xzf passwords.tar.gz -C $NC/custom_apps/
-sudo chown -R www-data:www-data $NC/custom_apps/passwords
+sudo chown -R www-data:www-data $NC/custom_apps/passwordfolders
+sudo -u www-data $PHP $NC/occ app:enable passwordfolders
 
-# Hashed-Build: Entry-Datei der Instanz bekannt machen (siehe 4.2)
+# 4. Schluessel und Einstellungen uebernehmen (Pflicht, siehe 6.2)
+mysql -u root -p nextcloud -e "<SQL aus Abschnitt 6.2>"
+
+# 5. Hash setzen und Wartungsmodus aus
 HASH=$(ls "$FORK"/src/js/Static/app.*.js | sed 's/.*app\.\(.*\)\.js/\1/')
-sudo -u www-data $PHP $NC/occ config:app:set passwords dev/app/hash --value="$HASH"
-
-# 4. Aktivieren + migrieren
-sudo -u www-data $PHP $NC/occ app:enable passwords
-sudo -u www-data $PHP $NC/occ app:update passwords
+sudo -u www-data $PHP $NC/occ config:app:set passwordfolders dev/app/hash --value="$HASH"
 sudo -u www-data $PHP $NC/occ maintenance:mode --off
 
-# 5. Prüfen
-sudo -u www-data $PHP $NC/occ app:list | grep -i passwords
+# 6. Pruefen
+sudo -u www-data $PHP $NC/occ app:list | grep -E "passwords|passwordfolders"
 ```

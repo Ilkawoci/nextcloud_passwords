@@ -9,13 +9,13 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Token;
+namespace OCA\PasswordFolders\Helper\Token;
 
 use Exception;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\SessionService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\SessionService;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\Authentication\Token\IProvider;
 use OCP\Authentication\Token\IToken;
@@ -27,7 +27,7 @@ use Throwable;
 /**
  * Class ApiTokenHelper
  *
- * @package OCA\Passwords\Helper\Token
+ * @package OCA\PasswordFolders\Helper\Token
  */
 class ApiTokenHelper {
 

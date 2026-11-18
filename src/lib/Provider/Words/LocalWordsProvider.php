@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Words;
+namespace OCA\PasswordFolders\Provider\Words;
 
 use Exception;
-use OCA\Passwords\Helper\Words\SpecialCharacterHelper;
+use OCA\PasswordFolders\Helper\Words\SpecialCharacterHelper;
 
 /**
  * Class LocalWordsProvider
  *
- * @package OCA\Passwords\Helper\Words
+ * @package OCA\PasswordFolders\Helper\Words
  */
 class LocalWordsProvider extends AbstractWordsProvider {
 

@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Interface EntityInterface
@@ -23,7 +23,7 @@ namespace OCA\Passwords\Db;
  * @method int getUpdated()
  * @method void setUpdated(int $updated)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 interface EntityInterface {
 

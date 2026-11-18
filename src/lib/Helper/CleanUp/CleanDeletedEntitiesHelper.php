@@ -5,28 +5,28 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\CleanUp;
+namespace OCA\PasswordFolders\Helper\CleanUp;
 
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\Object\AbstractService;
-use OCA\Passwords\Services\Object\ChallengeService;
-use OCA\Passwords\Services\Object\FolderRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\KeychainService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\PasswordTagRelationService;
-use OCA\Passwords\Services\Object\ShareService;
-use OCA\Passwords\Services\Object\TagRevisionService;
-use OCA\Passwords\Services\Object\TagService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\Object\AbstractService;
+use OCA\PasswordFolders\Services\Object\ChallengeService;
+use OCA\PasswordFolders\Services\Object\FolderRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\KeychainService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\PasswordTagRelationService;
+use OCA\PasswordFolders\Services\Object\ShareService;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Services\Object\TagService;
 use OCP\IUserManager;
 use Throwable;
 
 /**
  * Class CleanDeletedEntitiesHelper
  *
- * @package OCA\Passwords\Helper\CleanUp
+ * @package OCA\PasswordFolders\Helper\CleanUp
  */
 class CleanDeletedEntitiesHelper {
 

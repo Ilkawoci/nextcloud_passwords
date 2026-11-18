@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Theming;
+namespace OCA\PasswordFolders\Helper\Theming;
 
 class ThemingColorHelper {
 

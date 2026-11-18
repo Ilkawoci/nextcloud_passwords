@@ -5,26 +5,26 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Sharing;
+namespace OCA\PasswordFolders\Helper\Sharing;
 
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\Object\FolderRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\Object\FolderRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class FolderShareMaterializerTest
  *
- * @package OCA\Passwords\Helper\Sharing
+ * @package OCA\PasswordFolders\Helper\Sharing
  */
 class FolderShareMaterializerTest extends TestCase {
 

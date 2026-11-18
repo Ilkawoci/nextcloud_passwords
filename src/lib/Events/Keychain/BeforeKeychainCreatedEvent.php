@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Keychain;
+namespace OCA\PasswordFolders\Events\Keychain;
 
 /**
  * Class BeforeKeychainCreatedEvent
  *
- * @package OCA\Passwords\Events\Keychain
+ * @package OCA\PasswordFolders\Events\Keychain
  */
 class BeforeKeychainCreatedEvent extends GenericKeychainEvent {
 }

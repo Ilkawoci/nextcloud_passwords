@@ -5,10 +5,10 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
 use Exception;
-use OCA\Passwords\Services\BackupService;
+use OCA\PasswordFolders\Services\BackupService;
 use OCP\Files\NotPermittedException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class BackupRestoreCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class BackupRestoreCommand extends AbstractInteractiveCommand {
 
@@ -42,7 +42,7 @@ class BackupRestoreCommand extends AbstractInteractiveCommand {
      *
      */
     protected function configure() {
-        $this->setName('passwords:backup:restore')
+        $this->setName('passwordfolders:backup:restore')
              ->setDescription('Restores a backup')
              ->addArgument('name', InputArgument::REQUIRED, 'The name of the backup')
              ->addOption('user', 'u', InputOption::VALUE_OPTIONAL, 'Restore data only for this user')

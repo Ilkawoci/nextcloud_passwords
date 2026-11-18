@@ -16,7 +16,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "OCA\\Passwords\\": "src/lib",
+      "OCA\\PasswordFolders\\": "src/lib",
       "OCA\\Test\\Passwords\\": "tests/phpunit/Test",
       "OCP\\": "vendor/nextcloud/ocp/OCP/",
       "NCU\\": "vendor/nextcloud/ocp/NCU/"

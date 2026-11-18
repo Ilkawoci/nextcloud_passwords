@@ -9,20 +9,20 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\PasswordRevision;
+namespace OCA\PasswordFolders\EventListener\PasswordRevision;
 
 use Exception;
-use OCA\Passwords\Events\PasswordRevision\BeforePasswordRevisionCreatedEvent;
-use OCA\Passwords\Events\PasswordRevision\BeforePasswordRevisionUpdatedEvent;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Events\PasswordRevision\BeforePasswordRevisionCreatedEvent;
+use OCA\PasswordFolders\Events\PasswordRevision\BeforePasswordRevisionUpdatedEvent;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 
 /**
  * Class BeforePasswordRevisionSavedEventListener
  *
- * @package OCA\Passwords\EventListener\PasswordRevision
+ * @package OCA\PasswordFolders\EventListener\PasswordRevision
  */
 class BeforePasswordRevisionSavedEventListener implements IEventListener {
 

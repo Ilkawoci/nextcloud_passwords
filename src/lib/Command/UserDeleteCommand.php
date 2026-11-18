@@ -5,15 +5,15 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
 use Exception;
 use OCP\IUserManager;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\BackgroundJobService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\BackgroundJobService;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Input\InputArgument;
-use OCA\Passwords\Helper\User\DeleteUserDataHelper;
+use OCA\PasswordFolders\Helper\User\DeleteUserDataHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class UserDeleteCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class UserDeleteCommand extends AbstractInteractiveCommand {
 
@@ -48,7 +48,7 @@ class UserDeleteCommand extends AbstractInteractiveCommand {
      *
      */
     protected function configure() {
-        $this->setName('passwords:user:delete')
+        $this->setName('passwordfolders:user:delete')
              ->setDescription('Deletes the passwords app data of a user')
              ->addArgument('user', InputArgument::REQUIRED, 'The id of the user');
         parent::configure();

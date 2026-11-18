@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\User;
+namespace OCA\PasswordFolders\EventListener\User;
 
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;

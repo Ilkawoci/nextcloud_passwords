@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Words;
+namespace OCA\PasswordFolders\Provider\Words;
 
 /**
  * Class AbstractWordsProvider
  *
- * @package OCA\Passwords\Helper\Words
+ * @package OCA\PasswordFolders\Helper\Words
  */
 abstract class AbstractWordsProvider implements WordsProviderInterface {
 

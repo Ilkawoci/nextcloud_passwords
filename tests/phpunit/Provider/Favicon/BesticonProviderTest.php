@@ -5,18 +5,18 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Favicon;
+namespace OCA\PasswordFolders\Helper\Favicon;
 
 use Exception;
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Helper\Image\ImagickHelper;
-use OCA\Passwords\Helper\Time\DateTimeHelper;
-use OCA\Passwords\Helper\User\AdminUserHelper;
-use OCA\Passwords\Provider\Favicon\BestIconProvider;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\HelperService;
-use OCA\Passwords\Services\NotificationService;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Helper\Image\ImagickHelper;
+use OCA\PasswordFolders\Helper\Time\DateTimeHelper;
+use OCA\PasswordFolders\Helper\User\AdminUserHelper;
+use OCA\PasswordFolders\Provider\Favicon\BestIconProvider;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\HelperService;
+use OCA\PasswordFolders\Services\NotificationService;
 use OCP\Files\SimpleFS\ISimpleFile;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
@@ -31,7 +31,7 @@ use ReflectionException;
 /**
  * Class BesticonProviderTest
  *
- * @package OCA\Passwords\Helper\Favicon
+ * @package OCA\PasswordFolders\Helper\Favicon
  */
 class BesticonProviderTest extends TestCase {
 

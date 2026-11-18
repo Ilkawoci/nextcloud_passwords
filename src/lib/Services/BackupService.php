@@ -1,10 +1,10 @@
 <?php
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\Helper\Backup\CreateBackupHelper;
-use OCA\Passwords\Helper\Backup\RestoreBackupHelper;
+use OCA\PasswordFolders\Helper\Backup\CreateBackupHelper;
+use OCA\PasswordFolders\Helper\Backup\RestoreBackupHelper;
 use OCP\Files\IAppData;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
@@ -15,7 +15,7 @@ use OCP\Util;
 /**
  * Class BackupService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class BackupService {
     const string AUTO_BACKUPS = 'autoBackups';

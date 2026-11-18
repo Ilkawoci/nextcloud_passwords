@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\SecurityCheck;
+namespace OCA\PasswordFolders\Provider\SecurityCheck;
 
-use OCA\Passwords\Helper\SecurityCheck\UserRulesSecurityCheck;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Helper\SecurityCheck\UserRulesSecurityCheck;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
 use OCP\Http\Client\IResponse;
@@ -24,7 +24,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class HaveIBeenPwnedProviderTest
  *
- * @package OCA\Passwords\Provider\SecurityCheck
+ * @package OCA\PasswordFolders\Provider\SecurityCheck
  */
 class HaveIBeenPwnedProviderTest extends TestCase {
 

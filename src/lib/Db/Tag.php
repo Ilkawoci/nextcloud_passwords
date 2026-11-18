@@ -5,12 +5,12 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class Tag
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class Tag extends AbstractModel {
 }

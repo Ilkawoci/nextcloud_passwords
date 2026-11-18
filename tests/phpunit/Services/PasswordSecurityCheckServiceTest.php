@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Helper\SecurityCheck\PasswordDatabaseUpdateHelper;
-use OCA\Passwords\Helper\SecurityCheck\UserRulesSecurityCheck;
-use OCA\Passwords\Provider\SecurityCheck\SecurityCheckProviderInterface;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Helper\SecurityCheck\PasswordDatabaseUpdateHelper;
+use OCA\PasswordFolders\Helper\SecurityCheck\UserRulesSecurityCheck;
+use OCA\PasswordFolders\Provider\SecurityCheck\SecurityCheckProviderInterface;
 use OCA\Test\Passwords\Entities\CreatesEntitiesTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\ApiObjects;
+namespace OCA\PasswordFolders\Helper\ApiObjects;
 
 use Exception;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\UserService;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\UserService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\IConfig;

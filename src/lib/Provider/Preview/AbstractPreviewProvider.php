@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Preview;
+namespace OCA\PasswordFolders\Provider\Preview;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Image\AbstractImageHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\HelperService;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Image\AbstractImageHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\HelperService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\AppFramework\Http;
 use OCP\Files\SimpleFS\ISimpleFile;
 use OCP\Http\Client\IClientService;
@@ -25,7 +25,7 @@ use OCP\Http\Client\IClientService;
 /**
  * Class AbstractPreviewProvider
  *
- * @package OCA\Passwords\Helper\Preview
+ * @package OCA\PasswordFolders\Helper\Preview
  */
 abstract class AbstractPreviewProvider implements PreviewProviderInterface {
 

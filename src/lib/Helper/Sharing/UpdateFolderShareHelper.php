@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Sharing;
+namespace OCA\PasswordFolders\Helper\Sharing;
 
 use Exception;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\Object\PasswordService;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\Object\PasswordService;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use OCP\AppFramework\Http;
 
 /**
  * Class UpdateFolderShareHelper
  *
- * @package OCA\Passwords\Helper\Sharing
+ * @package OCA\PasswordFolders\Helper\Sharing
  */
 class UpdateFolderShareHelper {
 

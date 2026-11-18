@@ -5,10 +5,10 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Notification;
+namespace OCA\PasswordFolders\Notification;
 
 use Exception;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
@@ -19,7 +19,7 @@ use OCP\Notification\UnknownNotificationException;
 /**
  * Class LoginAttemptNotification
  *
- * @package OCA\Passwords\Notification
+ * @package OCA\PasswordFolders\Notification
  */
 class LoginAttemptNotification extends AbstractNotification {
 
@@ -125,6 +125,6 @@ class LoginAttemptNotification extends AbstractNotification {
      * @return string
      */
     protected function getLink(): string {
-        return $this->urlGenerator->linkToRouteAbsolute('passwords.page.index');
+        return $this->urlGenerator->linkToRouteAbsolute('passwordfolders.page.index');
     }
 }

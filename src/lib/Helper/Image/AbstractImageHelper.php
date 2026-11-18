@@ -5,17 +5,17 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Image;
+namespace OCA\PasswordFolders\Helper\Image;
 
 use OC;
-use OCA\Passwords\Exception\Image\ImageConversionException;
-use OCA\Passwords\Exception\Image\ImageExportException;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Exception\Image\ImageConversionException;
+use OCA\PasswordFolders\Exception\Image\ImageExportException;
+use OCA\PasswordFolders\Services\ConfigurationService;
 
 /**
  * Class AbstractImageHelper
  *
- * @package OCA\Passwords\Helper\Image
+ * @package OCA\PasswordFolders\Helper\Image
  */
 abstract class AbstractImageHelper {
 

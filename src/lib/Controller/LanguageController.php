@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller;
+namespace OCA\PasswordFolders\Controller;
 
 use DateTime;
 use Exception;
 use OC;
 use OC\App\AppManager;
 use DateTimeInterface;
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\App\AppPathNotFoundException;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
@@ -32,7 +32,7 @@ use OCP\L10N\IFactory;
 /**
  * Class LanguageController
  *
- * @package OCA\Passwords\Controller
+ * @package OCA\PasswordFolders\Controller
  */
 class LanguageController extends Controller {
 

@@ -11,10 +11,10 @@
 
 /** @noinspection PhpMissingFieldTypeInspection */
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
-use OCA\Passwords\AppInfo\SystemRequirements;
-use OCA\Passwords\Exception\Migration\PhpRequirementNotMetException;
+use OCA\PasswordFolders\AppInfo\SystemRequirements;
+use OCA\PasswordFolders\Exception\Migration\PhpRequirementNotMetException;
 use OCP\IConfig;
 use OCP\Migration\IOutput;
 use OCP\Migration\IRepairStep;
@@ -22,7 +22,7 @@ use OCP\Migration\IRepairStep;
 /**
  * Class CheckAppRequirements
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class CheckAppRequirements implements IRepairStep {
 

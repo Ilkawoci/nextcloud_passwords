@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\SecurityCheck;
+namespace OCA\PasswordFolders\Exception\SecurityCheck;
 
 use Exception;
 use Throwable;
@@ -17,7 +17,7 @@ use Throwable;
 /**
  * Class BreachedPasswordsZipExtractException
  *
- * @package OCA\Passwords\Exception\SecurityCheck
+ * @package OCA\PasswordFolders\Exception\SecurityCheck
  */
 class BreachedPasswordsZipExtractException extends Exception {
     const int EXCEPTION_CODE = 109;

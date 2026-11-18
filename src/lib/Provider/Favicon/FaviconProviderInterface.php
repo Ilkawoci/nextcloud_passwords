@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Favicon;
+namespace OCA\PasswordFolders\Provider\Favicon;
 
 use OCP\Files\SimpleFS\ISimpleFile;
 

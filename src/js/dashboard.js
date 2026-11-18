@@ -10,6 +10,6 @@
 
 import Dashboard from '@js/Init/Dashboard'
 
-__webpack_public_path__ = `${OC.appswebroots.passwords}/`;
+__webpack_public_path__ = `${OC.appswebroots.passwordfolders}/`;
 
 Dashboard.init();

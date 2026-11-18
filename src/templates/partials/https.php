@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-use OCA\Passwords\AppInfo\Application;
+use OCA\PasswordFolders\AppInfo\Application;
 use OCP\IURLGenerator;
 use OCP\Util;
 

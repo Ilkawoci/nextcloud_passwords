@@ -131,7 +131,7 @@ class Application {
         document.body.style.setProperty('--pw-image-logo-themed', `url(${SettingsService.get('server.theme.app.icon')})`);
 
         let appIcon = SettingsService.get('server.theme.color.text') === '#fff' ? 'app':'app-dark';
-        document.body.style.setProperty('--pw-image-logo', `url(${OC.appswebroots.passwords}/img/${appIcon}.svg)`);
+        document.body.style.setProperty('--pw-image-logo', `url(${OC.appswebroots.passwordfolders}/img/${appIcon}.svg)`);
     }
 
     /**
@@ -141,8 +141,8 @@ class Application {
      */
     _initApi() {
         let baseUrl    = UtilityService.generateUrl(),
-            user       = loadState('passwords', 'api-user', null),
-            token      = loadState('passwords', 'api-token', null);
+            user       = loadState('passwordfolders', 'api-user', null),
+            token      = loadState('passwordfolders', 'api-token', null);
 
         if(!user || !token) {
             MessageService.alert('The app was unable to obtain the api access credentials.', 'Initialisation Error')
@@ -162,8 +162,8 @@ class Application {
      * @private
      */
     _checkLoginRequirement() {
-        let impersonate  = loadState('passwords', 'impersonate', false),
-            authenticate = loadState('passwords', 'authenticate', true);
+        let impersonate  = loadState('passwordfolders', 'impersonate', false),
+            authenticate = loadState('passwordfolders', 'authenticate', true);
         this._loginRequired = authenticate || impersonate;
 
         if(!this._loginRequired) {

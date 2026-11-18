@@ -94,7 +94,7 @@ class PasswordsAdminSettings {
     }
 
     static _translate(text) {
-        return OC.L10N.translate('passwords', text);
+        return OC.L10N.translate('passwordfolders', text);
     }
 
     /**

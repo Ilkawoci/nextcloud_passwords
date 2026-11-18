@@ -5,15 +5,15 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Settings;
+namespace OCA\PasswordFolders\Helper\Settings;
 
 use OC_Defaults;
 use OC_Defaults_With_Everything;
 use OC_Defaults_With_NoName;
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Helper\Theming\ThemingColorHelper;
-use OCA\Passwords\Integrations\ThemingIntegration;
-use OCA\Passwords\Integrations\UnsplashIntegration;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Helper\Theming\ThemingColorHelper;
+use OCA\PasswordFolders\Integrations\ThemingIntegration;
+use OCA\PasswordFolders\Integrations\UnsplashIntegration;
 use OCP\IURLGenerator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class ThemeSettingsHelperTest
  *
- * @package OCA\Passwords\Helper\Settings
+ * @package OCA\PasswordFolders\Helper\Settings
  */
 class ThemeSettingsHelperTest extends TestCase {
 

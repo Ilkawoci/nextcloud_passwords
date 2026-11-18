@@ -5,20 +5,20 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\Registration;
-use OCA\Passwords\Db\RegistrationMapper;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\Registration;
+use OCA\PasswordFolders\Db\RegistrationMapper;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\EventDispatcher\IEventDispatcher;
 
 /**
  * Class RegistrationService
  *
- * @package OCA\Passwords\Services\Object
+ * @package OCA\PasswordFolders\Services\Object
  */
 class RegistrationService extends AbstractService {
 

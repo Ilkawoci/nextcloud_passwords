@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class Session
@@ -21,7 +21,7 @@ namespace OCA\Passwords\Db;
  * @method string getLoginType()
  * @method void setLoginType(string $loginType)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class Session extends AbstractEntity {
 

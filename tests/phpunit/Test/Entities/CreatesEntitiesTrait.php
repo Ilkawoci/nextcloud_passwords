@@ -2,13 +2,13 @@
 
 namespace OCA\Test\Passwords\Entities;
 
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\Tag;
-use OCA\Passwords\Db\TagRevision;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\Tag;
+use OCA\PasswordFolders\Db\TagRevision;
 
 trait CreatesEntitiesTrait {
     public function createPasswordModel(array $properties = []): Password {

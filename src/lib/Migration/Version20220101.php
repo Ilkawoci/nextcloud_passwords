@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
 use Closure;
 use Doctrine\DBAL\Schema\SchemaException;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
 use OCP\DB\Exception;
 use OCP\DB\ISchemaWrapper;
 use OCP\IDBConnection;
@@ -25,7 +25,7 @@ use OCP\Migration\SimpleMigrationStep;
 /**
  * Class Version20220101
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class Version20220101 extends SimpleMigrationStep {
 

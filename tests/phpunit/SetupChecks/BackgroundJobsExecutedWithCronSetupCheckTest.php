@@ -9,9 +9,9 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\SetupChecks;
+namespace OCA\PasswordFolders\SetupChecks;
 
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use PHPUnit\Framework\TestCase;

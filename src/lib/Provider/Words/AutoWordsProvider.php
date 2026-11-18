@@ -9,9 +9,9 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Words;
+namespace OCA\PasswordFolders\Provider\Words;
 
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Services\LoggingService;
 
 class AutoWordsProvider extends AbstractWordsProvider {
 

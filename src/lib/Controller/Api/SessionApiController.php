@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\User\UserLoginAttemptHelper;
-use OCA\Passwords\Helper\User\UserTokenHelper;
-use OCA\Passwords\Services\DeferredActivationService;
-use OCA\Passwords\Services\Object\KeychainService;
-use OCA\Passwords\Services\SessionService;
-use OCA\Passwords\Services\UserChallengeService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\User\UserLoginAttemptHelper;
+use OCA\PasswordFolders\Helper\User\UserTokenHelper;
+use OCA\PasswordFolders\Services\DeferredActivationService;
+use OCA\PasswordFolders\Services\Object\KeychainService;
+use OCA\PasswordFolders\Services\SessionService;
+use OCA\PasswordFolders\Services\UserChallengeService;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\BruteForceProtection;
 use OCP\AppFramework\Http\Attribute\CORS;
@@ -33,7 +33,7 @@ use stdClass;
 /**
  * Class SessionApiController
  *
- * @package OCA\Passwords\Controller\Api
+ * @package OCA\PasswordFolders\Controller\Api
  */
 class SessionApiController extends AbstractApiController {
 

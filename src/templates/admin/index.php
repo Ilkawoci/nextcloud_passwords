@@ -8,7 +8,7 @@
  * @var $_ array
  */
 
-use OCA\Passwords\AppInfo\Application;
+use OCA\PasswordFolders\AppInfo\Application;
 use OCP\Util;
 
 Util::addScript('passwords', 'Static/utility');

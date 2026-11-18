@@ -21,15 +21,15 @@ function checkBrowserSupport() {
 }
 
 function showBrowserCompatibilityWarning(reason) {
-    var tl        = function(t) {return OC.L10N.translate('passwords', t);},
-        imgpath   = OC.filePath('passwords', 'img', 'browser/'),
+    var tl        = function(t) {return OC.L10N.translate('passwordfolders', t);},
+        imgpath   = OC.filePath('passwordfolders', 'img', 'browser/'),
         container = document.getElementById('main'),
         title     = tl('CompatHeadline'),
         message   = tl('CompatText1') + '<br>' + tl('CompatText2');
 
     if(reason === 'WebAssembly') {
         var handbookLink = null,
-            settings     = OCP.InitialState.loadState('passwords', 'settings');
+            settings     = OCP.InitialState.loadState('passwordfolders', 'settings');
 
         if(settings && settings['server.handbook.url']) {
             handbookLink = settings['server.handbook.url.web'] + 'Enable-WebAssembly';

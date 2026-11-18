@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use OC\Avatar\GuestAvatar;
 use OCP\Files\SimpleFS\ISimpleFile;
@@ -18,7 +18,7 @@ use Throwable;
 /**
  * Class AvatarService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class AvatarService {
 

@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
-use OCA\Passwords\Db\ModelInterface;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Db\ShareMapper;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordService;
+use OCA\PasswordFolders\Db\ModelInterface;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Db\ShareMapper;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
 
 /**
  * Class PasswordModelRepair
  *
- * @package OCA\Passwords\Migration\DatabaseRepair
+ * @package OCA\PasswordFolders\Migration\DatabaseRepair
  */
 class PasswordModelRepair extends AbstractModelRepair {
 

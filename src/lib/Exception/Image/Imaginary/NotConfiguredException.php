@@ -9,9 +9,9 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\Image\Imaginary;
+namespace OCA\PasswordFolders\Exception\Image\Imaginary;
 
-use OCA\Passwords\Exception\AbstractException;
+use OCA\PasswordFolders\Exception\AbstractException;
 
 class NotConfiguredException extends AbstractException {
 

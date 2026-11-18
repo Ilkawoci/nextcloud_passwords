@@ -5,16 +5,16 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Image;
+namespace OCA\PasswordFolders\Helper\Image;
 
-use OCA\Passwords\Exception\Image\ImageExportException;
+use OCA\PasswordFolders\Exception\Image\ImageExportException;
 use OCP\Image;
 use Throwable;
 
 /**
  * Class GdHelper
  *
- * @package OCA\Passwords\Helper\Image
+ * @package OCA\PasswordFolders\Helper\Image
  */
 class GdHelper extends AbstractImageHelper {
 

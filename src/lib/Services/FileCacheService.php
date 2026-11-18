@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
 use OCP\Cache\CappedMemoryCache;
@@ -24,7 +24,7 @@ use Throwable;
 /**
  * Class FileCacheService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class FileCacheService {
 

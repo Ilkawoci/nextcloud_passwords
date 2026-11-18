@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class Registration
@@ -25,7 +25,7 @@ namespace OCA\Passwords\Db;
  * @method int|null getLimit()
  * @method void setLimit(int $limit)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class Registration extends AbstractEntity {
 

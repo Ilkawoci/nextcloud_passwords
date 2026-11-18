@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Preview;
+namespace OCA\PasswordFolders\Provider\Preview;
 
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Files\SimpleFS\ISimpleFile;
 
 /**
  * Class DefaultPreviewProvider
  *
- * @package OCA\Passwords\Helper\Preview
+ * @package OCA\PasswordFolders\Helper\Preview
  */
 class DefaultPreviewProvider extends AbstractPreviewProvider {
 

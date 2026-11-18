@@ -13,6 +13,12 @@ import PasswordsClient from "passwords-client";
 import LegacyPasswordsApi from "@js/PasswordsClient/LegacyPasswordsApi";
 import SettingsService from "@js/Services/SettingsService";
 import ApiRequest from "@js/PasswordsClient/ApiRequest";
+import {Server} from "passwords-client/models";
+
+// The client library hardcodes the official app id in its api url
+Server.prototype.getApiUrl = function() {
+    return `${this.getBaseUrl()}index.php/apps/passwordfolders/api/`;
+};
 
 export default new class ClientService {
 
@@ -22,8 +28,10 @@ export default new class ClientService {
     }
 
     initialize(baseUrl, user, token, events = null) {
+        // the api url of the official client library is hardcoded to /apps/passwords/
+        let apiUrl = `${baseUrl}index.php/apps/passwordfolders/`;
         let server = {baseUrl, user, token};
-        let config = {baseUrl, user, token};
+        let config = {baseUrl, user, token, apiUrl};
 
         let classes = {
             'legacy'         : () => {

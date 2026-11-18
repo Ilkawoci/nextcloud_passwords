@@ -9,9 +9,9 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller;
+namespace OCA\PasswordFolders\Controller;
 
-use OCA\Passwords\Cron\SynchronizeShares;
+use OCA\PasswordFolders\Cron\SynchronizeShares;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\CORS;
@@ -24,7 +24,7 @@ use OCP\IRequest;
 /**
  * Class CronController
  *
- * @package OCA\Passwords\Controller
+ * @package OCA\PasswordFolders\Controller
  */
 class CronController extends Controller {
 

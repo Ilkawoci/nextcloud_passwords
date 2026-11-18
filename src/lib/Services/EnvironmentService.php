@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
 use OC\Authentication\Token\IProvider;
@@ -29,7 +29,7 @@ use Throwable;
 /**
  * Class EnvironmentService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class EnvironmentService {
 
@@ -284,7 +284,7 @@ class EnvironmentService {
                 if($requestUri[0] !== '/') $requestUri = '/'.$requestUri;
             }
 
-            return $requestUri === '/apps/passwords/cron/sharing';
+            return $requestUri === '/apps/passwordfolders/cron/sharing';
         } catch(Exception $e) {
             return false;
         }

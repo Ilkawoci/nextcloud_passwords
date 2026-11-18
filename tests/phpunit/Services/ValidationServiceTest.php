@@ -5,17 +5,17 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\FolderService;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
 /**
  * Class ValidationServiceTest
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class ValidationServiceTest extends TestCase {
 

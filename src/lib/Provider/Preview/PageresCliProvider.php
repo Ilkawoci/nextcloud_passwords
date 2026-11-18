@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Preview;
+namespace OCA\PasswordFolders\Provider\Preview;
 
 use Exception;
-use OCA\Passwords\Services\HelperService;
-use OCA\Passwords\Services\WebsitePreviewService;
+use OCA\PasswordFolders\Services\HelperService;
+use OCA\PasswordFolders\Services\WebsitePreviewService;
 
 /**
  * Class PageresCliProvider
  *
- * @package OCA\Passwords\Helper\Preview
+ * @package OCA\PasswordFolders\Helper\Preview
  */
 class PageresCliProvider extends AbstractPreviewProvider {
 

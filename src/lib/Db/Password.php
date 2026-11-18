@@ -5,12 +5,12 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class Password
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  *
  * @method string|null getShareId()
  * @method void setShareId(string|null $shareId)

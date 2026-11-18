@@ -5,9 +5,9 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
-use OCA\Passwords\Services\BackupService;
+use OCA\PasswordFolders\Services\BackupService;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use Symfony\Component\Console\Command\Command;
@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class BackupCreateCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class BackupCreateCommand extends Command {
 
@@ -42,7 +42,7 @@ class BackupCreateCommand extends Command {
      *
      */
     protected function configure(): void {
-        $this->setName('passwords:backup:create')
+        $this->setName('passwordfolders:backup:create')
              ->addArgument('name', InputArgument::OPTIONAL, 'The name of the backup')
              ->setDescription('Create a new backup of the password database');
     }

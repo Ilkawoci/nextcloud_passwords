@@ -5,19 +5,19 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\Tag;
-use OCA\Passwords\Db\TagMapper;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\Tag;
+use OCA\PasswordFolders\Db\TagMapper;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\EventDispatcher\IEventDispatcher;
 
 /**
  * Class TagService
  *
- * @package OCA\Passwords\Services\Object
+ * @package OCA\PasswordFolders\Services\Object
  */
 class TagService extends AbstractModelService {
 

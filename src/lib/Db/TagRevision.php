@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class TagRevision
@@ -13,7 +13,7 @@ namespace OCA\Passwords\Db;
  * @method string getColor()
  * @method void setColor(string $color)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class TagRevision extends AbstractRevision {
 

@@ -9,18 +9,18 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\SecurityCheck;
+namespace OCA\PasswordFolders\Provider\SecurityCheck;
 
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\Cache\CappedMemoryCache;
 use Throwable;
 
 /**
  * Class AbstractSecurityCheckProvider
  *
- * @package OCA\Passwords\Helper\SecurityCheck
+ * @package OCA\PasswordFolders\Helper\SecurityCheck
  */
 abstract class AbstractSecurityCheckProvider implements SecurityCheckProviderInterface {
 

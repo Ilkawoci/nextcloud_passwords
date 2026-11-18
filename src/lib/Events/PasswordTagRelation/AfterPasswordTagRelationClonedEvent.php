@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\PasswordTagRelation;
+namespace OCA\PasswordFolders\Events\PasswordTagRelation;
 
-use OCA\Passwords\Db\PasswordTagRelation;
+use OCA\PasswordFolders\Db\PasswordTagRelation;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class AfterPasswordTagRelationClonedEvent
  *
- * @package OCA\Passwords\Events\PasswordTagRelation
+ * @package OCA\PasswordFolders\Events\PasswordTagRelation
  */
 class AfterPasswordTagRelationClonedEvent extends Event {
 

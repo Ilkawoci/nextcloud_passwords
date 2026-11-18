@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\Encryption;
+namespace OCA\PasswordFolders\Exception\Encryption;
 
 use Exception;
 use JetBrains\PhpStorm\Pure;

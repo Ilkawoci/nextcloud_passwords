@@ -9,25 +9,25 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Notification\AbstractNotification;
-use OCA\Passwords\Notification\BackupFailedNotification;
-use OCA\Passwords\Notification\BackupRestoredNotification;
-use OCA\Passwords\Notification\BadPasswordNotification;
-use OCA\Passwords\Notification\BesticonApiNotification;
-use OCA\Passwords\Notification\BreachedPasswordsUpdateFailedNotification;
-use OCA\Passwords\Notification\EmptyRequiredSettingNotification;
-use OCA\Passwords\Notification\ExportNotPossibleNotification;
-use OCA\Passwords\Notification\ImpersonationNotification;
-use OCA\Passwords\Notification\LoginAttemptNotification;
-use OCA\Passwords\Notification\NewClientNotification;
-use OCA\Passwords\Notification\ShareCreatedNotification;
-use OCA\Passwords\Notification\ShareLoopNotification;
-use OCA\Passwords\Notification\SurveyNotification;
-use OCA\Passwords\Notification\UpgradeRequiredNotification;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Notification\AbstractNotification;
+use OCA\PasswordFolders\Notification\BackupFailedNotification;
+use OCA\PasswordFolders\Notification\BackupRestoredNotification;
+use OCA\PasswordFolders\Notification\BadPasswordNotification;
+use OCA\PasswordFolders\Notification\BesticonApiNotification;
+use OCA\PasswordFolders\Notification\BreachedPasswordsUpdateFailedNotification;
+use OCA\PasswordFolders\Notification\EmptyRequiredSettingNotification;
+use OCA\PasswordFolders\Notification\ExportNotPossibleNotification;
+use OCA\PasswordFolders\Notification\ImpersonationNotification;
+use OCA\PasswordFolders\Notification\LoginAttemptNotification;
+use OCA\PasswordFolders\Notification\NewClientNotification;
+use OCA\PasswordFolders\Notification\ShareCreatedNotification;
+use OCA\PasswordFolders\Notification\ShareLoopNotification;
+use OCA\PasswordFolders\Notification\SurveyNotification;
+use OCA\PasswordFolders\Notification\UpgradeRequiredNotification;
 use OCP\L10N\IFactory;
 use OCP\Notification\INotification;
 use OCP\Notification\INotifier;
@@ -36,7 +36,7 @@ use OCP\Notification\UnknownNotificationException;
 /**
  * Class NotificationService
  *
- * @package OCA\Passwords\Notification
+ * @package OCA\PasswordFolders\Notification
  */
 class NotificationService implements INotifier {
 

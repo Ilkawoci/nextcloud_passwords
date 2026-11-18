@@ -5,11 +5,11 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Controller\Admin;
+namespace OCA\PasswordFolders\Controller\Admin;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
@@ -19,7 +19,7 @@ use Throwable;
 /**
  * Class CacheController
  *
- * @package OCA\Passwords\Controller\Admin
+ * @package OCA\PasswordFolders\Controller\Admin
  */
 class CacheController extends ApiController {
 

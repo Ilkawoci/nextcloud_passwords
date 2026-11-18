@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\User;
+namespace OCA\PasswordFolders\Helper\User;
 
 use OCP\IUser;
 use OCP\IGroupManager;
@@ -13,7 +13,7 @@ use OCP\IGroupManager;
 /**
  * Class AdminUserHelper
  *
- * @package OCA\Passwords\Helper\User
+ * @package OCA\PasswordFolders\Helper\User
  */
 class AdminUserHelper {
 

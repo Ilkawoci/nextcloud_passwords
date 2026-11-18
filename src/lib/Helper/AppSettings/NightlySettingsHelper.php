@@ -5,17 +5,17 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\AppSettings;
+namespace OCA\PasswordFolders\Helper\AppSettings;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Fetcher\NightlyAppFetcher;
-use OCA\Passwords\Services\BackgroundJobService;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Fetcher\NightlyAppFetcher;
+use OCA\PasswordFolders\Services\BackgroundJobService;
+use OCA\PasswordFolders\Services\ConfigurationService;
 
 /**
  * Class NightlySettingsHelper
  *
- * @package OCA\Passwords\Helper\AppSettings
+ * @package OCA\PasswordFolders\Helper\AppSettings
  */
 class NightlySettingsHelper extends AbstractSettingsHelper {
 

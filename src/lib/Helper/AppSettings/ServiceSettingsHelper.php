@@ -9,25 +9,25 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\AppSettings;
+namespace OCA\PasswordFolders\Helper\AppSettings;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Provider\Favicon\BestIconProvider;
-use OCA\Passwords\Provider\Preview\BrowshotPreviewProvider;
-use OCA\Passwords\Provider\Preview\ScreeenlyProvider;
-use OCA\Passwords\Provider\Preview\ScreenShotLayerProvider;
-use OCA\Passwords\Provider\Preview\ScreenShotMachineProvider;
-use OCA\Passwords\Provider\SecurityCheck\BigLocalDbSecurityCheckProvider;
-use OCA\Passwords\Provider\SecurityCheck\HaveIBeenPwnedProvider;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Provider\Favicon\BestIconProvider;
+use OCA\PasswordFolders\Provider\Preview\BrowshotPreviewProvider;
+use OCA\PasswordFolders\Provider\Preview\ScreeenlyProvider;
+use OCA\PasswordFolders\Provider\Preview\ScreenShotLayerProvider;
+use OCA\PasswordFolders\Provider\Preview\ScreenShotMachineProvider;
+use OCA\PasswordFolders\Provider\SecurityCheck\BigLocalDbSecurityCheckProvider;
+use OCA\PasswordFolders\Provider\SecurityCheck\HaveIBeenPwnedProvider;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\AppFramework\Http;
 use OCP\IL10N;
 
 /**
  * Class ServiceSettingsHelper
  *
- * @package OCA\Passwords\Helper\AppSettings
+ * @package OCA\PasswordFolders\Helper\AppSettings
  */
 class ServiceSettingsHelper extends AbstractSettingsHelper {
 

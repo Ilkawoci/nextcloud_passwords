@@ -84,7 +84,7 @@ export default class RecoverHiddenItemsAction {
      * @returns {Promise<any|{success: boolean}>}
      */
     async sendRecoveryRequest(selection) {
-        let url     = generateUrl(`/apps/passwords/action/recover-hidden`),
+        let url     = generateUrl(`/apps/passwordfolders/action/recover-hidden`),
             headers = new Headers();
 
         headers.append('Content-Type', 'application/json');

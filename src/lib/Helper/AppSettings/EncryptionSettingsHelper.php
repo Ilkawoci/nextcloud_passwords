@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\AppSettings;
+namespace OCA\PasswordFolders\Helper\AppSettings;
 
 class EncryptionSettingsHelper extends AbstractSettingsHelper {
 

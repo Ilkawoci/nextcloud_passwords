@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Words;
+namespace OCA\PasswordFolders\Provider\Words;
 
 interface WordsProviderInterface {
     /**

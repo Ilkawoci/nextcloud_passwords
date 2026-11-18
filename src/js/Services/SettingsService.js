@@ -134,7 +134,7 @@ class SettingsService {
      *
      */
     init() {
-        let settings = loadState('passwords', 'settings', null);
+        let settings = loadState('passwordfolders', 'settings', null);
         if(settings) {
             this._addSettings(settings);
         }

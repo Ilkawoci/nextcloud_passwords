@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Cron;
+namespace OCA\PasswordFolders\Cron;
 
 use Exception;
-use OCA\Passwords\Helper\User\DeleteUserDataHelper;
-use OCA\Passwords\Services\BackgroundJobService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Helper\User\DeleteUserDataHelper;
+use OCA\PasswordFolders\Services\BackgroundJobService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\AppFramework\Utility\ITimeFactory;
 
 /**
  * Class ProcessDeletedUsers
  *
- * @package OCA\Passwords\Cron
+ * @package OCA\PasswordFolders\Cron
  */
 class ProcessDeletedUser extends AbstractQueuedJob {
 

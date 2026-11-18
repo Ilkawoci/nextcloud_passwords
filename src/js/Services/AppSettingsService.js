@@ -82,7 +82,7 @@ export default class AdminSettingsService {
         }
 
         try {
-            let url = UtilityService.generateUrl(`/apps/passwords/admin/${path}`),
+            let url = UtilityService.generateUrl(`/apps/passwordfolders/admin/${path}`),
                 response = await fetch(new Request(url, options), options);
             return await AdminSettingsService._processResponse(response);
         } catch(e) {

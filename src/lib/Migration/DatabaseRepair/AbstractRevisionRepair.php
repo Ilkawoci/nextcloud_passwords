@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
 use Exception;
 use JetBrains\PhpStorm\Pure;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\Object\AbstractRevisionService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\Object\AbstractRevisionService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\Migration\IOutput;
@@ -26,7 +26,7 @@ use Throwable;
 /**
  * Class AbstractRepairHelper
  *
- * @package OCA\Passwords\Migration\DatabaseRepair
+ * @package OCA\PasswordFolders\Migration\DatabaseRepair
  */
 abstract class AbstractRevisionRepair {
 

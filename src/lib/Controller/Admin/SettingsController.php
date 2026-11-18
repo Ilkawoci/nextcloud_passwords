@@ -5,10 +5,10 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Controller\Admin;
+namespace OCA\PasswordFolders\Controller\Admin;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\AppSettingsService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\AppSettingsService;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\IRequest;
@@ -16,7 +16,7 @@ use OCP\IRequest;
 /**
  * Class SettingsController
  *
- * @package OCA\Passwords\Controller\Admin
+ * @package OCA\PasswordFolders\Controller\Admin
  */
 class SettingsController extends ApiController {
 

@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Registration;
+namespace OCA\PasswordFolders\Events\Registration;
 
-use OCA\Passwords\Db\Registration;
+use OCA\PasswordFolders\Db\Registration;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class AfterRegistrationClonedEvent
  *
- * @package OCA\Passwords\Events\Registration
+ * @package OCA\PasswordFolders\Events\Registration
  */
 class AfterRegistrationClonedEvent extends Event {
 

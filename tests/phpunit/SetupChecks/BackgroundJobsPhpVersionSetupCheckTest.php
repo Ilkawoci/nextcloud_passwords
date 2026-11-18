@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\SetupChecks;
+namespace OCA\PasswordFolders\SetupChecks;
 
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCP\IL10N;
 use PHPUnit\Framework\TestCase;
 

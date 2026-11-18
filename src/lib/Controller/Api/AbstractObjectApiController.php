@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
 use Exception;
-use OCA\Passwords\Db\AbstractModel;
-use OCA\Passwords\Db\AbstractRevision;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\ApiObjects\AbstractObjectHelper;
-use OCA\Passwords\Services\Object\AbstractModelService;
-use OCA\Passwords\Services\Object\AbstractRevisionService;
-use OCA\Passwords\Services\ValidationService;
+use OCA\PasswordFolders\Db\AbstractModel;
+use OCA\PasswordFolders\Db\AbstractRevision;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\ApiObjects\AbstractObjectHelper;
+use OCA\PasswordFolders\Services\Object\AbstractModelService;
+use OCA\PasswordFolders\Services\Object\AbstractRevisionService;
+use OCA\PasswordFolders\Services\ValidationService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\Http;
@@ -31,7 +31,7 @@ use OCP\IRequest;
 /**
  * Class AbstractObjectApiController
  *
- * @package OCA\Passwords\Controller\Api
+ * @package OCA\PasswordFolders\Controller\Api
  */
 abstract class AbstractObjectApiController extends AbstractApiController {
 

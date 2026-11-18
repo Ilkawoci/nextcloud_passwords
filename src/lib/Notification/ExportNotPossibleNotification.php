@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Notification;
+namespace OCA\PasswordFolders\Notification;
 
 use Exception;
 use OCP\IL10N;
@@ -72,6 +72,6 @@ class ExportNotPossibleNotification extends AbstractNotification {
      * @return string
      */
     protected function getLink(): string {
-        return $this->urlGenerator->linkToRouteAbsolute('passwords.page.index').'#/backup/export';
+        return $this->urlGenerator->linkToRouteAbsolute('passwordfolders.page.index').'#/backup/export';
     }
 }

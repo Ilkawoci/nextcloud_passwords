@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\TagRevision;
+namespace OCA\PasswordFolders\Events\TagRevision;
 
-use OCA\Passwords\Db\TagRevision;
+use OCA\PasswordFolders\Db\TagRevision;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class TagRevisionClonedEvent
  *
- * @package OCA\Passwords\Events\TagRevision
+ * @package OCA\PasswordFolders\Events\TagRevision
  */
 class TagRevisionClonedEvent extends Event {
 

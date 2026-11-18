@@ -5,16 +5,16 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Settings;
+namespace OCA\PasswordFolders\Helper\Settings;
 
 use Exception;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\UserChallengeService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\UserChallengeService;
 
 /**
  * Class UserSettingsHelper
  *
- * @package OCA\Passwords\Helper\Settings
+ * @package OCA\PasswordFolders\Helper\Settings
  */
 class UserSettingsHelper {
 

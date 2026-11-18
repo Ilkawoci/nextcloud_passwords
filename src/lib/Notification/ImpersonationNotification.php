@@ -5,14 +5,14 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Notification;
+namespace OCA\PasswordFolders\Notification;
 
 use DateTime;
 use Exception;
 use IntlDateFormatter;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\UserChallengeService;
-use OCA\Passwords\Services\UserService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\UserChallengeService;
+use OCA\PasswordFolders\Services\UserService;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
@@ -23,7 +23,7 @@ use OCP\Notification\UnknownNotificationException;
 /**
  * Class ImpersonationNotification
  *
- * @package OCA\Passwords\Notification
+ * @package OCA\PasswordFolders\Notification
  */
 class ImpersonationNotification extends AbstractNotification {
 
@@ -143,6 +143,6 @@ class ImpersonationNotification extends AbstractNotification {
      * @return string
      */
     protected function getLink(): string {
-        return $this->urlGenerator->linkToRouteAbsolute('passwords.page.index');
+        return $this->urlGenerator->linkToRouteAbsolute('passwordfolders.page.index');
     }
 }

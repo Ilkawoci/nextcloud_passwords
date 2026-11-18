@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Survey;
+namespace OCA\PasswordFolders\Helper\Survey;
 
 use Exception;
 use OC_App;
-use OCA\Passwords\Db\FolderRevisionMapper;
-use OCA\Passwords\Db\PasswordRevisionMapper;
-use OCA\Passwords\Db\ShareMapper;
-use OCA\Passwords\Db\TagRevisionMapper;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\AppSettings\ServiceSettingsHelper;
-use OCA\Passwords\Helper\Image\AutoImageHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Db\FolderRevisionMapper;
+use OCA\PasswordFolders\Db\PasswordRevisionMapper;
+use OCA\PasswordFolders\Db\ShareMapper;
+use OCA\PasswordFolders\Db\TagRevisionMapper;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\AppSettings\ServiceSettingsHelper;
+use OCA\PasswordFolders\Helper\Image\AutoImageHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Http\Client\IClientService;
 use OCP\ServerVersion;
 use Opis\JsonSchema\Errors\ErrorFormatter;
@@ -312,7 +312,7 @@ class ServerReportHelperTest extends TestCase {
     }
 
     /**
-     * Values written by OCA\Passwords\Migration\AutoBackupRestore
+     * Values written by OCA\PasswordFolders\Migration\AutoBackupRestore
      */
     public static function autoBackupStatusProvider(): array {
         return self::namedValues([0, 1, 2, 3]);

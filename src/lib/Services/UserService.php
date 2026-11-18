@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use OCP\IL10N;
 use OCP\IUser;
@@ -14,7 +14,7 @@ use OCP\IUserManager;
 /**
  * Class UserService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class UserService {
 

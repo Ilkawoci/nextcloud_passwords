@@ -9,11 +9,11 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Preview;
+namespace OCA\PasswordFolders\Helper\Preview;
 
-use OCA\Passwords\Helper\Image\AbstractImageHelper;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Helper\Image\AbstractImageHelper;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use OCP\Files\SimpleFS\ISimpleFile;

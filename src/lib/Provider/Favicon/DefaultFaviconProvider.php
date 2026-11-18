@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Favicon;
+namespace OCA\PasswordFolders\Provider\Favicon;
 
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Files\SimpleFS\ISimpleFile;
 use Throwable;
 
 /**
  * Class DefaultFaviconProvider
  *
- * @package OCA\Passwords\Helper\Favicon
+ * @package OCA\PasswordFolders\Helper\Favicon
  */
 class DefaultFaviconProvider extends AbstractFaviconProvider {
 

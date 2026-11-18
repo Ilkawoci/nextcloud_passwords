@@ -5,12 +5,12 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Controller;
+namespace OCA\PasswordFolders\Controller;
 
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Helper\Survey\ServerReportHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Helper\Survey\ServerReportHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\AppFramework\Controller;
 use OCP\IRequest;
 use OCP\Notification\IManager;
@@ -18,7 +18,7 @@ use OCP\Notification\IManager;
 /**
  * Class NotificationController
  *
- * @package OCA\Passwords\Controller
+ * @package OCA\PasswordFolders\Controller
  */
 class NotificationController extends Controller {
 

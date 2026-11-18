@@ -5,9 +5,9 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
-use OCA\Passwords\Helper\Survey\ServerReportHelper;
+use OCA\PasswordFolders\Helper\Survey\ServerReportHelper;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class SystemReportCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class SystemReportCommand extends Command {
 
@@ -40,7 +40,7 @@ class SystemReportCommand extends Command {
      *
      */
     protected function configure(): void {
-        $this->setName('passwords:system:report')
+        $this->setName('passwordfolders:system:report')
              ->setDescription('Print system information as detected by the app')
              ->addArgument('sections', InputArgument::IS_ARRAY, 'Only print the given section(s)')
              ->addOption('basic', 'b', InputOption::VALUE_NONE, 'Only print basic report');

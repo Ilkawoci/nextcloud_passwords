@@ -5,16 +5,16 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\AppInfo\Application;
+use OCA\PasswordFolders\AppInfo\Application;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
 /**
  * Class LoggingService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class LoggingService {
 

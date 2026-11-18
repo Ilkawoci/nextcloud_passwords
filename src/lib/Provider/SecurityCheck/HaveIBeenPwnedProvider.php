@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\SecurityCheck;
+namespace OCA\PasswordFolders\Provider\SecurityCheck;
 
 use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\RequestOptions;
-use OCA\Passwords\Exception\SecurityCheck\InvalidHibpApiResponseException;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Exception\SecurityCheck\InvalidHibpApiResponseException;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\Cache\CappedMemoryCache;
 use OCP\Http\Client\IClientService;
 use Throwable;
@@ -25,7 +25,7 @@ use Throwable;
 /**
  * Class HaveIBeenPwnedProvider
  *
- * @package OCA\Passwords\Helper\SecurityCheck
+ * @package OCA\PasswordFolders\Helper\SecurityCheck
  */
 class HaveIBeenPwnedProvider extends AbstractSecurityCheckProvider {
 

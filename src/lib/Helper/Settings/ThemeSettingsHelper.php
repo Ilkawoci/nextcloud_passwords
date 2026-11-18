@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Settings;
+namespace OCA\PasswordFolders\Helper\Settings;
 
 use OC_Defaults;
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Helper\Theming\ThemingColorHelper;
-use OCA\Passwords\Integrations\ThemingIntegration;
-use OCA\Passwords\Integrations\UnsplashIntegration;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Helper\Theming\ThemingColorHelper;
+use OCA\PasswordFolders\Integrations\ThemingIntegration;
+use OCA\PasswordFolders\Integrations\UnsplashIntegration;
 use OCP\IURLGenerator;
 
 /**
  * Class ThemeSettingsHelper
  *
- * @package OCA\Passwords\Helper\Settings
+ * @package OCA\PasswordFolders\Helper\Settings
  */
 class ThemeSettingsHelper {
     const string DEFAULT_BACKGROUND_PATH = '/apps/theming/img/background/jo-myoung-hee-fluid.webp';

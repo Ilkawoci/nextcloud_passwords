@@ -5,14 +5,14 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Encryption\Challenge;
+namespace OCA\PasswordFolders\Encryption\Challenge;
 
-use OCA\Passwords\Db\Challenge;
+use OCA\PasswordFolders\Db\Challenge;
 
 /**
  * Interface ChallengeEncryptionInterface
  *
- * @package OCA\Passwords\Encryption\Challenge
+ * @package OCA\PasswordFolders\Encryption\Challenge
  */
 interface ChallengeEncryptionInterface {
 

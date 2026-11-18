@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\UserMigration\Import;
+namespace OCA\PasswordFolders\UserMigration\Import;
 
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
 
 class SettingsImporter {
 

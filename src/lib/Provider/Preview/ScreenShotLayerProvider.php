@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Preview;
+namespace OCA\PasswordFolders\Provider\Preview;
 
-use OCA\Passwords\Services\HelperService;
-use OCA\Passwords\Services\WebsitePreviewService;
+use OCA\PasswordFolders\Services\HelperService;
+use OCA\PasswordFolders\Services\WebsitePreviewService;
 
 /**
  * Class ScreenShotLayerProvider
  *
- * @package OCA\Passwords\Helper\PageShot
+ * @package OCA\PasswordFolders\Helper\PageShot
  */
 class ScreenShotLayerProvider extends AbstractPreviewProvider {
 

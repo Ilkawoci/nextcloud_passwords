@@ -5,14 +5,14 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Exception\Command;
+namespace OCA\PasswordFolders\Exception\Command;
 
-use OCA\Passwords\Exception\AbstractException;
+use OCA\PasswordFolders\Exception\AbstractException;
 
 /**
  * Class NonInteractiveShellException
  *
- * @package OCA\Passwords\Exception\Command
+ * @package OCA\PasswordFolders\Exception\Command
  */
 class NonInteractiveShellException extends AbstractException {
     const int EXCEPTION_CODE       = 107;

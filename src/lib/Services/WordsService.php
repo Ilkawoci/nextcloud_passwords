@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Provider\Words\WordsProviderInterface;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Provider\Words\WordsProviderInterface;
 use OCP\AppFramework\Http;
 use Throwable;
 
 /**
  * Class WordsService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class WordsService {
 

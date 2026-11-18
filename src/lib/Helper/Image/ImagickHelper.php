@@ -5,20 +5,20 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Image;
+namespace OCA\PasswordFolders\Helper\Image;
 
 use Gmagick;
 use GmagickException;
 use Imagick;
 use ImagickException;
-use OCA\Passwords\Exception\Image\ImageConversionException;
-use OCA\Passwords\Exception\Image\ImageExportException;
+use OCA\PasswordFolders\Exception\Image\ImageConversionException;
+use OCA\PasswordFolders\Exception\Image\ImageExportException;
 use Throwable;
 
 /**
  * Class ImagickHelper
  *
- * @package OCA\Passwords\Helper\Image
+ * @package OCA\PasswordFolders\Helper\Image
  */
 class ImagickHelper extends AbstractImageHelper {
 

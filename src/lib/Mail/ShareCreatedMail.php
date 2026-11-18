@@ -5,11 +5,11 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Mail;
+namespace OCA\PasswordFolders\Mail;
 
 use OC_Defaults;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\UserService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\UserService;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\IUser;
@@ -18,7 +18,7 @@ use OCP\Mail\IMailer;
 /**
  * Class ShareCreatedMail
  *
- * @package OCA\Passwords\Mail
+ * @package OCA\PasswordFolders\Mail
  */
 class ShareCreatedMail extends AbstractMail {
 
@@ -66,7 +66,7 @@ class ShareCreatedMail extends AbstractMail {
 
         $template->addBodyButton(
             $localisation->t('View passwords shared with me'),
-            $this->urlGenerator->linkToRouteAbsolute('passwords.page.index').'#/shared/0'
+            $this->urlGenerator->linkToRouteAbsolute('passwordfolders.page.index').'#/shared/0'
         );
 
         $this->sendMessage($user, $title, $template);

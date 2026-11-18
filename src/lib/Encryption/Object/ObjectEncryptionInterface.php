@@ -9,14 +9,14 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Encryption\Object;
+namespace OCA\PasswordFolders\Encryption\Object;
 
-use OCA\Passwords\Db\RevisionInterface;
+use OCA\PasswordFolders\Db\RevisionInterface;
 
 /**
  * Interface ObjectEncryptionInterface
  *
- * @package OCA\Passwords\Encryption\Object
+ * @package OCA\PasswordFolders\Encryption\Object
  */
 interface ObjectEncryptionInterface {
 

@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Keychain;
+namespace OCA\PasswordFolders\Events\Keychain;
 
-use OCA\Passwords\Db\Keychain;
+use OCA\PasswordFolders\Db\Keychain;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class GenericKeychainEvent
  *
- * @package OCA\Passwords\Events\Keychain
+ * @package OCA\PasswordFolders\Events\Keychain
  */
 class GenericKeychainEvent extends Event {
 

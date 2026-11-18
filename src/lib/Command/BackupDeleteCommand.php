@@ -5,10 +5,10 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
 use Exception;
-use OCA\Passwords\Services\BackupService;
+use OCA\PasswordFolders\Services\BackupService;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use Symfony\Component\Console\Command\Command;
@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class BackupDeleteCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class BackupDeleteCommand extends Command {
 
@@ -43,7 +43,7 @@ class BackupDeleteCommand extends Command {
      *
      */
     protected function configure(): void {
-        $this->setName('passwords:backup:delete')
+        $this->setName('passwordfolders:backup:delete')
              ->addArgument('name', InputArgument::REQUIRED, 'The backup to delete')
              ->setDescription('Delete a manually created backup file');
     }

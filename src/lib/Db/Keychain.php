@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class Keychain
@@ -17,7 +17,7 @@ namespace OCA\Passwords\Db;
  * @method string getScope()
  * @method void setScope(string $scope)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class Keychain extends AbstractEntity {
 

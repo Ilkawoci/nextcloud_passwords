@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
 use Closure;
 use OCP\DB\ISchemaWrapper;
@@ -23,7 +23,7 @@ use OCP\Migration\SimpleMigrationStep;
 /**
  * Class Version20220102
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class Version20220102 extends SimpleMigrationStep {
 

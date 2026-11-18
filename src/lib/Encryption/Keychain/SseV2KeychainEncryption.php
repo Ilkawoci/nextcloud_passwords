@@ -9,23 +9,23 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Encryption\Keychain;
+namespace OCA\PasswordFolders\Encryption\Keychain;
 
 use Exception;
 use OC;
-use OCA\Passwords\Db\Keychain;
-use OCA\Passwords\Exception\Encryption\InvalidEncryptionResultException;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\SessionService;
+use OCA\PasswordFolders\Db\Keychain;
+use OCA\PasswordFolders\Exception\Encryption\InvalidEncryptionResultException;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\SessionService;
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;
 
 /**
  * Class SseV2KeychainEncryption
  *
- * @package OCA\Passwords\Encryption\Keychain
+ * @package OCA\PasswordFolders\Encryption\Keychain
  */
 class SseV2KeychainEncryption implements KeychainEncryptionInterface {
     /**

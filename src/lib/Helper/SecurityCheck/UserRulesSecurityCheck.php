@@ -9,18 +9,18 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\SecurityCheck;
+namespace OCA\PasswordFolders\Helper\SecurityCheck;
 
 use Exception;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\PasswordRevisionMapper;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\PasswordRevisionMapper;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
 
 /**
  * Class UserRulesSecurityCheck
  *
- * @package OCA\Passwords\Helper\SecurityCheck
+ * @package OCA\PasswordFolders\Helper\SecurityCheck
  */
 class UserRulesSecurityCheck {
 

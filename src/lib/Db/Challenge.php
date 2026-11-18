@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class Challenge
@@ -13,7 +13,7 @@ namespace OCA\Passwords\Db;
  * @method string getSecret()
  * @method void setSecret(string $secret)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class Challenge extends AbstractEntity {
 

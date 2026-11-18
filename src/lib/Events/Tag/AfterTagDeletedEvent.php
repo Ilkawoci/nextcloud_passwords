@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Tag;
+namespace OCA\PasswordFolders\Events\Tag;
 
 /**
  * Class AfterTagDeletedEvent
  *
- * @package OCA\Passwords\Events\Tag
+ * @package OCA\PasswordFolders\Events\Tag
  */
 class AfterTagDeletedEvent extends GenericTagEvent {
 }

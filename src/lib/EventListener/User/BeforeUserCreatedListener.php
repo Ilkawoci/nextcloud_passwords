@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\User;
+namespace OCA\PasswordFolders\EventListener\User;
 
 use InvalidArgumentException;
-use OCA\Passwords\Services\BackgroundJobService;
+use OCA\PasswordFolders\Services\BackgroundJobService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\User\Events\BeforeUserCreatedEvent;
@@ -21,7 +21,7 @@ use OCP\User\Events\CreateUserEvent;
 /**
  * Class BeforeUserCreatedListener
  *
- * @package OCA\Passwords\EventListener\User
+ * @package OCA\PasswordFolders\EventListener\User
  */
 class BeforeUserCreatedListener implements IEventListener {
 

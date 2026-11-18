@@ -5,21 +5,21 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Db\TagRevisionMapper;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\ValidationService;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Db\TagRevisionMapper;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\ValidationService;
 use OCP\EventDispatcher\IEventDispatcher;
 
 /**
  * Class TagRevisionService
  *
- * @package OCA\Passwords\Services\Object
+ * @package OCA\PasswordFolders\Services\Object
  */
 class TagRevisionService extends AbstractRevisionService {
 

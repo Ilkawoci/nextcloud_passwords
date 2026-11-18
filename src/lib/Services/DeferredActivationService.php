@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\Helper\Settings\ServerSettingsHelper;
+use OCA\PasswordFolders\Helper\Settings\ServerSettingsHelper;
 use OCP\Http\Client\IClientService;
 use Throwable;
 
 /**
  * Class DeferredActivationService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class DeferredActivationService {
 

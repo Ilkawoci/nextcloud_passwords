@@ -5,13 +5,13 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
 use Exception;
 use OC\Files\SimpleFS\SimpleFile;
 use OC\Files\SimpleFS\SimpleFolder;
 use OC\Migration\SimpleOutput;
-use OCA\Passwords\Services\FileCacheService;
+use OCA\PasswordFolders\Services\FileCacheService;
 use OCP\Files\SimpleFS\ISimpleFile;
 use OCP\Files\SimpleFS\ISimpleFolder;
 use OCP\Migration\IOutput;
@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class ClearAppCachesTest
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class ClearAppCachesTest extends TestCase {
 

@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller;
+namespace OCA\PasswordFolders\Controller;
 
 use Exception;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
@@ -17,22 +17,22 @@ use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\IRequest;
 use OCP\AppFramework\Controller;
-use OCA\Passwords\AppInfo\Application;
+use OCA\PasswordFolders\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
-use OCA\Passwords\Helper\Token\ApiTokenHelper;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\NotificationService;
-use OCA\Passwords\Services\UserSettingsService;
-use OCA\Passwords\Helper\Http\SetupReportHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\UserChallengeService;
-use OCA\Passwords\Services\DeferredActivationService;
+use OCA\PasswordFolders\Helper\Token\ApiTokenHelper;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\NotificationService;
+use OCA\PasswordFolders\Services\UserSettingsService;
+use OCA\PasswordFolders\Helper\Http\SetupReportHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\UserChallengeService;
+use OCA\PasswordFolders\Services\DeferredActivationService;
 
 /**
  * Class PageController
  *
- * @package OCA\Passwords\Controller
+ * @package OCA\PasswordFolders\Controller
  */
 class PageController extends Controller {
 

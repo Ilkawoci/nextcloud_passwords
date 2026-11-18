@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Db\FolderRevisionMapper;
-use OCA\Passwords\Db\PasswordRevisionMapper;
-use OCA\Passwords\Db\TagRevisionMapper;
-use OCA\Passwords\Helper\User\AdminUserHelper;
-use OCA\Passwords\Services\BackupService;
-use OCA\Passwords\Services\NotificationService;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Db\FolderRevisionMapper;
+use OCA\PasswordFolders\Db\PasswordRevisionMapper;
+use OCA\PasswordFolders\Db\TagRevisionMapper;
+use OCA\PasswordFolders\Helper\User\AdminUserHelper;
+use OCA\PasswordFolders\Services\BackupService;
+use OCA\PasswordFolders\Services\NotificationService;
 use OCP\AppFramework\Services\IAppConfig;
 use OCP\Migration\IOutput;
 use OCP\Migration\IRepairStep;
@@ -25,7 +25,7 @@ use OCP\Migration\IRepairStep;
 /**
  * Class AutoBackupRestore
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class AutoBackupRestore implements IRepairStep {
 

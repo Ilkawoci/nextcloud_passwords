@@ -5,17 +5,17 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
 use Exception;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\FolderMapper;
-use OCA\Passwords\Db\ModelInterface;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\FolderMapper;
+use OCA\PasswordFolders\Db\ModelInterface;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -24,7 +24,7 @@ use OCP\EventDispatcher\IEventDispatcher;
 /**
  * Class FolderService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class FolderService extends AbstractModelService {
 

@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
 use Exception;
-use OCA\Passwords\Exception\SecurityCheck\BreachedPasswordsZipAccessException;
-use OCA\Passwords\Provider\SecurityCheck\AbstractSecurityCheckProvider;
-use OCA\Passwords\Provider\SecurityCheck\BigDbPlusHibpSecurityCheckProvider;
-use OCA\Passwords\Provider\SecurityCheck\BigLocalDbSecurityCheckProvider;
-use OCA\Passwords\Provider\SecurityCheck\SmallLocalDbSecurityCheckProvider;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Exception\SecurityCheck\BreachedPasswordsZipAccessException;
+use OCA\PasswordFolders\Provider\SecurityCheck\AbstractSecurityCheckProvider;
+use OCA\PasswordFolders\Provider\SecurityCheck\BigDbPlusHibpSecurityCheckProvider;
+use OCA\PasswordFolders\Provider\SecurityCheck\BigLocalDbSecurityCheckProvider;
+use OCA\PasswordFolders\Provider\SecurityCheck\SmallLocalDbSecurityCheckProvider;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Files\NotFoundException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -44,7 +44,7 @@ class ProcessPwnedPasswordsList extends Command {
      *
      */
     protected function configure(): void {
-        $this->setName('passwords:pwned-list:process')
+        $this->setName('passwordfolders:pwned-list:process')
              ->setDescription('Convert the haveibeenpwned pwned passwords list for the passwords app')
              ->addArgument('file', InputArgument::OPTIONAL, 'The path to pwned passwords hash file', 'pwnedpasswords.txt')
              ->addOption('size', 's', InputOption::VALUE_REQUIRED, 'Amount of hashes to import in millions', '25')

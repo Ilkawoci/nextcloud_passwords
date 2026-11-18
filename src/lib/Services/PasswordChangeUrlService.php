@@ -9,9 +9,9 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\Services\Traits\ValidatesDomainTrait;
+use OCA\PasswordFolders\Services\Traits\ValidatesDomainTrait;
 use OCP\Http\Client\IClientService;
 
 class PasswordChangeUrlService {

@@ -5,24 +5,24 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
 use Exception;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\PasswordRevisionMapper;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
-use OCA\Passwords\Services\ValidationService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\PasswordRevisionMapper;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Services\ValidationService;
 use OCP\EventDispatcher\IEventDispatcher;
 
 /**
  * Class PasswordRevisionService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class PasswordRevisionService extends AbstractRevisionService {
 

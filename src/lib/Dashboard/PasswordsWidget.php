@@ -9,13 +9,13 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Dashboard;
+namespace OCA\PasswordFolders\Dashboard;
 
-use OCA\Passwords\Helper\Token\ApiTokenHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\UserChallengeService;
-use OCA\Passwords\Services\UserSettingsService;
+use OCA\PasswordFolders\Helper\Token\ApiTokenHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\UserChallengeService;
+use OCA\PasswordFolders\Services\UserSettingsService;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\Dashboard\IConditionalWidget;
 use OCP\Dashboard\IWidget;
@@ -56,7 +56,7 @@ class PasswordsWidget implements IWidget, IConditionalWidget {
     }
 
     public function getUrl(): ?string {
-        return $this->urlGenerator->linkToRouteAbsolute('passwords.page.index');
+        return $this->urlGenerator->linkToRouteAbsolute('passwordfolders.page.index');
     }
 
     public function load(): void {
@@ -72,9 +72,9 @@ class PasswordsWidget implements IWidget, IConditionalWidget {
         $this->initialState->provideInitialState('impersonate', false);
 
         if($this->config->hasAppValue('dev/app/hash')) {
-            Util::addScript('passwords', 'Static/dashboard.'.$this->config->getAppValue('dev/app/hash'));
+            Util::addScript(Application::APP_NAME, 'Static/dashboard.'.$this->config->getAppValue('dev/app/hash'));
         } else {
-            Util::addScript('passwords', 'Static/dashboard');
+            Util::addScript(Application::APP_NAME, 'Static/dashboard');
         }
     }
 

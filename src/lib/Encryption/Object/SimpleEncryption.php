@@ -9,15 +9,15 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Encryption\Object;
+namespace OCA\PasswordFolders\Encryption\Object;
 
 use Exception;
-use OCA\Passwords\Exception\Encryption\InvalidEncryptionResultException;
+use OCA\PasswordFolders\Exception\Encryption\InvalidEncryptionResultException;
 
 /**
  * Class SimpleEncryption
  *
- * @package OCA\Passwords\Encryption
+ * @package OCA\PasswordFolders\Encryption
  */
 class SimpleEncryption extends SseV1Encryption {
 

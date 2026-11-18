@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 use Exception;
 use OCP\AppFramework\Db\Entity;
@@ -16,7 +16,7 @@ use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 /**
  * Class PasswordMapper
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class PasswordMapper extends AbstractMapper {
 

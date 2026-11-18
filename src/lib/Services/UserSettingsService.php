@@ -5,18 +5,18 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Settings\ClientSettingsHelper;
-use OCA\Passwords\Helper\Settings\ServerSettingsHelper;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Settings\ClientSettingsHelper;
+use OCA\PasswordFolders\Helper\Settings\ServerSettingsHelper;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
 
 /**
  * Class UserSettingsService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class UserSettingsService {
 

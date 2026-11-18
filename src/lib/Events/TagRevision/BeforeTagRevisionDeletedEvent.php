@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\TagRevision;
+namespace OCA\PasswordFolders\Events\TagRevision;
 
 /**
  * Class BeforeTagRevisionDeletedEvent
  *
- * @package OCA\Passwords\Events\TagRevision
+ * @package OCA\PasswordFolders\Events\TagRevision
  */
 class BeforeTagRevisionDeletedEvent extends GenericTagRevisionEvent {
 }

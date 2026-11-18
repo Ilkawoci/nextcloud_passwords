@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Notification;
+namespace OCA\PasswordFolders\Notification;
 
 use Exception;
 use OCP\IL10N;
@@ -14,7 +14,7 @@ use OCP\Notification\INotification;
 /**
  * Class ShareLoopNotification
  *
- * @package OCA\Passwords\Notification
+ * @package OCA\PasswordFolders\Notification
  */
 class ShareLoopNotification extends AbstractNotification {
 
@@ -92,6 +92,6 @@ class ShareLoopNotification extends AbstractNotification {
      * @return string
      */
     protected function getLink(): string {
-        return $this->urlGenerator->linkToRouteAbsolute('passwords.page.index').'#/shared/1';
+        return $this->urlGenerator->linkToRouteAbsolute('passwordfolders.page.index').'#/shared/1';
     }
 }

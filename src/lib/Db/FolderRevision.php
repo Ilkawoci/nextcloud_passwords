@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 /**
  * Class FolderRevision
@@ -13,7 +13,7 @@ namespace OCA\Passwords\Db;
  * @method string getParent()
  * @method void setParent(string $parent)
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class FolderRevision extends AbstractRevision {
 

@@ -9,21 +9,21 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
 use Exception;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\ApiObjects\AbstractObjectHelper;
-use OCA\Passwords\Helper\ApiObjects\ShareObjectHelper;
-use OCA\Passwords\Helper\Settings\ShareSettingsHelper;
-use OCA\Passwords\Helper\Sharing\CreateFolderShareHelper;
-use OCA\Passwords\Helper\Sharing\CreatePasswordShareHelper;
-use OCA\Passwords\Helper\Sharing\FolderShareMaterializer;
-use OCA\Passwords\Helper\Sharing\RecipientSearchHelper;
-use OCA\Passwords\Helper\Sharing\UpdateFolderShareHelper;
-use OCA\Passwords\Helper\Sharing\UpdatePasswordShareHelper;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\ApiObjects\AbstractObjectHelper;
+use OCA\PasswordFolders\Helper\ApiObjects\ShareObjectHelper;
+use OCA\PasswordFolders\Helper\Settings\ShareSettingsHelper;
+use OCA\PasswordFolders\Helper\Sharing\CreateFolderShareHelper;
+use OCA\PasswordFolders\Helper\Sharing\CreatePasswordShareHelper;
+use OCA\PasswordFolders\Helper\Sharing\FolderShareMaterializer;
+use OCA\PasswordFolders\Helper\Sharing\RecipientSearchHelper;
+use OCA\PasswordFolders\Helper\Sharing\UpdateFolderShareHelper;
+use OCA\PasswordFolders\Helper\Sharing\UpdatePasswordShareHelper;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\Http;
@@ -37,7 +37,7 @@ use OCP\IRequest;
 /**
  * Class ShareApiController
  *
- * @package OCA\Passwords\Controller\Api
+ * @package OCA\PasswordFolders\Controller\Api
  */
 class ShareApiController extends AbstractApiController {
 

@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\SecurityCheck;
+namespace OCA\PasswordFolders\Exception\SecurityCheck;
 
 use Exception;
 use GuzzleHttp\Exception\ClientException;
@@ -18,7 +18,7 @@ use Throwable;
 /**
  * Class PasswordDatabaseDownloadException
  *
- * @package OCA\Passwords\Exception\SecurityCheck
+ * @package OCA\PasswordFolders\Exception\SecurityCheck
  */
 class PasswordDatabaseDownloadException extends Exception {
     const int EXCEPTION_CODE       = 106;

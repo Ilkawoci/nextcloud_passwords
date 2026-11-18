@@ -44,7 +44,7 @@ class DeferredActivationService {
      */
     async loadFeatures() {
         this._features = {};
-        let features = loadState('passwords', 'features', null);
+        let features = loadState('passwordfolders', 'features', null);
         if(features) {
             this._features = features;
             return;

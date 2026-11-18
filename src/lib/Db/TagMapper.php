@@ -5,14 +5,14 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 use OCP\DB\QueryBuilder\IQueryBuilder;
 
 /**
  * Class TagMapper
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class TagMapper extends AbstractMapper {
 

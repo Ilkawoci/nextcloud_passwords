@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Tag;
+namespace OCA\PasswordFolders\Events\Tag;
 
-use OCA\Passwords\Db\Tag;
-use OCA\Passwords\Db\TagRevision;
+use OCA\PasswordFolders\Db\Tag;
+use OCA\PasswordFolders\Db\TagRevision;
 use OCP\EventDispatcher\Event;
 
 /**
  * Class TagSetRevisionEvent
  *
- * @package OCA\Passwords\Events\Tag
+ * @package OCA\PasswordFolders\Events\Tag
  */
 class TagSetRevisionEvent extends Event {
 

@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Words;
+namespace OCA\PasswordFolders\Provider\Words;
 
 use Exception;
 use Random\Randomizer;
@@ -17,7 +17,7 @@ use Random\Randomizer;
 /**
  * Class RandomCharactersProvider
  *
- * @package OCA\Passwords\Helper\Words
+ * @package OCA\PasswordFolders\Helper\Words
  */
 class RandomCharactersProvider extends AbstractWordsProvider {
 

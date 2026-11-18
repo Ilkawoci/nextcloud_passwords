@@ -9,21 +9,21 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Cron;
+namespace OCA\PasswordFolders\Cron;
 
-use OCA\Passwords\Helper\CleanUp\CleanDeletedEntitiesHelper;
-use OCA\Passwords\Helper\CleanUp\CleanRegistrationsHelper;
-use OCA\Passwords\Helper\CleanUp\CleanSessionsHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Helper\CleanUp\CleanDeletedEntitiesHelper;
+use OCA\PasswordFolders\Helper\CleanUp\CleanRegistrationsHelper;
+use OCA\PasswordFolders\Helper\CleanUp\CleanSessionsHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\AppFramework\Utility\ITimeFactory;
 use Throwable;
 
 /**
  * Class CleanUpEntities
  *
- * @package OCA\Passwords\Cron
+ * @package OCA\PasswordFolders\Cron
  */
 class CleanUpEntities extends AbstractTimedJob {
 

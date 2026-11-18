@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Notification;
+namespace OCA\PasswordFolders\Notification;
 
 use Exception;
 use OCP\IL10N;
@@ -80,6 +80,6 @@ class BackupRestoredNotification extends AbstractNotification {
      * @return string
      */
     protected function getLink(): string {
-        return $this->urlGenerator->linkToRouteAbsolute('passwords.page.index');
+        return $this->urlGenerator->linkToRouteAbsolute('passwordfolders.page.index');
     }
 }

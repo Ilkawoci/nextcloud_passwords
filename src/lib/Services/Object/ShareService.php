@@ -5,16 +5,16 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services\Object;
+namespace OCA\PasswordFolders\Services\Object;
 
 use Exception;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\EntityInterface;
-use OCA\Passwords\Db\ModelInterface;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Db\ShareMapper;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\EntityInterface;
+use OCA\PasswordFolders\Db\ModelInterface;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Db\ShareMapper;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -24,7 +24,7 @@ use OCP\EventDispatcher\IEventDispatcher;
 /**
  * Class ShareService
  *
- * @package OCA\Passwords\Services\Object
+ * @package OCA\PasswordFolders\Services\Object
  */
 class ShareService extends AbstractService {
 

@@ -9,14 +9,14 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Tag;
+namespace OCA\PasswordFolders\EventListener\Tag;
 
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Events\Tag\BeforeTagSetRevisionEvent;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordTagRelationService;
-use OCA\Passwords\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Events\Tag\BeforeTagSetRevisionEvent;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordTagRelationService;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\EventDispatcher\Event;
@@ -25,7 +25,7 @@ use OCP\EventDispatcher\IEventListener;
 /**
  * Class BeforeTagSetRevisionListener
  *
- * @package OCA\Passwords\EventListener\Tag
+ * @package OCA\PasswordFolders\EventListener\Tag
  */
 class BeforeTagSetRevisionListener implements IEventListener {
 

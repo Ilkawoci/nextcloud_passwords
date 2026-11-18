@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\Image;
+namespace OCA\PasswordFolders\Exception\Image;
 
 use Exception;
 use Throwable;

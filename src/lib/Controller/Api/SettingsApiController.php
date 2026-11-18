@@ -9,11 +9,11 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\UserSettingsService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\UserSettingsService;
 use OCP\AppFramework\Http\Attribute\CORS;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
@@ -23,7 +23,7 @@ use OCP\IRequest;
 /**
  * Class SettingsApiController
  *
- * @package OCA\Passwords\Controller\Api
+ * @package OCA\PasswordFolders\Controller\Api
  */
 class SettingsApiController extends AbstractApiController {
 

@@ -9,9 +9,9 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Integrations;
+namespace OCA\PasswordFolders\Integrations;
 
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\Services\SettingsService;
 use Psr\Container\ContainerInterface;

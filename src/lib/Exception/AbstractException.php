@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Exception;
+namespace OCA\PasswordFolders\Exception;
 
 use Exception;
 use Throwable;
@@ -13,7 +13,7 @@ use Throwable;
 /**
  * Class AbstractException
  *
- * @package OCA\Passwords\Exception
+ * @package OCA\PasswordFolders\Exception
  */
 abstract class AbstractException extends Exception {
 

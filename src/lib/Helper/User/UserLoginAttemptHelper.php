@@ -5,21 +5,21 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\User;
+namespace OCA\PasswordFolders\Helper\User;
 
 use Exception;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Token\ApiTokenHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\LoggingService;
-use OCA\Passwords\Services\NotificationService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Token\ApiTokenHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\LoggingService;
+use OCA\PasswordFolders\Services\NotificationService;
 use OCP\AppFramework\Http;
 
 /**
  * Class UserLoginAttemptHelper
  *
- * @package OCA\Passwords\Helper\User
+ * @package OCA\PasswordFolders\Helper\User
  */
 class UserLoginAttemptHelper {
 

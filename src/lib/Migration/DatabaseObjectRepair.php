@@ -9,25 +9,25 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
 use Exception;
-use OCA\Passwords\Migration\DatabaseRepair\FolderModelRepair;
-use OCA\Passwords\Migration\DatabaseRepair\FolderRevisionRepair;
-use OCA\Passwords\Migration\DatabaseRepair\PasswordModelRepair;
-use OCA\Passwords\Migration\DatabaseRepair\PasswordRevisionRepair;
-use OCA\Passwords\Migration\DatabaseRepair\PasswordTagRelationRepair;
-use OCA\Passwords\Migration\DatabaseRepair\ShareRepair;
-use OCA\Passwords\Migration\DatabaseRepair\TagModelRepair;
-use OCA\Passwords\Migration\DatabaseRepair\TagRevisionRepair;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Migration\DatabaseRepair\FolderModelRepair;
+use OCA\PasswordFolders\Migration\DatabaseRepair\FolderRevisionRepair;
+use OCA\PasswordFolders\Migration\DatabaseRepair\PasswordModelRepair;
+use OCA\PasswordFolders\Migration\DatabaseRepair\PasswordRevisionRepair;
+use OCA\PasswordFolders\Migration\DatabaseRepair\PasswordTagRelationRepair;
+use OCA\PasswordFolders\Migration\DatabaseRepair\ShareRepair;
+use OCA\PasswordFolders\Migration\DatabaseRepair\TagModelRepair;
+use OCA\PasswordFolders\Migration\DatabaseRepair\TagRevisionRepair;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCP\Migration\IOutput;
 use OCP\Migration\IRepairStep;
 
 /**
  * Class DatabaseObjectRepair
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class DatabaseObjectRepair implements IRepairStep {
 

@@ -5,18 +5,18 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use \OCA\Test\Passwords\Entities\CreatesEntitiesTrait;
 use Exception;
-use OCA\Passwords\Exception\ApiException;
+use OCA\PasswordFolders\Exception\ApiException;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
 /**
  * Class ValidateTagTest
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class ValidateTagTest extends TestCase {
 

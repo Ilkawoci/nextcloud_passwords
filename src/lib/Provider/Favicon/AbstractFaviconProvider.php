@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\Favicon;
+namespace OCA\PasswordFolders\Provider\Favicon;
 
 use Exception;
 use OC\Avatar\GuestAvatar;
-use OCA\Passwords\Exception\Favicon\FaviconRequestException;
-use OCA\Passwords\Exception\Favicon\InvalidFaviconDataException;
-use OCA\Passwords\Exception\Favicon\NoFaviconDataException;
-use OCA\Passwords\Exception\Favicon\UnexpectedResponseCodeException;
-use OCA\Passwords\Helper\Image\AbstractImageHelper;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\HelperService;
+use OCA\PasswordFolders\Exception\Favicon\FaviconRequestException;
+use OCA\PasswordFolders\Exception\Favicon\InvalidFaviconDataException;
+use OCA\PasswordFolders\Exception\Favicon\NoFaviconDataException;
+use OCA\PasswordFolders\Exception\Favicon\UnexpectedResponseCodeException;
+use OCA\PasswordFolders\Helper\Image\AbstractImageHelper;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\HelperService;
 use OCP\Files\SimpleFS\ISimpleFile;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
@@ -30,7 +30,7 @@ use Throwable;
 /**
  * Class AbstractFaviconProvider
  *
- * @package OCA\Passwords\Helper
+ * @package OCA\PasswordFolders\Helper
  */
 abstract class AbstractFaviconProvider implements FaviconProviderInterface {
     const string COMMON_SUBDOMAIN_PATTERN = '/^(m|de|web|www|www2|mail|email|login|signin)\./';

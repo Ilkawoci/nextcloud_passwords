@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\CSP;
+namespace OCA\PasswordFolders\EventListener\CSP;
 
 use Exception;
 use OCP\AppFramework\Http\EmptyContentSecurityPolicy;

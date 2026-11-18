@@ -5,16 +5,16 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Db;
+namespace OCA\PasswordFolders\Db;
 
 use Exception;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
 use OCP\DB\QueryBuilder\IQueryBuilder;
 
 /**
  * Class PasswordRevisionMapper
  *
- * @package OCA\Passwords\Db
+ * @package OCA\PasswordFolders\Db
  */
 class PasswordRevisionMapper extends AbstractRevisionMapper {
 

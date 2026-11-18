@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Folder;
+namespace OCA\PasswordFolders\EventListener\Folder;
 
 use Exception;
-use OCA\Passwords\Events\Folder\BeforeFolderDeletedEvent;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\PasswordService;
+use OCA\PasswordFolders\Events\Folder\BeforeFolderDeletedEvent;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 
 /**
  * Class BeforeFolderDeletedListener
  *
- * @package OCA\Passwords\EventListener\Folder
+ * @package OCA\PasswordFolders\EventListener\Folder
  */
 class BeforeFolderDeletedListener implements IEventListener {
 

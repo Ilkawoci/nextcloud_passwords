@@ -9,21 +9,21 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\UserMigration\Import;
+namespace OCA\PasswordFolders\UserMigration\Import;
 
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\Challenge;
-use OCA\Passwords\Db\ChallengeMapper;
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\Keychain;
-use OCA\Passwords\Db\KeychainMapper;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\PasswordTagRelation;
-use OCA\Passwords\Db\PasswordTagRelationMapper;
-use OCA\Passwords\Db\Tag;
-use OCA\Passwords\Db\TagRevision;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\Challenge;
+use OCA\PasswordFolders\Db\ChallengeMapper;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\Keychain;
+use OCA\PasswordFolders\Db\KeychainMapper;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\PasswordTagRelation;
+use OCA\PasswordFolders\Db\PasswordTagRelationMapper;
+use OCA\PasswordFolders\Db\Tag;
+use OCA\PasswordFolders\Db\TagRevision;
 use OCP\DB\Exception;
 
 class SimpleItemImporter {

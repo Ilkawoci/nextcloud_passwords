@@ -9,20 +9,20 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
 use Exception;
-use OCA\Passwords\Db\FolderMapper;
-use OCA\Passwords\Db\PasswordMapper;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Provider\SecurityCheck\AbstractSecurityCheckProvider;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Db\FolderMapper;
+use OCA\PasswordFolders\Db\PasswordMapper;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Provider\SecurityCheck\AbstractSecurityCheckProvider;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\Migration\IOutput;
@@ -30,7 +30,7 @@ use OCP\Migration\IOutput;
 /**
  * Class PasswordRevisionRepairHelper
  *
- * @package OCA\Passwords\Migration\DatabaseRepair
+ * @package OCA\PasswordFolders\Migration\DatabaseRepair
  */
 class PasswordRevisionRepair extends AbstractRevisionRepair {
 

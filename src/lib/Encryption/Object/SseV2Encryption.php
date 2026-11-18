@@ -9,26 +9,26 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Encryption\Object;
+namespace OCA\PasswordFolders\Encryption\Object;
 
 use Exception;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\Keychain;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\RevisionInterface;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Exception\Encryption\InvalidEncryptionResultException;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\Object\KeychainService;
-use OCA\Passwords\Services\SessionService;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\Keychain;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\RevisionInterface;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Exception\Encryption\InvalidEncryptionResultException;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\Object\KeychainService;
+use OCA\PasswordFolders\Services\SessionService;
 use OCP\Security\ICrypto;
 use function json_decode;
 
 /**
  * Class SseV2Encryption
  *
- * @package OCA\Passwords\Encryption\Object
+ * @package OCA\PasswordFolders\Encryption\Object
  */
 class SseV2Encryption implements ObjectEncryptionInterface {
 

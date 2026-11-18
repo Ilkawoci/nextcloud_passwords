@@ -5,16 +5,16 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Uuid;
+namespace OCA\PasswordFolders\Helper\Uuid;
 
 use Exception;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Services\LoggingService;
 use Random\Randomizer;
 
 /**
  * Class UuidHelper
  *
- * @package OCA\Passwords\Helper\Uuid
+ * @package OCA\PasswordFolders\Helper\Uuid
  */
 class UuidHelper {
 

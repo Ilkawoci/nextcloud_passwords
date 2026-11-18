@@ -5,16 +5,16 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
-use OCA\Passwords\Cron\CheckNightlyUpdates;
-use OCA\Passwords\Cron\ProcessDeletedUser;
+use OCA\PasswordFolders\Cron\CheckNightlyUpdates;
+use OCA\PasswordFolders\Cron\ProcessDeletedUser;
 use OCP\BackgroundJob\IJobList;
 
 /**
  * Class BackgroundJobService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class BackgroundJobService {
 

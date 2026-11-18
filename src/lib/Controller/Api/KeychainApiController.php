@@ -9,13 +9,13 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
 use Exception;
-use OCA\Passwords\Db\Keychain;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\Object\KeychainService;
-use OCA\Passwords\Services\UserChallengeService;
+use OCA\PasswordFolders\Db\Keychain;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\Object\KeychainService;
+use OCA\PasswordFolders\Services\UserChallengeService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\Http;
@@ -28,7 +28,7 @@ use OCP\IRequest;
 /**
  * Class KeychainApiController
  *
- * @package OCA\Passwords\Controller\Api
+ * @package OCA\PasswordFolders\Controller\Api
  */
 class KeychainApiController extends AbstractApiController {
 

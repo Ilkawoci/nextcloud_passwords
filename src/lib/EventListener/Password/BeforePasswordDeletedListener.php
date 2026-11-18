@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Password;
+namespace OCA\PasswordFolders\EventListener\Password;
 
 use Exception;
-use OCA\Passwords\Events\Password\BeforePasswordDeletedEvent;
-use OCA\Passwords\Services\Object\PasswordTagRelationService;
-use OCA\Passwords\Services\Object\ShareService;
+use OCA\PasswordFolders\Events\Password\BeforePasswordDeletedEvent;
+use OCA\PasswordFolders\Services\Object\PasswordTagRelationService;
+use OCA\PasswordFolders\Services\Object\ShareService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 
 /**
  * Class BeforeTagDeletedListener
  *
- * @package OCA\Passwords\EventListener\Password
+ * @package OCA\PasswordFolders\EventListener\Password
  */
 class BeforePasswordDeletedListener implements IEventListener {
 

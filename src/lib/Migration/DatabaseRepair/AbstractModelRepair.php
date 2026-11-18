@@ -9,13 +9,13 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
 use Exception;
-use OCA\Passwords\Db\ModelInterface;
-use OCA\Passwords\Services\Object\AbstractModelService;
-use OCA\Passwords\Services\Object\AbstractRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
+use OCA\PasswordFolders\Db\ModelInterface;
+use OCA\PasswordFolders\Services\Object\AbstractModelService;
+use OCA\PasswordFolders\Services\Object\AbstractRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\Migration\IOutput;
@@ -24,7 +24,7 @@ use Throwable;
 /**
  * Class AbstractModelRepair
  *
- * @package OCA\Passwords\Migration\DatabaseRepair
+ * @package OCA\PasswordFolders\Migration\DatabaseRepair
  */
 abstract class AbstractModelRepair {
 

@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\Database;
+namespace OCA\PasswordFolders\Exception\Database;
 
 use Exception;
-use OCA\Passwords\Db\AbstractRevision;
+use OCA\PasswordFolders\Db\AbstractRevision;
 
 class DecryptedDataException extends Exception {
 

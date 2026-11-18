@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Encryption\Object;
+namespace OCA\PasswordFolders\Encryption\Object;
 
 use Exception;
-use OCA\Passwords\Exception\Encryption\SSEv3InvalidKeyException;
-use OCA\Passwords\Exception\Encryption\SSEv3ProviderInvalidException;
-use OCA\Passwords\Exception\Encryption\SSEv3ProviderNotAvailableException;
-use OCA\Passwords\Exception\Encryption\SSEv3ProviderNotFoundException;
-use OCA\Passwords\Helper\AppSettings\EncryptionSettingsHelper;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Exception\Encryption\SSEv3InvalidKeyException;
+use OCA\PasswordFolders\Exception\Encryption\SSEv3ProviderInvalidException;
+use OCA\PasswordFolders\Exception\Encryption\SSEv3ProviderNotAvailableException;
+use OCA\PasswordFolders\Exception\Encryption\SSEv3ProviderNotFoundException;
+use OCA\PasswordFolders\Helper\AppSettings\EncryptionSettingsHelper;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\Lock\ILockingProvider;
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;

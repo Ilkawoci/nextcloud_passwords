@@ -5,12 +5,12 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\Object\FolderService;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\Object\FolderService;
 use OCA\Test\Passwords\Entities\CreatesEntitiesTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -20,7 +20,7 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 /**
  * Class ValidateFolderTest
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class ValidateFolderTest extends TestCase {
 

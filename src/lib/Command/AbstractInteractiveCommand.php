@@ -5,9 +5,9 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
-use OCA\Passwords\Exception\Command\NonInteractiveShellException;
+use OCA\PasswordFolders\Exception\Command\NonInteractiveShellException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\Console\Question\Question;
 /**
  * Class AbstractInteractiveCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 abstract class AbstractInteractiveCommand extends Command {
 

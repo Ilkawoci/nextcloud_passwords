@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Challenge;
+namespace OCA\PasswordFolders\Events\Challenge;
 
 /**
  * Class ChallengeDestroyedEvent
  *
- * @package OCA\Passwords\Events\Challenge
+ * @package OCA\PasswordFolders\Events\Challenge
  */
 class ChallengeDestroyedEvent extends GenericChallengeEvent {
 }

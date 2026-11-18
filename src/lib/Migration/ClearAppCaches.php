@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
 use Exception;
-use OCA\Passwords\Services\FileCacheService;
+use OCA\PasswordFolders\Services\FileCacheService;
 use OCP\Migration\IOutput;
 use OCP\Migration\IRepairStep;
 
 /**
  * Class ClearAppCaches
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class ClearAppCaches implements IRepairStep {
 

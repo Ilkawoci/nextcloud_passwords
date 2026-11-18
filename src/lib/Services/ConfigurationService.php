@@ -9,10 +9,10 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\AppInfo\Application;
+use OCA\PasswordFolders\AppInfo\Application;
 use OCP\Config\IUserConfig;
 use OCP\HintException;
 use OCP\IAppConfig;
@@ -21,7 +21,7 @@ use OCP\IConfig;
 /**
  * Class ConfigurationService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class ConfigurationService {
 

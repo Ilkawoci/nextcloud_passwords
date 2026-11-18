@@ -5,19 +5,19 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Services;
+namespace OCA\PasswordFolders\Services;
 
 use Exception;
-use OCA\Passwords\Db\Challenge;
-use OCA\Passwords\Events\Challenge\AfterChallengeActivatedEvent;
-use OCA\Passwords\Events\Challenge\AfterChallengeRevertedEvent;
-use OCA\Passwords\Events\Challenge\BeforeChallengeActivatedEvent;
-use OCA\Passwords\Events\Challenge\BeforeChallengeRevertedEvent;
-use OCA\Passwords\Events\Challenge\ChallengeActivatedEvent;
-use OCA\Passwords\Events\Challenge\ChallengeRevertedEvent;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Challenge\ChallengeV1Helper;
-use OCA\Passwords\Services\Object\ChallengeService;
+use OCA\PasswordFolders\Db\Challenge;
+use OCA\PasswordFolders\Events\Challenge\AfterChallengeActivatedEvent;
+use OCA\PasswordFolders\Events\Challenge\AfterChallengeRevertedEvent;
+use OCA\PasswordFolders\Events\Challenge\BeforeChallengeActivatedEvent;
+use OCA\PasswordFolders\Events\Challenge\BeforeChallengeRevertedEvent;
+use OCA\PasswordFolders\Events\Challenge\ChallengeActivatedEvent;
+use OCA\PasswordFolders\Events\Challenge\ChallengeRevertedEvent;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Challenge\ChallengeV1Helper;
+use OCA\PasswordFolders\Services\Object\ChallengeService;
 use OCP\AppFramework\Http;
 use OCP\EventDispatcher\IEventDispatcher;
 use stdClass;
@@ -25,7 +25,7 @@ use stdClass;
 /**
  * Class UserChallengeService
  *
- * @package OCA\Passwords\Services
+ * @package OCA\PasswordFolders\Services
  */
 class UserChallengeService {
 

@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\AppInfo;
+namespace OCA\PasswordFolders\AppInfo;
 
 /**
  * Class SystemRequirements
  *
- * @package OCA\Passwords\AppInfo
+ * @package OCA\PasswordFolders\AppInfo
  */
 class SystemRequirements {
 

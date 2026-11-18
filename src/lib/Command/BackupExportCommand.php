@@ -5,10 +5,10 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
 use Exception;
-use OCA\Passwords\Services\BackupService;
+use OCA\PasswordFolders\Services\BackupService;
 use OCP\Files\NotPermittedException;
 use OCP\Files\SimpleFS\ISimpleFile;
 use Symfony\Component\Console\Command\Command;
@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class BackupExportCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class BackupExportCommand extends Command {
 
@@ -43,7 +43,7 @@ class BackupExportCommand extends Command {
      *
      */
     protected function configure(): void {
-        $this->setName('passwords:backup:export')
+        $this->setName('passwordfolders:backup:export')
              ->addArgument('name', InputArgument::REQUIRED, 'The name of the backup')
              ->addArgument('file', InputArgument::OPTIONAL, 'The path of the export file')
              ->setDescription('Export a backup to a file');

@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Provider\SecurityCheck;
+namespace OCA\PasswordFolders\Provider\SecurityCheck;
 
 use Exception;
 use GuzzleHttp\RequestOptions;
-use OCA\Passwords\Exception\SecurityCheck\BreachedPasswordsZipAccessException;
-use OCA\Passwords\Exception\SecurityCheck\BreachedPasswordsZipExtractException;
-use OCA\Passwords\Exception\SecurityCheck\PasswordDatabaseDownloadException;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\FileCacheService;
-use OCA\Passwords\Services\LoggingService;
+use OCA\PasswordFolders\Exception\SecurityCheck\BreachedPasswordsZipAccessException;
+use OCA\PasswordFolders\Exception\SecurityCheck\BreachedPasswordsZipExtractException;
+use OCA\PasswordFolders\Exception\SecurityCheck\PasswordDatabaseDownloadException;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\FileCacheService;
+use OCA\PasswordFolders\Services\LoggingService;
 use OCP\Http\Client\IClientService;
 use Throwable;
 use ZipArchive;
@@ -26,7 +26,7 @@ use ZipArchive;
 /**
  * Class BigLocalDbSecurityCheckProvider
  *
- * @package OCA\Passwords\Helper\SecurityCheck
+ * @package OCA\PasswordFolders\Helper\SecurityCheck
  */
 class BigLocalDbSecurityCheckProvider extends AbstractSecurityCheckProvider {
 

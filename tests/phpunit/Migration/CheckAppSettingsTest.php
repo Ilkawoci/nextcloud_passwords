@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Migration;
+namespace OCA\PasswordFolders\Migration;
 
 use Exception;
 use OCP\IUser;
@@ -13,20 +13,20 @@ use OC\Migration\SimpleOutput;
 use OCP\Migration\IOutput;
 use OCP\ServerVersion;
 use PHPUnit\Framework\TestCase;
-use OCA\Passwords\AppInfo\Application;
+use OCA\PasswordFolders\AppInfo\Application;
 use PHPUnit\Framework\MockObject\MockObject;
-use OCA\Passwords\AppInfo\SystemRequirements;
-use OCA\Passwords\Services\ValidationService;
-use OCA\Passwords\Helper\User\AdminUserHelper;
-use OCA\Passwords\Services\NotificationService;
-use OCA\Passwords\Services\BackgroundJobService;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Helper\AppSettings\ServiceSettingsHelper;
+use OCA\PasswordFolders\AppInfo\SystemRequirements;
+use OCA\PasswordFolders\Services\ValidationService;
+use OCA\PasswordFolders\Helper\User\AdminUserHelper;
+use OCA\PasswordFolders\Services\NotificationService;
+use OCA\PasswordFolders\Services\BackgroundJobService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Helper\AppSettings\ServiceSettingsHelper;
 
 /**
  * Class CheckAppSettingsTest
  *
- * @package OCA\Passwords\Migration
+ * @package OCA\PasswordFolders\Migration
  */
 class CheckAppSettingsTest extends TestCase {
 

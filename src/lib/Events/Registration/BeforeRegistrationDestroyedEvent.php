@@ -9,12 +9,12 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Events\Registration;
+namespace OCA\PasswordFolders\Events\Registration;
 
 /**
  * Class BeforeRegistrationDestroyedEvent
  *
- * @package OCA\Passwords\Events\Registration
+ * @package OCA\PasswordFolders\Events\Registration
  */
 class BeforeRegistrationDestroyedEvent extends GenericRegistrationEvent {
 }

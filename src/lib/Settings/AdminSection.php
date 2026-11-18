@@ -5,9 +5,9 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Settings;
+namespace OCA\PasswordFolders\Settings;
 
-use OCA\Passwords\AppInfo\Application;
+use OCA\PasswordFolders\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;

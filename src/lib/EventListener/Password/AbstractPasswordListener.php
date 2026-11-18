@@ -9,24 +9,24 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Password;
+namespace OCA\PasswordFolders\EventListener\Password;
 
 use Exception;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordTagRelationService;
-use OCA\Passwords\Services\Object\ShareService;
-use OCA\Passwords\Services\Object\TagRevisionService;
-use OCA\Passwords\Services\PasswordSecurityCheckService;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordTagRelationService;
+use OCA\PasswordFolders\Services\Object\ShareService;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Services\PasswordSecurityCheckService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\EventDispatcher\IEventListener;
 
 /**
  * Class AbstractPasswordListener
  *
- * @package OCA\Passwords\EventListener\Password
+ * @package OCA\PasswordFolders\EventListener\Password
  */
 abstract class AbstractPasswordListener implements IEventListener {
 

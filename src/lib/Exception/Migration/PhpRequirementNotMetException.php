@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Exception\Migration;
+namespace OCA\PasswordFolders\Exception\Migration;
 
 use Exception;
 use Throwable;
@@ -17,7 +17,7 @@ use Throwable;
 /**
  * Class PhpRequirementNotMetException
  *
- * @package OCA\Passwords\Exception\Migration
+ * @package OCA\PasswordFolders\Exception\Migration
  */
 class PhpRequirementNotMetException extends Exception {
 

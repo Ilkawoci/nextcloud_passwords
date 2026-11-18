@@ -84,11 +84,11 @@ export default new class LoggingService {
     }
 
     printXssWarning() {
-        let link = UtilityService.generateUrl('/apps/passwords/#/help/Browser-Console'),
+        let link = UtilityService.generateUrl('/apps/passwordfolders/#/help/Browser-Console'),
             color = navigator.userAgent.indexOf('Firefox') !== -1 ? 'color:#fff;background-color:#EA2027;':'color:#EA2027;';
 
         console.warn(
-            `%c${translate('passwords', 'BrowserConsoleWarningTitle')} %c${translate('passwords', 'BrowserConsoleWarningLine1')} %c${translate('passwords', 'BrowserConsoleWarningLine2')} %c${translate('passwords', 'BrowserConsoleWarningLine3', {link})}`,
+            `%c${translate('passwordfolders', 'BrowserConsoleWarningTitle')} %c${translate('passwordfolders', 'BrowserConsoleWarningLine1')} %c${translate('passwordfolders', 'BrowserConsoleWarningLine2')} %c${translate('passwordfolders', 'BrowserConsoleWarningLine3', {link})}`,
             `${color}padding:10rem 2rem 1rem;display:block;font-weight:bold;font-family:'Ubuntu Mono',monospace;font-size:12rem;`,
             `${color}padding:1rem 2rem;display:block;font-weight:bold;font-family:'Ubuntu Mono',monospace;font-size:1.5rem;`,
             `${color}padding:1rem 2rem;display:block;font-weight:bold;font-family:'Ubuntu Mono',monospace;font-size:1.5rem;`,

@@ -9,17 +9,17 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Folder;
+namespace OCA\PasswordFolders\EventListener\Folder;
 
 use Exception;
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Events\Folder\BeforeFolderSetRevisionEvent;
-use OCA\Passwords\Services\Object\FolderRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\Object\PasswordRevisionService;
-use OCA\Passwords\Services\Object\PasswordService;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Events\Folder\BeforeFolderSetRevisionEvent;
+use OCA\PasswordFolders\Services\Object\FolderRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\Object\PasswordRevisionService;
+use OCA\PasswordFolders\Services\Object\PasswordService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\EventDispatcher\Event;
@@ -28,7 +28,7 @@ use OCP\EventDispatcher\IEventListener;
 /**
  * Class BeforeFolderSetRevisionListener
  *
- * @package OCA\Passwords\EventListener\Folder
+ * @package OCA\PasswordFolders\EventListener\Folder
  */
 class BeforeFolderSetRevisionListener implements IEventListener {
 

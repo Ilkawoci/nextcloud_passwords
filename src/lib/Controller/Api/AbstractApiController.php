@@ -9,11 +9,11 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
-use OCA\Passwords\AppInfo\Application;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\ApiObjects\AbstractObjectHelper;
+use OCA\PasswordFolders\AppInfo\Application;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\ApiObjects\AbstractObjectHelper;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
@@ -22,7 +22,7 @@ use OCP\IRequest;
 /**
  * Class AbstractApiController
  *
- * @package OCA\Passwords\Controller
+ * @package OCA\PasswordFolders\Controller
  */
 abstract class AbstractApiController extends ApiController {
 

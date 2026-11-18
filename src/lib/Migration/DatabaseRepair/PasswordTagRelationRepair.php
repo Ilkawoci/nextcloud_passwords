@@ -9,14 +9,14 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Migration\DatabaseRepair;
+namespace OCA\PasswordFolders\Migration\DatabaseRepair;
 
 use Exception;
-use OCA\Passwords\Db\PasswordMapper;
-use OCA\Passwords\Db\PasswordTagRelation;
-use OCA\Passwords\Db\TagMapper;
-use OCA\Passwords\Helper\Uuid\UuidHelper;
-use OCA\Passwords\Services\Object\PasswordTagRelationService;
+use OCA\PasswordFolders\Db\PasswordMapper;
+use OCA\PasswordFolders\Db\PasswordTagRelation;
+use OCA\PasswordFolders\Db\TagMapper;
+use OCA\PasswordFolders\Helper\Uuid\UuidHelper;
+use OCA\PasswordFolders\Services\Object\PasswordTagRelationService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\Migration\IOutput;
@@ -25,7 +25,7 @@ use Throwable;
 /**
  * Class PasswordTagRelationRepair
  *
- * @package OCA\Passwords\Migration\DatabaseRepair
+ * @package OCA\PasswordFolders\Migration\DatabaseRepair
  */
 class PasswordTagRelationRepair {
 

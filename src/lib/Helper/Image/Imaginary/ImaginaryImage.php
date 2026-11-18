@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Image\Imaginary;
+namespace OCA\PasswordFolders\Helper\Image\Imaginary;
 
 class ImaginaryImage {
 

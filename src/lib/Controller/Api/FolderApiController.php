@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Controller\Api;
+namespace OCA\PasswordFolders\Controller\Api;
 
 use Exception;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\ApiObjects\AbstractObjectHelper;
-use OCA\Passwords\Helper\ApiObjects\FolderObjectHelper;
-use OCA\Passwords\Services\EncryptionService;
-use OCA\Passwords\Services\Object\AbstractModelService;
-use OCA\Passwords\Services\Object\AbstractRevisionService;
-use OCA\Passwords\Services\Object\FolderRevisionService;
-use OCA\Passwords\Services\Object\FolderService;
-use OCA\Passwords\Services\ValidationService;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\ApiObjects\AbstractObjectHelper;
+use OCA\PasswordFolders\Helper\ApiObjects\FolderObjectHelper;
+use OCA\PasswordFolders\Services\EncryptionService;
+use OCA\PasswordFolders\Services\Object\AbstractModelService;
+use OCA\PasswordFolders\Services\Object\AbstractRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderRevisionService;
+use OCA\PasswordFolders\Services\Object\FolderService;
+use OCA\PasswordFolders\Services\ValidationService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\Http;
@@ -34,7 +34,7 @@ use OCP\IRequest;
 /**
  * Class FolderApiController
  *
- * @package OCA\Passwords\Controller\Api
+ * @package OCA\PasswordFolders\Controller\Api
  */
 class FolderApiController extends AbstractObjectApiController {
 

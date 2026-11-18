@@ -9,11 +9,11 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Integrations;
+namespace OCA\PasswordFolders\Integrations;
 
 use OCA\Guests\UserBackend;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\EnvironmentService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\EnvironmentService;
 use OCP\IGroupManager;
 use Psr\Container\ContainerInterface;
 

@@ -5,43 +5,43 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Helper\Backup;
+namespace OCA\PasswordFolders\Helper\Backup;
 
 use BadFunctionCallException;
 use Exception;
-use OCA\Passwords\Db\AbstractEntity;
-use OCA\Passwords\Db\AbstractMapper;
-use OCA\Passwords\Db\AbstractRevisionMapper;
-use OCA\Passwords\Db\Challenge;
-use OCA\Passwords\Db\ChallengeMapper;
-use OCA\Passwords\Db\Folder;
-use OCA\Passwords\Db\FolderMapper;
-use OCA\Passwords\Db\FolderRevision;
-use OCA\Passwords\Db\FolderRevisionMapper;
-use OCA\Passwords\Db\Keychain;
-use OCA\Passwords\Db\KeychainMapper;
-use OCA\Passwords\Db\Password;
-use OCA\Passwords\Db\PasswordMapper;
-use OCA\Passwords\Db\PasswordRevision;
-use OCA\Passwords\Db\PasswordRevisionMapper;
-use OCA\Passwords\Db\PasswordTagRelation;
-use OCA\Passwords\Db\PasswordTagRelationMapper;
-use OCA\Passwords\Db\Share;
-use OCA\Passwords\Db\ShareMapper;
-use OCA\Passwords\Db\Tag;
-use OCA\Passwords\Db\TagMapper;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Db\TagRevisionMapper;
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Helper\Settings\UserSettingsHelper;
-use OCA\Passwords\Services\AppSettingsService;
-use OCA\Passwords\Services\ConfigurationService;
-use OCA\Passwords\Services\UserChallengeService;
+use OCA\PasswordFolders\Db\AbstractEntity;
+use OCA\PasswordFolders\Db\AbstractMapper;
+use OCA\PasswordFolders\Db\AbstractRevisionMapper;
+use OCA\PasswordFolders\Db\Challenge;
+use OCA\PasswordFolders\Db\ChallengeMapper;
+use OCA\PasswordFolders\Db\Folder;
+use OCA\PasswordFolders\Db\FolderMapper;
+use OCA\PasswordFolders\Db\FolderRevision;
+use OCA\PasswordFolders\Db\FolderRevisionMapper;
+use OCA\PasswordFolders\Db\Keychain;
+use OCA\PasswordFolders\Db\KeychainMapper;
+use OCA\PasswordFolders\Db\Password;
+use OCA\PasswordFolders\Db\PasswordMapper;
+use OCA\PasswordFolders\Db\PasswordRevision;
+use OCA\PasswordFolders\Db\PasswordRevisionMapper;
+use OCA\PasswordFolders\Db\PasswordTagRelation;
+use OCA\PasswordFolders\Db\PasswordTagRelationMapper;
+use OCA\PasswordFolders\Db\Share;
+use OCA\PasswordFolders\Db\ShareMapper;
+use OCA\PasswordFolders\Db\Tag;
+use OCA\PasswordFolders\Db\TagMapper;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Db\TagRevisionMapper;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Helper\Settings\UserSettingsHelper;
+use OCA\PasswordFolders\Services\AppSettingsService;
+use OCA\PasswordFolders\Services\ConfigurationService;
+use OCA\PasswordFolders\Services\UserChallengeService;
 
 /**
  * Class RestoreBackupHelper
  *
- * @package OCA\Passwords\Helper\Backup
+ * @package OCA\PasswordFolders\Helper\Backup
  */
 class RestoreBackupHelper {
 

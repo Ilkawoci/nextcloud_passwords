@@ -9,16 +9,16 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\AppSettings;
+namespace OCA\PasswordFolders\Helper\AppSettings;
 
-use OCA\Passwords\Exception\ApiException;
-use OCA\Passwords\Services\ConfigurationService;
+use OCA\PasswordFolders\Exception\ApiException;
+use OCA\PasswordFolders\Services\ConfigurationService;
 use OCP\AppFramework\Http;
 
 /**
  * Class AbstractSettingsHelper
  *
- * @package OCA\Passwords\Helper\AppSettings
+ * @package OCA\PasswordFolders\Helper\AppSettings
  */
 abstract class AbstractSettingsHelper {
 

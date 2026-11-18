@@ -5,14 +5,14 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Exception\Favicon;
+namespace OCA\PasswordFolders\Exception\Favicon;
 
-use OCA\Passwords\Exception\AbstractException;
+use OCA\PasswordFolders\Exception\AbstractException;
 
 /**
  * Class FaviconRequestException
  *
- * @package OCA\Passwords\Exception\Favicon
+ * @package OCA\PasswordFolders\Exception\Favicon
  */
 class FaviconRequestException extends AbstractException {
     const int EXCEPTION_CODE       = 103;

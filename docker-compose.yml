@@ -18,7 +18,7 @@ services:
       - mysql
     volumes:
       - ./docker/volumes/nextcloud:/var/www/html
-      - ./src/:/var/www/html/custom_apps/passwords:ro
+      - ./src/:/var/www/html/custom_apps/passwordfolders:ro
     cap_add:
       - SYS_ADMIN
     environment:

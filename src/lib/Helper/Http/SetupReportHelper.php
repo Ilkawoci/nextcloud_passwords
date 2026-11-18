@@ -9,7 +9,7 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\Helper\Http;
+namespace OCA\PasswordFolders\Helper\Http;
 
 use OCP\IConfig;
 use OCP\IRequest;
@@ -17,7 +17,7 @@ use OCP\IRequest;
 /**
  * Class SetupReportHelper
  *
- * @package OCA\Passwords\Helper\Http
+ * @package OCA\PasswordFolders\Helper\Http
  */
 class SetupReportHelper {
 

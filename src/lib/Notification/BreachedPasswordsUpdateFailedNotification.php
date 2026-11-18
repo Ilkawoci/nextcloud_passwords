@@ -5,7 +5,7 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Notification;
+namespace OCA\PasswordFolders\Notification;
 
 use Exception;
 use OCP\IL10N;
@@ -14,7 +14,7 @@ use OCP\Notification\INotification;
 /**
  * Class UpgradeRequiredNotification
  *
- * @package OCA\Passwords\Notification
+ * @package OCA\PasswordFolders\Notification
  */
 class BreachedPasswordsUpdateFailedNotification extends AbstractNotification {
 

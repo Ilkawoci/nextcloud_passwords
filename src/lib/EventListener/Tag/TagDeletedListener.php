@@ -9,19 +9,19 @@
  * created by Marius David Wieschollek.
  */
 
-namespace OCA\Passwords\EventListener\Tag;
+namespace OCA\PasswordFolders\EventListener\Tag;
 
 use Exception;
-use OCA\Passwords\Db\TagRevision;
-use OCA\Passwords\Events\Tag\TagDeletedEvent;
-use OCA\Passwords\Services\Object\TagRevisionService;
+use OCA\PasswordFolders\Db\TagRevision;
+use OCA\PasswordFolders\Events\Tag\TagDeletedEvent;
+use OCA\PasswordFolders\Services\Object\TagRevisionService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 
 /**
  * Class TagDeletedListener
  *
- * @package OCA\Passwords\EventListener\Tag
+ * @package OCA\PasswordFolders\EventListener\Tag
  */
 class TagDeletedListener implements IEventListener {
 

@@ -206,7 +206,7 @@ class CompileLanguageFilesPlugin {
                 );
                 path += `/${language}.json`;
             } else {
-                content = `(function(){OC.L10N.register("passwords",${JSON.stringify(translations[section])},"nplurals=2; plural=(n != 1);")}())`;
+                content = `(function(){OC.L10N.register("passwordfolders",${JSON.stringify(translations[section])},"nplurals=2; plural=(n != 1);")}())`;
                 path += `/${language}.js`;
             }
 

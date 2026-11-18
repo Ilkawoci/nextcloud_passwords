@@ -5,9 +5,9 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Passwords\Command;
+namespace OCA\PasswordFolders\Command;
 
-use OCA\Passwords\Services\BackupService;
+use OCA\PasswordFolders\Services\BackupService;
 use OCP\Files\NotPermittedException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class BackupListCommand
  *
- * @package OCA\Passwords\Command
+ * @package OCA\PasswordFolders\Command
  */
 class BackupListCommand extends Command {
 
@@ -41,7 +41,7 @@ class BackupListCommand extends Command {
      *
      */
     protected function configure(): void {
-        $this->setName('passwords:backup:list')
+        $this->setName('passwordfolders:backup:list')
              ->addOption('details', 'd', InputOption::VALUE_NONE, 'Inspect backup files and list contents')
              ->setDescription('Print a list of the available backups');
     }
