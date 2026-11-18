@@ -1,0 +1,1 @@
+[The setup guides can be found here](../Browser-Extension#setup-guides)

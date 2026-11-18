@@ -1,0 +1,11 @@
+folder,favorite,type,name,notes,fields,reprompt,login_uri,login_username,login_password,login_totp
+Maximal,1,login,Login Maximal,Integrate Bitwarden directly into your favorite browser. Use our browser extensions for a seamless browsing experience.,"Textfeld: Wert
+Versteckt: Wert
+Boolean: true",0,"https://example.com,https://login.example.com",Nutzername,zdvBk4aCChHL9v,
+,,login,Login Minimal,,,0,,,,
+Standard,,login,Login Standard,,,0,https://example.com,username,3XkKaUUAHXSJxf,
+Maximal,1,note,Notiz Maximal,Integrate Bitwarden directly into your favorite browser. Use our browser extensions for a seamless browsing experience.,"Text: Wert
+Versteckt: Wert
+Boolean: true",0,,,,
+,,note,Notiz Minimal,,,0,,,,
+Standard,,note,Notiz Standard,Integrate Bitwarden directly into your favorite browser. Use our browser extensions for a seamless browsing experience.,,0,,,,

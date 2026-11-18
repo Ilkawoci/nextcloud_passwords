@@ -1,0 +1,1 @@
+[The administrator handbook can be found here](./Administrators/Index).

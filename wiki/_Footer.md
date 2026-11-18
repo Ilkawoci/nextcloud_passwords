@@ -1,0 +1,1 @@
+[Open full manual](Home)

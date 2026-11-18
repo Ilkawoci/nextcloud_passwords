@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00.150 --> 00:05.150
+This tutorial will help you to transfer you passwords from Passman
+
+00:06.060 --> 00:12.060
+First, open Passman and log into your password vault
+
+00:14.020 --> 00:20.020
+Then click on "Settings" in the bottom left corner and open the "Export credentials" tab
+
+00:20.120 --> 00:26.020
+Choose the "Export type" "JSON" and enter your vault password in the password field
+
+00:26.080 --> 00:32.080
+After that, click the "Export" button and save the generated file on your computer
+
+00:34.150 --> 00:40.150
+If the export does not work, take a look at our list of known bugs and workarounds for help
+
+00:43.050 --> 00:48.050
+Now, open the Passwords app and click on "More" in the bottom left corner
+
+00:48.100 --> 00:53.100
+Then click on "Backup and Restore" and choose the option "Restore or import"
+
+00:53.150 --> 01:01.000
+Select "Passman JSON" as import format and open the file created by Passman using the file dialog
+
+01:01.000 --> 01:04.500
+Then, click on the "Import" button to start the import
+
+01:06.000 --> 01:12.000
+After the import has finished, you should be able to see the imported passwords in the "Folders" section
+
+01:15.150 --> 01:19.150
+Repeat this process for all Passman vaults which you want to import
+
+01:20.000 --> 01:26.000
+Don't forget to delete the export file from your computer, after you have successfully imported it
+
+01:26.200 --> 01:32.000
+Please note that the import does not support some of the options available in Passman
+
+01:32.050 --> 01:36.150
+In these cases the import may show a warning for the affected passwords
+
+01:36.250 --> 01:42.250
+You can take a look at our list of compatibility issues and workarounds to fix these issues

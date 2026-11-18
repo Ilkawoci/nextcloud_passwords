@@ -1,0 +1,1 @@
+[This page has moved.](./Guides/Services/Besticon-Self-Hosting)

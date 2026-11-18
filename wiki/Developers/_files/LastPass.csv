@@ -1,0 +1,147 @@
+url,username,password,totp,extra,name,grouping,fav
+http://,,,,,Password Minimal,,0
+https://example.com,,dzVic8PMEMRk9qv,,,Password Normal,,0
+https://accounts.google.com/ServiceLogin,Username,a4ds56af4ds65f4dsa65f41dsa65as6d6sda,,"The password app lists official clients, third party apps and programming libraries in the included ""Apps & Extensions"" section.
+Apps are also listed in the readme, libraries are also listed in the developer handbook.
+If you have developed an app or library and want it to be listed there, this page contains the requirements and process to do so.",Password Maximal,Email,1
+http://sn,,,,,Notes Minimal,,0
+http://sn,,,,[Passwords Test Environment](https://test.passwordsapp.org/info.html),Notes Standard,,0
+http://sn,,,,[Passwords Test Environment](https://test.passwordsapp.org/info.html),Notes Maximal,Email,1
+http://sn,,,,"NoteType:Address
+Language:en-US
+Title:
+First Name:
+Middle Name:
+Last Name:
+Username:
+Gender:
+Birthday:,,
+Company:
+Address 1:
+Address 2:
+Address 3:
+City / Town:
+County:
+State:
+Zip / Postal Code:
+Country:
+Timezone:
+Email Address:
+Phone:
+Evening Phone:
+Mobile Phone:
+Fax:
+Notes:",Address Minimal,,0
+http://sn,,,,"NoteType:Address
+Language:en-US
+Title:
+First Name:First
+Middle Name:
+Last Name:Last
+Username:
+Gender:
+Birthday:,,
+Company:
+Address 1:
+Address 2:
+Address 3:
+City / Town:
+County:
+State:
+Zip / Postal Code:
+Country:
+Timezone:
+Email Address:mail@example.com
+Phone:
+Evening Phone:
+Mobile Phone:
+Fax:
+Notes:",Address Standard,,0
+http://sn,,,,"NoteType:Address
+Language:en-US
+Title:mr
+First Name:First
+Middle Name:Middle
+Last Name:Last
+Username:Username
+Gender:m
+Birthday:August,10,1990
+Company:Company
+Address 1:Address 1
+Address 2:Address 2
+Address 3:Address 3
+City / Town:City
+County:County
+State:State
+Zip / Postal Code:ZIP
+Country:DE
+Timezone:+01:00,1
+Email Address:mail@example.com
+Phone:{""num"":""49666666"",""ext"":""190"",""cc3l"":""DEU""}
+Evening Phone:{""num"":""49555555"",""ext"":""190"",""cc3l"":""DEU""}
+Mobile Phone:{""num"":""49666555"",""ext"":""159"",""cc3l"":""DEU""}
+Fax:{""num"":""49999999"",""ext"":""190"",""cc3l"":""DEU""}
+Notes:dsfasdf asdf dasfdsa fasdgfs gfadsgf dsafgdsa agfds gasfds fadsf asdfsd a",Address Maximal,Email,0
+http://sn,,,,"NoteType:Credit Card
+Language:en-US
+Name on Card:
+Type:
+Number:
+Security Code:
+Start Date:,
+Expiration Date:,
+Notes:",Card Minimal,,0
+http://sn,,,,"NoteType:Credit Card
+Language:en-US
+Name on Card:
+Type:
+Number:1234-4567-7890-0123
+Security Code:456
+Start Date:,
+Expiration Date:,
+Notes:",Card Standard,,0
+http://sn,,,,"NoteType:Credit Card
+Language:en-US
+Name on Card:Name on Card
+Type:Type
+Number:0123-3456-6789-9123
+Security Code:789
+Start Date:April,2020
+Expiration Date:December,2024
+Notes:rgf agre iougrefgnb rfgaiufdgf aiupgfrdsauga biuhdfsa iujdfgv nands pgfdpdfdsgfnodfgb iudsij bd bsfa",Card Maximal,Cards,0
+http://sn,,,,"NoteType:Bank Account
+Language:en-US
+Bank Name:
+Account Type:
+Routing Number:
+Account Number:
+SWIFT Code:
+IBAN Number:
+Pin:
+Branch Address:
+Branch Phone:
+Notes:",Bank Minimal,,0
+http://sn,,,,"NoteType:Bank Account
+Language:en-US
+Bank Name:
+Account Type:
+Routing Number:
+Account Number:0123456
+SWIFT Code:
+IBAN Number:IB46 1234 4567 1235 5643
+Pin:4565
+Branch Address:
+Branch Phone:
+Notes:",Bank Standard,,0
+http://sn,,,,"NoteType:Bank Account
+Language:en-US
+Bank Name:Bank Name
+Account Type:Account Type
+Routing Number:Routing Number
+Account Number:Account Number
+SWIFT Code:SWIFT Code
+IBAN Number:IB01 2365 4398 7536
+Pin:4563
+Branch Address:Branch Address
+Branch Phone:Branch Phone
+Notes:fdsaf dsaf asd asfdsf asdfd asfds fasfds fasdfdas fsfasdfdas f",Bank Maximal,BANK,1

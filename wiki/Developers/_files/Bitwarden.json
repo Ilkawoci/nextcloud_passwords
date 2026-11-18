@@ -1,0 +1,339 @@
+{
+  "encrypted": false,
+  "folders": [
+    {
+      "id": "ddc2ba86-fdbb-477e-b63f-add5014321b4",
+      "name": "Maximal"
+    },
+    {
+      "id": "b2718706-5cbf-45da-a3ae-add501431b65",
+      "name": "Standard"
+    }
+  ],
+  "items": [
+    {
+      "id": "cee4fa75-f345-47d0-986d-add50143de1c",
+      "organizationId": null,
+      "folderId": "ddc2ba86-fdbb-477e-b63f-add5014321b4",
+      "type": 4,
+      "reprompt": 0,
+      "name": "Identität Maximal",
+      "notes": "Integrate Bitwarden directly into your favorite browser. Use our browser extensions for a seamless browsing experience.",
+      "favorite": true,
+      "fields": [
+        {
+          "name": "Text",
+          "value": "Wert",
+          "type": 0
+        },
+        {
+          "name": "Versteckt",
+          "value": "Wert",
+          "type": 1
+        },
+        {
+          "name": "Boolean",
+          "value": "false",
+          "type": 2
+        }
+      ],
+      "identity": {
+        "title": "Herr",
+        "firstName": "Vorname",
+        "middleName": "Zweiter Vorname",
+        "lastName": "Nachname",
+        "address1": "Adresse 1",
+        "address2": "Adresse 2",
+        "address3": "Adresse 3",
+        "city": "Stadt",
+        "state": "Bundesland",
+        "postalCode": "Postleitzahl",
+        "country": "Land",
+        "company": "Firma",
+        "email": "mail@example.com",
+        "phone": "Telefon",
+        "ssn": "Sozialversicherungsnummer",
+        "username": "Nutzername",
+        "passportNumber": "Reisepassnummer",
+        "licenseNumber": "Führerscheinnummer"
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "63320d7d-b42e-4d8a-a623-add50143074e",
+      "organizationId": null,
+      "folderId": null,
+      "type": 4,
+      "reprompt": 0,
+      "name": "Identität Minimal",
+      "notes": null,
+      "favorite": false,
+      "identity": {
+        "title": null,
+        "firstName": null,
+        "middleName": null,
+        "lastName": null,
+        "address1": null,
+        "address2": null,
+        "address3": null,
+        "city": null,
+        "state": null,
+        "postalCode": null,
+        "country": null,
+        "company": null,
+        "email": null,
+        "phone": null,
+        "ssn": null,
+        "username": null,
+        "passportNumber": null,
+        "licenseNumber": null
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "8da298fb-b1cb-4b1c-b8c6-add5014376de",
+      "organizationId": null,
+      "folderId": "b2718706-5cbf-45da-a3ae-add501431b65",
+      "type": 4,
+      "reprompt": 0,
+      "name": "Identität Standard",
+      "notes": null,
+      "favorite": false,
+      "identity": {
+        "title": "Herr",
+        "firstName": "Vorname",
+        "middleName": null,
+        "lastName": "Nachname",
+        "address1": null,
+        "address2": null,
+        "address3": null,
+        "city": null,
+        "state": null,
+        "postalCode": null,
+        "country": null,
+        "company": null,
+        "email": "mail@example.com",
+        "phone": null,
+        "ssn": null,
+        "username": null,
+        "passportNumber": null,
+        "licenseNumber": null
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "9bc7c5e7-6562-4d4b-940a-add50142fb5f",
+      "organizationId": null,
+      "folderId": "ddc2ba86-fdbb-477e-b63f-add5014321b4",
+      "type": 3,
+      "reprompt": 0,
+      "name": "Karte Maximal",
+      "notes": "Integrate Bitwarden directly into your favorite browser. Use our browser extensions for a seamless browsing experience.",
+      "favorite": true,
+      "fields": [
+        {
+          "name": "Textfeld",
+          "value": "Wert",
+          "type": 0
+        },
+        {
+          "name": "Versteckt",
+          "value": "Wert",
+          "type": 1
+        },
+        {
+          "name": "Boolean",
+          "value": "true",
+          "type": 2
+        }
+      ],
+      "card": {
+        "cardholderName": "Name des Karteninhabers",
+        "brand": "Mastercard",
+        "number": "01234-5678-9120-1234",
+        "expMonth": "11",
+        "expYear": "2023",
+        "code": "456"
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "74dd753e-80f9-431c-9e83-add501428292",
+      "organizationId": null,
+      "folderId": null,
+      "type": 3,
+      "reprompt": 0,
+      "name": "Karte Minimal",
+      "notes": null,
+      "favorite": false,
+      "card": {
+        "cardholderName": null,
+        "brand": null,
+        "number": null,
+        "expMonth": null,
+        "expYear": null,
+        "code": null
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "abb7cf40-74d0-47f8-92d5-add50142a680",
+      "organizationId": null,
+      "folderId": "b2718706-5cbf-45da-a3ae-add501431b65",
+      "type": 3,
+      "reprompt": 0,
+      "name": "Karte Standard",
+      "notes": null,
+      "favorite": false,
+      "card": {
+        "cardholderName": "Name des Karteninhabers",
+        "brand": "Visa",
+        "number": "Nummer",
+        "expMonth": "4",
+        "expYear": "2022",
+        "code": "123"
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "5db2f47b-33ba-4e5f-975b-add5014274bb",
+      "organizationId": null,
+      "folderId": "ddc2ba86-fdbb-477e-b63f-add5014321b4",
+      "type": 1,
+      "reprompt": 0,
+      "name": "Login Maximal",
+      "notes": "Integrate Bitwarden directly into your favorite browser. Use our browser extensions for a seamless browsing experience.",
+      "favorite": true,
+      "fields": [
+        {
+          "name": "Textfeld",
+          "value": "Wert",
+          "type": 0
+        },
+        {
+          "name": "Versteckt",
+          "value": "Wert",
+          "type": 1
+        },
+        {
+          "name": "Boolean",
+          "value": "true",
+          "type": 2
+        }
+      ],
+      "login": {
+        "uris": [
+          {
+            "match": null,
+            "uri": "https://example.com"
+          },
+          {
+            "match": null,
+            "uri": "https://login.example.com"
+          }
+        ],
+        "username": "Nutzername",
+        "password": "zdvBk4aCChHL9v",
+        "totp": null
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "522d3998-1388-4b8c-b26e-add50141f05e",
+      "organizationId": null,
+      "folderId": null,
+      "type": 1,
+      "reprompt": 0,
+      "name": "Login Minimal",
+      "notes": null,
+      "favorite": false,
+      "login": {
+        "username": null,
+        "password": null,
+        "totp": null
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "580647ab-71e9-4499-818b-add501421c14",
+      "organizationId": null,
+      "folderId": "b2718706-5cbf-45da-a3ae-add501431b65",
+      "type": 1,
+      "reprompt": 0,
+      "name": "Login Standard",
+      "notes": null,
+      "favorite": false,
+      "login": {
+        "uris": [
+          {
+            "match": null,
+            "uri": "https://example.com"
+          }
+        ],
+        "username": "username",
+        "password": "3XkKaUUAHXSJxf",
+        "totp": null
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "686cb0c6-248d-41ce-a014-add501442dfc",
+      "organizationId": null,
+      "folderId": "ddc2ba86-fdbb-477e-b63f-add5014321b4",
+      "type": 2,
+      "reprompt": 0,
+      "name": "Notiz Maximal",
+      "notes": "Integrate Bitwarden directly into your favorite browser. Use our browser extensions for a seamless browsing experience.",
+      "favorite": true,
+      "fields": [
+        {
+          "name": "Text",
+          "value": "Wert",
+          "type": 0
+        },
+        {
+          "name": "Versteckt",
+          "value": "Wert",
+          "type": 1
+        },
+        {
+          "name": "Boolean",
+          "value": "true",
+          "type": 2
+        }
+      ],
+      "secureNote": {
+        "type": 0
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "f392921d-f71e-43d2-a74f-add50143e8f2",
+      "organizationId": null,
+      "folderId": null,
+      "type": 2,
+      "reprompt": 0,
+      "name": "Notiz Minimal",
+      "notes": null,
+      "favorite": false,
+      "secureNote": {
+        "type": 0
+      },
+      "collectionIds": null
+    },
+    {
+      "id": "2f5ec8bf-202b-4fc7-ba69-add5014400de",
+      "organizationId": null,
+      "folderId": "b2718706-5cbf-45da-a3ae-add501431b65",
+      "type": 2,
+      "reprompt": 0,
+      "name": "Notiz Standard",
+      "notes": "Integrate Bitwarden directly into your favorite browser. Use our browser extensions for a seamless browsing experience.",
+      "favorite": false,
+      "secureNote": {
+        "type": 0
+      },
+      "collectionIds": null
+    }
+  ]
+}

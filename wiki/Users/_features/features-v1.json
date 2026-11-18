@@ -1,0 +1,112 @@
+{
+    "server": {
+        "2026.1" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.2" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.3" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.4" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.5" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.6" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.7" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.8" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.9" : {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.10": {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.11": {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        },
+        "2026.12": {
+            "two-factor-enabled" : false,
+            "two-factor-required": false
+        }
+    },
+    "webapp": {
+        "2026.1" : {
+            "first-run-wizard": false,
+            "donate-button"   : true
+        },
+        "2026.2" : {
+            "first-run-wizard": false,
+            "donate-button"   : true
+        },
+        "2026.3" : {
+            "first-run-wizard": false,
+            "donate-button"   : true
+        },
+        "2026.4" : {
+            "first-run-wizard": false,
+            "donate-button"   : true
+        },
+        "2026.5" : {
+            "first-run-wizard": false,
+            "donate-button"   : true
+        },
+        "2026.6" : {
+            "first-run-wizard": false,
+            "donate-button"   : true
+        },
+        "2026.7" : {
+            "first-run-wizard": false,
+            "donate-button"   : true
+        },
+        "2026.8" : {
+            "first-run-wizard"  : false,
+            "batch-action-share": true,
+            "website-preview"   : true,
+            "donate-button"     : true
+        },
+        "2026.9" : {
+            "first-run-wizard"  : false,
+            "batch-action-share": true,
+            "website-preview"   : true,
+            "donate-button"     : true
+        },
+        "2026.10": {
+            "first-run-wizard"  : false,
+            "batch-action-share": true,
+            "website-preview"   : true,
+            "donate-button"     : true
+        },
+        "2026.11": {
+            "first-run-wizard"  : false,
+            "batch-action-share": true,
+            "website-preview"   : true,
+            "donate-button"     : true
+        },
+        "2026.12": {
+            "first-run-wizard"  : false,
+            "batch-action-share": true,
+            "website-preview"   : true,
+            "donate-button"     : true
+        }
+    }
+}

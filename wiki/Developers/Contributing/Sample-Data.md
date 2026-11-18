@@ -1,0 +1,1 @@
+[This page has moved.](../Getting-Started/Sample-Data)

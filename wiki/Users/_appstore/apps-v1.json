@@ -1,0 +1,603 @@
+{
+    "extensions"  : {
+        "label": {
+            "en"   : "Browser Extensions",
+            "de"   : "Browser Add-Ons",
+            "sv"   : "Webbläsare",
+            "zh-CN": "浏览器"
+        },
+        "style": "grid",
+        "icon" : "globe",
+        "items": [
+            {
+                "id"         : "firefox",
+                "label"      : {
+                    "en": "Official Firefox Add-On",
+                    "de": "Offizielles Firefox Add-On",
+                    "sv": "Officiell Firefox klient",
+                    "it": "Add-On Firefox Ufficiale",
+                    "zh": "官方 Firefox 插件"
+                },
+                "description": {
+                    "en"   : "Access and manage all your passwords easily within Firefox thanks to our official add-on from the Firefox Add-on store.",
+                    "sv"   : "Med det officiella tillägget för Firefox kan du enkelt komma åt alla dina lösenord från Firefox. Ladda ner tillägget från tilläggs-butiken för Firefox",
+                    "de"   : "Dank unserer offiziellen Erweiterung aus dem Firefox Add-on Store kannst du auf alle deine Passwörter einfach von Firefox aus zugreifen und neue hinzufügen.",
+                    "de-DE": "Dank unserer offiziellen Erweiterung aus dem Firefox Add-on Store können Sie alle Ihre Passwörter einfach in Firefox verwenden und verwalten.",
+                    "id"   : "Accedi e gestisci tutte le password facilmente all'interno di Firefox grazie alla nostra estensione ufficiale dallo store Add-on.",
+                    "zh-CN": "借助我们在 Firefox 附加组件商店中的官方插件来轻松地访问、管理您的密码。"
+                },
+                "author"     : {
+                    "name"    : "Marius Wieschollek",
+                    "homepage": "https://github.com/marius-wieschollek"
+                },
+                "passlink"   : {
+                    "enabled" : true,
+                    "link"    : true,
+                    "qrcode"  : true,
+                    "protocol": "domain",
+                    "altLink" : false
+                },
+                "logo"       : "firefox.svg",
+                "links"      : {
+                    "homepage": "https://github.com/marius-wieschollek/passwords-webextension",
+                    "sources" : "https://github.com/marius-wieschollek/passwords-webextension"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Download from Mirror",
+                            "de": "Von Spiegelserver laden"
+                        },
+                        "url"  : "https://extensions.passwordsapp.org"
+                    },
+                    {
+                        "label"  : {
+                            "en": "Available on Firefox Add-ons",
+                            "de": "Verfügbar auf Firefox Add-ons"
+                        },
+                        "url"    : "https://addons.mozilla.org/firefox/addon/nextcloud-passwords?utm_source=wiki&utm_medium=apps",
+                        "primary": true
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : true
+            },
+            {
+                "id"         : "chrome",
+                "label"      : {
+                    "en": "Official Chrome Extension",
+                    "de": "Offizielle Chrome Extension",
+                    "sv": "Officiell Chrome klient",
+                    "it": "Extension Chrome Ufficiale",
+                    "zh": "官方 Chrome 插件"
+                },
+                "description": {
+                    "en"   : "Our official Chrome extension integrates Passwords into your browser and is available for many Chromium based Browsers from the Chrome Web Store.",
+                    "sv"   : "Med det officiella tillägget för Chrome kan du enkelt komma åt alla dina lösenord från Chrome. Ladda ner tillägget från tilläggs-butiken för Chrome",
+                    "de"   : "Unsere offizielle Chrome-Erweiterung integriert die Passwörter App in deinen Browser und ist für viele auf Chromium basierenden Browsern im Chrome Web Store verfügbar.",
+                    "de-DE": "Unsere offizielle Chrome-Erweiterung integriert die Passwörter App in Ihren Browser und ist für viele auf Chromium basierenden Browsern im Chrome Web Store verfügbar.",
+                    "it"   : "La nostra estensione Chrome ufficiale ti permette di gestire tutte le password dal tuo browser ed è disponibile per tanti browser basati su Chromium dal Chrome Web Store.",
+                    "zh-CN": "我们的官方 Chrome 扩展允许您从浏览器中管理所有密码。该扩展对许多基于 Chromium 的浏览器仍然适用。"
+                },
+                "author"     : {
+                    "name"    : "Marius Wieschollek",
+                    "homepage": "https://github.com/marius-wieschollek"
+                },
+                "passlink"   : {
+                    "enabled" : true,
+                    "link"    : true,
+                    "qrcode"  : true,
+                    "protocol": "domain",
+                    "altLink" : true
+                },
+                "logo"       : "chrome.svg",
+                "links"      : {
+                    "homepage": "https://github.com/marius-wieschollek/passwords-webextension",
+                    "sources" : "https://github.com/marius-wieschollek/passwords-webextension"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Download from Mirror",
+                            "de": "Von Spiegelserver laden"
+                        },
+                        "url"  : "https://extensions.passwordsapp.org"
+                    },
+                    {
+                        "label"  : {
+                            "en": "Available in the Chrome Web Store",
+                            "de": "Verfügbar im Chrome Web Store"
+                        },
+                        "url"    : "https://chrome.google.com/webstore/detail/nextcloud-passwords/mhajlicjhgoofheldnmollgbgjheenbi",
+                        "primary": true
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : true
+            },
+            {
+                "id"         : "edge",
+                "label"      : {
+                    "en": "Official Microsoft Edge Extension",
+                    "de": "Offizielle Microsoft Edge Extension",
+                    "sv": "Officiell Microsoft Edge klient",
+                    "it": "Extension Microsoft Edge Ufficiale",
+                    "zh": "官方 Microsoft Edge 插件"
+                },
+                "description": {
+                    "en": "Our official Microsoft Edge extension suggests matching credentials for the current tab, pastes them into login forms on demand and can detect new login credentials.",
+                    "de": "Unsere offizielle Extension für Microsoft Edge schlägt passende Zugandsaten für den aktuellen Tab vor, fügt sie auf Wunsch in Anmeldeformulare ein und erkennt neue und geänderte Anmeldedaten."
+                },
+                "author"     : {
+                    "name"    : "Marius Wieschollek",
+                    "homepage": "https://github.com/marius-wieschollek"
+                },
+                "passlink"   : {
+                    "enabled" : true,
+                    "link"    : true,
+                    "qrcode"  : true,
+                    "protocol": "domain",
+                    "altLink" : true
+                },
+                "logo"       : "edge.svg",
+                "links"      : {
+                    "homepage": "https://github.com/marius-wieschollek/passwords-webextension",
+                    "sources" : "https://github.com/marius-wieschollek/passwords-webextension"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Download from Mirror",
+                            "de": "Von Spiegelserver laden"
+                        },
+                        "url"  : "https://extensions.passwordsapp.org"
+                    },
+                    {
+                        "label"  : {
+                            "en": "Available in the Microsoft Store",
+                            "de": "Verfügbar im Microsoft Store"
+                        },
+                        "url"    : "https://microsoftedge.microsoft.com/addons/detail/cjmlcljdpphgdfpkngjcmeepdpcgpffk",
+                        "primary": true
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : true
+            }
+        ]
+    },
+    "android"     : {
+        "label": {
+            "en": "Android"
+        },
+        "style": "grid",
+        "icon" : "android",
+        "items": [
+            {
+                "id"         : "hegocre",
+                "label"      : {
+                    "en": "Nextcloud Passwords",
+                    "de": "Nextcloud Passwords"
+                },
+                "description": {
+                    "en"   : "Secure and user friendly app for viewing and editing passwords which also offers a AutoFill service, making logging in on Android devices easier.",
+                    "de"   : "Sichere und benutzerfreundliche App zum Anzeigen und Bearbeiten die auch einen AutoAusfüllen-Dienst bietet, um bequemes Anmelden auf Android-Geräten zu ermöglichen.",
+                    "de-DE": "Sichere und benutzerfreundliche App zum Anzeigen und Bearbeiten die auch einen AutoAusfüllen-Dienst bietet, um bequemes Anmelden auf Android-Geräten zu ermöglichen."
+                },
+                "author"     : {
+                    "name"    : "hegocre",
+                    "homepage": "https://github.com/hegocre"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "logo"       : "hegocre-nextcloud-passwords.png",
+                "links"      : {
+                    "homepage": "https://github.com/hegocre/NextcloudPasswords",
+                    "sources" : "https://github.com/hegocre/NextcloudPasswords"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Available on F-Droid",
+                            "de": "Verfügbar auf F-Droid"
+                        },
+                        "url"  : "https://f-droid.org/packages/com.hegocre.nextcloudpasswords/"
+                    },
+                    {
+                        "label"  : {
+                            "en": "Available on Google Play",
+                            "de": "Verfügbar auf Google Play"
+                        },
+                        "url"    : "https://play.google.com/store/apps/details?id=com.hegocre.nextcloudpasswords",
+                        "primary": true
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : false
+            },
+            {
+                "id"         : "joleaf",
+                "label"      : {
+                    "en": "NC Passwords",
+                    "de": "NC Passwords"
+                },
+                "description": {
+                    "en"   : "Enjoy peace-of-mind access to your passwords wherever you are thanks to this convenient app with secure end-to-end encryption, password autofill and biometric access protection.",
+                    "de"   : "Genieße sorgenfreien Zugriff auf deine Passwörter wo auch immer du bist - dank dieser komfortablen App mit Ende-zu-Ende Verschlüsselung, Passwort-Autofill und biometrischem Zugiffsschutz.",
+                    "de-DE": "Genießen Sie überall sorgenfreien Zugriff auf Ihre Passwörter - dank dieser komfortablen App mit Ende-zu-Ende Verschlüsselung, Passwort-Autofill und biometrischem Zugiffsschutz."
+                },
+                "author"     : {
+                    "name"    : "joleaf",
+                    "homepage": "https://gitlab.com/joleaf"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "logo"       : "joleaf-nc-passwords.png",
+                "links"      : {
+                    "homepage": "https://gitlab.com/joleaf/nc-passwords-app",
+                    "sources" : "https://gitlab.com/joleaf/nc-passwords-app"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Available on F-Droid",
+                            "de": "Verfügbar auf F-Droid"
+                        },
+                        "url"  : "https://f-droid.org/de/packages/de.jbservices.nc_passwords_app/"
+                    },
+                    {
+                        "label"  : {
+                            "en": "Available on Google Play",
+                            "de": "Verfügbar auf Google Play"
+                        },
+                        "url"    : "https://play.google.com/store/apps/details?id=de.jbservices.nc_passwords_app",
+                        "primary": true
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : false
+            }
+        ]
+    },
+    "ios"         : {
+        "label": {
+            "en": "iOS"
+        },
+        "style": "grid",
+        "icon" : "apple",
+        "items": [
+            {
+                "id"         : "johannes-schliephake",
+                "label"      : {
+                    "en": "Passwords for Nextcloud"
+                },
+                "description": {
+                    "en": "Allows you to view, create, edit and delete the passwords and folders on your Nextcloud server. Supports Password AutoFill.",
+                    "de": "Erlaubt es, Passwörter und Ordner vom Nextcloud Server anzuzeigen, zu bearbeiten und zu löschen. Unterstützt Autofill für Passwörter."
+                },
+                "author"     : {
+                    "name"    : "Johannes Schliephake",
+                    "homepage": "https://github.com/johannes-schliephake"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "logo"       : "johannes-schliephake-nextcloud-passwords-ios.png",
+                "links"      : {
+                    "homepage": "https://github.com/johannes-schliephake/nextcloud-passwords-ios",
+                    "sources" : "https://github.com/johannes-schliephake/nextcloud-passwords-ios"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Available in the Apple App Store",
+                            "de": "Verfügbar im Apple App Store"
+                        },
+                        "url"  : "https://apps.apple.com/app/id1546212226"
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : false
+            }
+        ]
+    },
+    "windows"     : {
+        "label": {
+            "en": "Windows"
+        },
+        "style": "grid",
+        "icon" : "windows",
+        "items": [
+            {
+                "id"         : "j0chn",
+                "label"      : {
+                    "en": "Nextcloud Password Client"
+                },
+                "description": {
+                    "en": "Nextcloud Password Client is a Flutter based application to manage passwords on your PC. The app is new and lots of features will be added in upcoming releases.",
+                    "de": "Mit dem Nextcloud Password Client können Sie ihre Passwörter von von ihrem PC aus verwalten. Die App ist neu und viele neue Funktionen werden in den nächsten Versionen hinzugefügt."
+                },
+                "author"     : {
+                    "name"    : "j0chn",
+                    "homepage": "https://gitlab.com/j0chn"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "logo"       : "j0chn-nextcloud-password-client.png",
+                "links"      : {
+                    "homepage": "https://gitlab.com/j0chn/nextcloud_password_client",
+                    "sources" : "https://gitlab.com/j0chn/nextcloud_password_client"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Available in the Microsoft Store",
+                            "de": "Verfügbar im Microsoft Store"
+                        },
+                        "url"  : "https://www.microsoft.com/store/apps/9NXVZ0ZP6D5Z"
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : false
+            }
+        ]
+    },
+    "linux"       : {
+        "label": {
+            "en": "Linux"
+        },
+        "style": "grid",
+        "icon" : "linux",
+        "items": [
+            {
+                "id"         : "j0chn",
+                "label"      : {
+                    "en": "Nextcloud Password Client (WIP)"
+                },
+                "description": {
+                    "en": "Nextcloud Password Client is a Flutter based application to manage passwords on your PC. The app is new and lots of features will be added in upcoming releases.",
+                    "de": "Mit dem Nextcloud Password Client können Sie ihre Passwörter von von ihrem Computer aus verwalten. Die App ist neu und viele neue Funktionen werden in den nächsten Versionen hinzugefügt."
+                },
+                "author"     : {
+                    "name"    : "j0chn",
+                    "homepage": "https://gitlab.com/j0chn"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "logo"       : "j0chn-nextcloud-password-client.png",
+                "links"      : {
+                    "homepage": "https://gitlab.com/j0chn/nextcloud_password_client",
+                    "sources" : "https://gitlab.com/j0chn/nextcloud_password_client"
+                },
+                "downloads"  : [
+                    {
+                        "label"  : {
+                            "en": "Available on Flathub",
+                            "de": "Verfügbar auf Flathub"
+                        },
+                        "url"    : "https://flathub.org/apps/details/com.gitlab.j0chn.nextcloud_password_client",
+                        "primary": true
+                    },
+                    {
+                        "label": {
+                            "en": "Available on GitLab",
+                            "de": "Verfügbar auf GitLab"
+                        },
+                        "url"  : "https://gitlab.com/j0chn/nextcloud_password_client/-/tree/main#get-it-from"
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : false
+            }
+        ]
+    },
+    "macos"       : {
+        "label": {
+            "en": "macOS"
+        },
+        "style": "grid",
+        "icon" : "apple",
+        "items": [
+            {
+                "id"         : "j0chn",
+                "label"      : {
+                    "en": "Nextcloud Password Client (WIP)"
+                },
+                "description": {
+                    "en": "Nextcloud Password Client is a Flutter based application to manage passwords on your mac. The app is new and lots of features will be added in upcoming releases.",
+                    "de": "Mit dem Nextcloud Password Client können Sie ihre Passwörter von von ihrem Mac aus verwalten. Die App ist neu und viele neue Funktionen werden in den nächsten Versionen hinzugefügt."
+                },
+                "author"     : {
+                    "name"    : "j0chn",
+                    "homepage": "https://gitlab.com/j0chn"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "logo"       : "j0chn-nextcloud-password-client.png",
+                "links"      : {
+                    "homepage": "https://gitlab.com/j0chn/nextcloud_password_client",
+                    "sources" : "https://gitlab.com/j0chn/nextcloud_password_client"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Available on GitLab",
+                            "de": "Verfügbar auf GitLab"
+                        },
+                        "url"  : "https://gitlab.com/j0chn/nextcloud_password_client/-/tree/main#get-it-from"
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : false
+            }
+        ]
+    },
+    "integrations": {
+        "label": {
+            "en": "Integrations",
+            "de": "Integrationen"
+        },
+        "style": "list",
+        "icon" : "puzzle-piece",
+        "items": [
+            {
+                "id"         : "markuman",
+                "label"      : {
+                    "en": "Ansible Plugin"
+                },
+                "description": {
+                    "en": "Use the passwords api to fetch, create, update and delete secrets during deployments.",
+                    "de": "Verwende die API, um Passwörter während eines Deployments zu lesen, erstellen, aktualisieren oder löschen."
+                },
+                "author"     : {
+                    "name"    : "markuman",
+                    "homepage": "https://galaxy.ansible.com/markuman"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "links"      : {
+                    "homepage": "https://galaxy.ansible.com/markuman/nextcloud",
+                    "sources" : "https://github.com/markuman/markuman.nextcloud"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Available on Ansible Galaxy",
+                            "de": "Verfügbar auf Ansible Galaxy"
+                        },
+                        "url"  : "https://galaxy.ansible.com/markuman/nextcloud"
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : false
+            }
+        ]
+    },
+    "libraries"   : {
+        "label": {
+            "en": "Libraries",
+            "de": "Bibliotheken"
+        },
+        "style": "list",
+        "icon" : "microchip",
+        "items": [
+            {
+                "id"         : "passwords-client",
+                "label"      : {
+                    "en": "Official JavaScript Client",
+                    "de": "Offizieller JavaScript Client"
+                },
+                "description": {
+                    "en": "Official NPM package for the JavaScript client for the api.",
+                    "de": "Offizielles NPM-Paket des JavaScript Clients für die API."
+                },
+                "author"     : {
+                    "name"    : "Marius Wieschollek",
+                    "homepage": "https://github.com/marius-wieschollek"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "links"      : {
+                    "homepage": "https://git.mdns.eu/nextcloud-passwords/passwords-client",
+                    "sources" : "https://git.mdns.eu/nextcloud-passwords/passwords-client/tree/master"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Available on NPM",
+                            "de": "Verfügbar auf NPM"
+                        },
+                        "url"  : "https://www.npmjs.com/package/passwords-client"
+                    }
+                ],
+                "features"   : {
+                    "encryption": true
+                },
+                "recommended": false,
+                "official"   : true
+            },
+            {
+                "id"         : "traxys",
+                "label"      : {
+                    "en": "Rust Library",
+                    "de": "Rust Bibliothek"
+                },
+                "description": {
+                    "en": "A Rust library to bind to the Passwords API.",
+                    "de": "Eine Rust-Bibliothek zur Anbindung der API."
+                },
+                "author"     : {
+                    "name"    : "traxys",
+                    "homepage": "https://github.com/traxys"
+                },
+                "passlink"   : {
+                    "enabled": false,
+                    "altLink": false
+                },
+                "links"      : {
+                    "homepage": "https://github.com/traxys/nextcloud-passwords-client",
+                    "sources" : "https://github.com/traxys/nextcloud-passwords-client"
+                },
+                "downloads"  : [
+                    {
+                        "label": {
+                            "en": "Available on Crates.io",
+                            "de": "Verfügbar auf Crates.io"
+                        },
+                        "url"  : "https://crates.io/crates/nextcloud-passwords-client"
+                    }
+                ],
+                "features"   : {
+                    "encryption": false
+                },
+                "recommended": false,
+                "official"   : false
+            }
+        ]
+    }
+}

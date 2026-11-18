@@ -1,0 +1,4 @@
+- [Administrator Manual](Administrators/Index)
+- [Developer Manual](Developers/Index)
+- [User Manual](Users/Index)
+- [Report a bug](Project/Bug-Reporting)

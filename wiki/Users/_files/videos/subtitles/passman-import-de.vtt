@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00.150 --> 00:05.150
+Dieses Tutorial wird Ihnen helfen, Ihre Passwörter von Passman zu übernehmen
+
+00:06.060 --> 00:12.060
+Öffnen Sie zunächst Passman und entsperren Sie Ihren Vault
+
+00:14.020 --> 00:20.020
+Öffnen Sie zunächst Passman und melden Sie sich bei Ihrem Tresor an
+
+00:20.120 --> 00:26.020
+Wählen Sie den "Exporttyp" "JSON" und geben Sie Ihr Tresor-Passwort in das Passwort-Feld ein
+
+00:26.080 --> 00:32.080
+Klicken Sie danach auf den Export-Button und speichern Sie die erzeugte Datei auf Ihrem Computer
+
+00:34.150 --> 00:40.150
+Wenn der Export nicht funktioniert, werfen Sie einen Blick auf unsere Liste der bekannten Fehler und Abhilfen
+
+00:43.050 --> 00:48.050
+Öffnen Sie nun die Passwörter-App und klicken Sie auf "Mehr" in der linken unteren Ecke
+
+00:48.100 --> 00:53.100
+Klicken Sie dann auf "Sichern & Wiederherstellen" und wählen Sie die Option "Wiederherstellen/Importieren".
+
+00:53.150 --> 01:01.000
+Wählen Sie "Passman JSON" als Importformat und öffnen Sie die von Passman erstellte Datei mit dem Dateidialog
+
+01:01.000 --> 01:04.500
+Klicken Sie dann auf die Schaltfläche "Importieren", um den Import zu starten
+
+01:06.000 --> 01:12.000
+Nachdem der Import abgeschlossen ist, sollten Sie die importierten Passwörter im Bereich "Ordner" sehen können
+
+01:15.150 --> 01:19.150
+Wiederholen Sie diesen Vorgang für alle Passman-Tresore, die Sie importieren möchten
+
+01:20.000 --> 01:26.000
+Vergessen Sie nicht, die Exportdatei von Ihrem Computer zu löschen, nachdem Sie sie erfolgreich importiert haben
+
+01:26.200 --> 01:32.000
+Bitte beachten Sie, dass der Import einige der in Passman verfügbaren Optionen nicht unterstützt
+
+01:32.050 --> 01:36.150
+In diesen Fällen zeigt der Import möglicherweise eine Warnung für die betroffenen Passwörter an
+
+01:36.250 --> 01:42.250
+Sie können einen Blick auf unsere Liste von Kompatibilitätsproblemen und Lösungen zur Behebung dieser Probleme werfen
